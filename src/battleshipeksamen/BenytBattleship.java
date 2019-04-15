@@ -10,11 +10,12 @@ public class BenytBattleship {
         GamePanel game = new GamePanel();
         mainWindow.add(game);
         mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mainWindow.setSize(1000, 1000);
+        mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
         
         Battleship spillet = new Battleship();
         game.spil = spillet;
+        
     }
     
 }

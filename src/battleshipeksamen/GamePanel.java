@@ -6,6 +6,7 @@
 package battleshipeksamen;
 
 import java.awt.MouseInfo;
+import java.awt.Point;
 
 /**
  *
@@ -45,11 +46,11 @@ public class GamePanel extends javax.swing.JPanel {
         boardPanel1.setLayout(boardPanel1Layout);
         boardPanel1Layout.setHorizontalGroup(
             boardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGap(0, 215, Short.MAX_VALUE)
         );
         boardPanel1Layout.setVerticalGroup(
             boardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
+            .addGap(0, 147, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -59,20 +60,21 @@ public class GamePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(boardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addComponent(boardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
 
-        spil.checkSquare(evt.getPoint(), boardPanel1.getSize()); //Printer mussekoordinater og boardets størrelse
+        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Printer mussekoordinater og boardets størrelse
+        spil.checkSquare(p, spil.getShipMatrix());
     }//GEN-LAST:event_boardPanel1MousePressed
 
 
