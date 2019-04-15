@@ -40,6 +40,9 @@
   </Layout>
   <SubComponents>
     <Container class="battleshipeksamen.BoardPanel" name="boardPanel1">
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boardPanel1MousePressed"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">

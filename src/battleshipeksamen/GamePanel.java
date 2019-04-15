@@ -5,6 +5,8 @@
  */
 package battleshipeksamen;
 
+import java.awt.MouseInfo;
+
 /**
  *
  * @author bruger
@@ -14,6 +16,8 @@ public class GamePanel extends javax.swing.JPanel {
     /**
      * Creates new form GamePanel
      */
+    Battleship spil;
+    
     public GamePanel() {
         initComponents();
     }
@@ -30,6 +34,12 @@ public class GamePanel extends javax.swing.JPanel {
         boardPanel1 = new battleshipeksamen.BoardPanel();
 
         setBackground(new java.awt.Color(102, 153, 0));
+
+        boardPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                boardPanel1MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout boardPanel1Layout = new javax.swing.GroupLayout(boardPanel1);
         boardPanel1.setLayout(boardPanel1Layout);
@@ -59,6 +69,11 @@ public class GamePanel extends javax.swing.JPanel {
                 .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
+
+        spil.checkSquare(evt.getPoint(), boardPanel1.getSize()); //Printer mussekoordinater og boardets størrelse
+    }//GEN-LAST:event_boardPanel1MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
