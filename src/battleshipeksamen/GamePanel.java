@@ -5,6 +5,7 @@
  */
 package battleshipeksamen;
 
+import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
 
@@ -21,6 +22,15 @@ public class GamePanel extends javax.swing.JPanel {
     
     public GamePanel() {
         initComponents();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        
+        for (Drawable d: spil.getDrawableObjects()){
+            d.draw(g);
+        }
     }
 
     /**
@@ -75,6 +85,7 @@ public class GamePanel extends javax.swing.JPanel {
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Printer mussekoordinater og boardets størrelse
         spil.checkSquare(p, spil.getShipMatrix());
+        spil.drawSymbol(p, boardPanel1.getSize());
     }//GEN-LAST:event_boardPanel1MousePressed
 
 
