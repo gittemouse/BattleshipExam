@@ -58,7 +58,28 @@ public class Battleship {
         System.out.println("--- " + m[px][py]);
         return m[px][py];
     }
+    public int [] matrixIndexToPixelCoordinate(Point p,Point offset, Dimension d){
+        double dwidth = (float) d.width;
+        double dheight = (float) d.height;
+        double px = (float) p.x;
+        double py = (float) p.y;
+        
+        int[] result = new int[4];
+        
+        int x1 = (int) ((dwidth / 10) * px) + offset.x;
+        int y1 = (int) ((dheight / 10) * py) + offset.y;
+        int x2 = (int) ((dwidth / 10) * (px+1)) + offset.x;
+        int y2 = (int) ((dheight / 10) * (py+1)) + offset.y;
+        
+        result[0] = x1;
+        result[1] = y1;
+        result[2] = x2;
+        result[3] = y2;
+        
+        return result;
+    }
     public void drawSymbol(Point p,Point offset, Dimension d){
+        /*
         double dwidth = (float) d.width;
         double dheight = (float) d.height;
         double px = (float) p.x;
@@ -69,15 +90,17 @@ public class Battleship {
         int y1 = (int) ((dheight / 10) * py) + offset.y;
         int x2 = (int) ((dwidth / 10) * (px+1)) + offset.x;
         int y2 = (int) ((dheight / 10) * (py+1)) + offset.y;
+    */
+        int A[] = matrixIndexToPixelCoordinate(p, offset, d);
         
         if(checkSquare(p, shipMatrix) == -1){
             System.out.println("Space is empty");
             shipMatrix[p.x][p.y] = -2 ;
-            drawableObjects.add(new Cross(x1,y1,x2,y2));
-            System.out.print(x1 + " ");
-            System.out.print(y1 + ": ");
-            System.out.print(x2 + " ");
-            System.out.print(y2 + " ");
+            drawableObjects.add(new Cross(A[0],A[1],A[2],A[3]));
+            System.out.print(A[0] + " ");
+            System.out.print(A[1] + ": ");
+            System.out.print(A[2] + " ");
+            System.out.print(A[3] + " ");
         }
         else{
             System.out.println("Space is taken");
