@@ -58,18 +58,17 @@ public class Battleship {
         System.out.println("--- " + m[px][py]);
         return m[px][py];
     }
-    public void drawSymbol(Point p, Dimension d){
+    public void drawSymbol(Point p,Point offset, Dimension d){
         double dwidth = (float) d.width;
         double dheight = (float) d.height;
         double px = (float) p.x;
         double py = (float) p.y;
+
         
-        
-        
-        int x1 = (int) ((dwidth / 10) * px);
-        int y1 = (int) ((dheight / 10) * py);
-        int x2 = (int) ((dwidth / 10) * (px+1));
-        int y2 = (int) ((dheight / 10) * (py+1));
+        int x1 = (int) ((dwidth / 10) * px) + offset.x;
+        int y1 = (int) ((dheight / 10) * py) + offset.y;
+        int x2 = (int) ((dwidth / 10) * (px+1)) + offset.x;
+        int y2 = (int) ((dheight / 10) * (py+1)) + offset.y;
         
         if(checkSquare(p, shipMatrix) == -1){
             System.out.println("Space is empty");

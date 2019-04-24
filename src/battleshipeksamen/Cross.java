@@ -5,6 +5,7 @@
  */
 package battleshipeksamen;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -26,8 +27,11 @@ public class Cross implements Drawable {
     
     @Override
     public void draw(Graphics g){
+     g.setColor(Color.BLACK);
      g.drawLine(bx, by, ex, ey);
      g.drawLine(bx, ey, ex, by);
+     
+     
     }
     
     @Override

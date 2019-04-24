@@ -5,6 +5,7 @@
  */
 package battleshipeksamen;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -22,15 +23,19 @@ public class GamePanel extends javax.swing.JPanel {
     
     public GamePanel() {
         initComponents();
+        boardPanel1.setOpaque(false);
     }
     
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         
+        g.setColor(Color.cyan);
+        g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
         for (Drawable d: spil.getDrawableObjects()){
             d.draw(g);
         }
+        this.repaint();
     }
 
     /**
@@ -56,11 +61,11 @@ public class GamePanel extends javax.swing.JPanel {
         boardPanel1.setLayout(boardPanel1Layout);
         boardPanel1Layout.setHorizontalGroup(
             boardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
         boardPanel1Layout.setVerticalGroup(
             boardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
+            .addGap(0, 141, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -70,14 +75,14 @@ public class GamePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(boardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(boardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -85,7 +90,7 @@ public class GamePanel extends javax.swing.JPanel {
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Printer mussekoordinater og boardets størrelse
         spil.checkSquare(p, spil.getShipMatrix());
-        spil.drawSymbol(p, boardPanel1.getSize());
+        spil.drawSymbol(p,boardPanel1.getLocation(), boardPanel1.getSize());
     }//GEN-LAST:event_boardPanel1MousePressed
 
 
