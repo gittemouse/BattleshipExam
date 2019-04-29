@@ -5,6 +5,7 @@
  */
 package battleshipeksamen;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -15,10 +16,12 @@ import java.awt.Image;
 public class Ship implements Drawable {
     private int size;
     private Boolean horizontal;
-    Image sprite;
+    private Image sprite;
+    
     
     @Override
     public void draw(Graphics g){
+        g.setColor(Color.red);
         g.fillRect(size, size, size, size);
     }
     

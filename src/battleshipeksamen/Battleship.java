@@ -37,11 +37,11 @@ public class Battleship {
     public int[][] getShipMatrix() {
         return shipMatrix;
     }
-    public Point matrixCoordinateOfClick(Point p, Dimension d){
+    public Point matrixCoordinateOfClick(Point pPixel, Dimension d){
         double dwidth = (float) d.width;
         double dheight = (float) d.height;
-        double px = (float) p.x;
-        double py = (float) p.y;
+        double px = (float) pPixel.x;
+        double py = (float) pPixel.y;
         Point pt = new Point(0,0);
         
         pt.x = (int) ((px / dwidth) * 10);
@@ -50,19 +50,19 @@ public class Battleship {
         return pt;
     }
     
-    public int checkSquare(Point p, int[][] m){
-        int px = p.x;
-        int py = p.y;
+    public int checkSquare(Point pIndex, int[][] m){
+        int px = pIndex.x;
+        int py = pIndex.y;
         System.out.print(px + " ");
         System.out.print(py);
         System.out.println("--- " + m[px][py]);
         return m[px][py];
     }
-    public int [] matrixIndexToPixelCoordinate(Point p,Point offset, Dimension d){
+    public int [] matrixIndexToPixelCoordinate(Point pIndex,Point offset, Dimension d){
         double dwidth = (float) d.width;
         double dheight = (float) d.height;
-        double px = (float) p.x;
-        double py = (float) p.y;
+        double px = (float) pIndex.x;
+        double py = (float) pIndex.y;
         
         int[] result = new int[4];
         
@@ -78,7 +78,7 @@ public class Battleship {
         
         return result;
     }
-    public void drawSymbol(Point p,Point offset, Dimension d){
+    public void drawSymbol(Point pIndex,Point offset, Dimension d){
         /*
         double dwidth = (float) d.width;
         double dheight = (float) d.height;
@@ -91,11 +91,11 @@ public class Battleship {
         int x2 = (int) ((dwidth / 10) * (px+1)) + offset.x;
         int y2 = (int) ((dheight / 10) * (py+1)) + offset.y;
     */
-        int A[] = matrixIndexToPixelCoordinate(p, offset, d);
+        int A[] = matrixIndexToPixelCoordinate(pIndex, offset, d);
         
-        if(checkSquare(p, shipMatrix) == -1){
+        if(checkSquare(pIndex, shipMatrix) == -1){
             System.out.println("Space is empty");
-            shipMatrix[p.x][p.y] = -2 ;
+            shipMatrix[pIndex.x][pIndex.y] = -2 ;
             drawableObjects.add(new Cross(A[0],A[1],A[2],A[3]));
             System.out.print(A[0] + " ");
             System.out.print(A[1] + ": ");
