@@ -8,6 +8,7 @@ package battleshipeksamen;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 
 /**
  *
@@ -17,7 +18,11 @@ public class Ship implements Drawable {
     private int size;
     private Boolean horizontal;
     private Image sprite;
+    private Point pixelCoordinates;
     
+    public Ship(Point pPixel, int size, Boolean orientation){
+    
+    }
     
     @Override
     public void draw(Graphics g){
