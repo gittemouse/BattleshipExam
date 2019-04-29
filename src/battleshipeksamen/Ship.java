@@ -24,6 +24,11 @@ public class Ship implements Drawable {
     
     }
     
+    
+    public Ship(){    
+    }
+
+
     @Override
     public void draw(Graphics g){
         g.setColor(Color.red);
