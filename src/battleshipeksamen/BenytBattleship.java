@@ -13,7 +13,7 @@ public class BenytBattleship {
         mainWindow.setSize(500, 500);
         mainWindow.setVisible(true);
         
-        Battleship spillet = new Battleship();
+        BattleshipGame spillet = new BattleshipGame();
         game.spil = spillet;
         
     }

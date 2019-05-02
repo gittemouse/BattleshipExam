@@ -19,7 +19,7 @@ public class GamePanel extends javax.swing.JPanel {
     /**
      * Creates new form GamePanel
      */
-    Battleship spil;
+    BattleshipGame spil;
     
     public GamePanel() {
         initComponents();

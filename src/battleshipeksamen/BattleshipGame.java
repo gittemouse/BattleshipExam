@@ -13,7 +13,7 @@ import java.util.Arrays;
  *
  * @author bruger
  */
-public class Battleship {
+public class BattleshipGame {
     private int[][] shipMatrix = new int[10][10];
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
 
@@ -23,7 +23,7 @@ public class Battleship {
     
     
     
-    Battleship(){
+    BattleshipGame(){
         for(int[] row : shipMatrix){
             Arrays.fill(row, -1);
         }
