@@ -7,7 +7,7 @@ public class Destroyer extends Ship {
 
     public Destroyer(Point pPixel) {
         super();
-        size = 4;
+        size = 2;
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage(".png");
         pixelCoordinates = pPixel;
