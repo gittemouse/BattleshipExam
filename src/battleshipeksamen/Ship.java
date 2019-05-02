@@ -18,12 +18,13 @@ public class Ship implements Drawable {
     protected int size;
     protected Boolean horizontal;
     protected Image sprite;
-    protected Point pixelCoordinates;
+    protected Point pixelCoordinates1;
+    protected Point pixelCoordinates2;
     
-    public Ship(Point pPixel, int size, Boolean orientation){
     
+    public Ship(Point pPixel){
+        pixelCoordinates1 = pPixel;
     }
-    
     
     public Ship(){    
     }
@@ -32,11 +33,12 @@ public class Ship implements Drawable {
     @Override
     public void draw(Graphics g){
         g.setColor(Color.red);
-        g.fillRect(size, size, size, size);
+        g.fillRect(pixelCoordinates1.y, pixelCoordinates1.x, 22, 15);
     }
     
     @Override
-    public void setPosition(int x, int y){
+    public void setPosition(Point pPixel){
+        
         
     }
 }

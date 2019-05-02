@@ -7,6 +7,7 @@ package battleshipeksamen;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 
 /**
  *
@@ -35,7 +36,7 @@ public class Cross implements Drawable {
     }
     
     @Override
-    public void setPosition(int x, int y){
+    public void setPosition(Point pPixel){
      
     }
 }

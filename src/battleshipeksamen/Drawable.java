@@ -6,12 +6,13 @@
 package battleshipeksamen;
 
 import java.awt.Graphics;
+import java.awt.Point;
 
 /**
  *
  * @author bruger
  */
 public interface Drawable {
-    public void setPosition(int x, int y);
+    public void setPosition(Point pPixel);
     public void draw(Graphics g);
 }

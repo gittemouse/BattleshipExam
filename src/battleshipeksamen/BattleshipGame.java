@@ -16,12 +16,20 @@ import java.util.Arrays;
 public class BattleshipGame {
     private int[][] shipMatrix = new int[10][10];
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
+    private ArrayList<Ship> p1Ships = new ArrayList<Ship>();
+    private ArrayList<Ship> p2Ships = new ArrayList<Ship>();
+    private Boolean player1 = true;
+    private Boolean mode1 = true;
 
     public ArrayList<Drawable> getDrawableObjects() {
         return drawableObjects;
     }
+
+    public ArrayList<Ship> getP1Ships() {
+        return p1Ships;
+    }
     
-    
+   
     
     BattleshipGame(){
         for(int[] row : shipMatrix){
@@ -105,6 +113,16 @@ public class BattleshipGame {
         else{
             System.out.println("Space is taken");
         }
+    }
+    
+    public void placeShip(Point pIndex, Point offset, Dimension d){
+        int[] A = matrixIndexToPixelCoordinate(pIndex, offset, d);
+        
+        if((player1 == true) && (mode1 == true)){
+            shipMatrix[pIndex.x][pIndex.y] = 1;
+            p1Ships.add(new Ship(new Point(A[1],A[0])));
+        }
+        
     }
     
 }
