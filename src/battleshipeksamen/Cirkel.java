@@ -4,7 +4,7 @@ package battleshipeksamen;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Cirkel {
+public class Cirkel implements Drawable {
   
     private int cx = 0;
     private int cy = 0;
@@ -19,8 +19,14 @@ public class Cirkel {
         
     }
     
-    public void drawCircle(Graphics g) {
+    @Override
+    public void draw(Graphics g) {
         g.setColor(Color.PINK);
         g.drawOval(cx, cy, b, h);
-}
+    }
+    @Override
+    public void setPosition(int x, int y){
+            
+    }
+
 } 
