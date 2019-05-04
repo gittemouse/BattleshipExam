@@ -3,6 +3,7 @@ package battleshipeksamen;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 
 public class Cirkel implements Drawable {
   
@@ -25,7 +26,7 @@ public class Cirkel implements Drawable {
         g.drawOval(cx, cy, b, h);
     }
     @Override
-    public void setPosition(int x, int y){
+    public void setPosition(Point pPixel){
             
     }
 
