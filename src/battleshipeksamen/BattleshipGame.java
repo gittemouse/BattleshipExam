@@ -110,7 +110,7 @@ public class BattleshipGame {
             System.out.print(A[2] + " ");
             System.out.print(A[3] + " ");
         }
-        if(checkSquare(pIndex, shipMatrix)==-3){
+        if(checkSquare(pIndex, shipMatrix)>=0){
             System.out.println("Ship here");
             shipMatrix[pIndex.x][pIndex.y] = -2 ;
             drawableObjects.add(new Cirkel(A[0],A[1],A[2],A[3]));
