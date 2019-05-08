@@ -129,7 +129,7 @@ public class BattleshipGame {
         
         if((player1 == true) && (mode1 == true)){
             shipMatrix[pIndex.x][pIndex.y] = 1;
-            p1Ships.add(new Ship(new Point(A[1],A[0])));
+            p1Ships.add(new Carrier(new Point(A[1],A[0]), new Point(A[2], A[3])));
         }
         
     }
