@@ -134,4 +134,19 @@ public class BattleshipGame {
         
     }
     
+    /*
+    public void Help(){
+    System.out.println("Rules");
+    System.out.println(" ");
+    System.out.println("1. Place your ships");
+    System.out.println("2. Start guessing where your opponent have placed their ships");
+    System.out.println("3. Sink your oppenent's ships before they sink yours");
+    System.out.println(" ");
+    System.out.println("You click witht he mouse to use any buttons or guess on the board when it's your turn");
+    System.out.println("You can see your score at the bottom of the board");
+    System.out.println(" ");
+    System.out.println("GOOD LUCK!");
+    System.out.println("Your fleet depends on you!");
+}*/
+    
 }
