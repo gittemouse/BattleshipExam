@@ -16,13 +16,16 @@ public class Cirkel implements Drawable {
         cx=x1;
         cy=y1;
         b=(x2-x1);
-        h=(y1-y2);
+        h=(y2-y1);
         
     }
     
     @Override
     public void draw(Graphics g) {
-        System.out.println("GG: " + cx +cy +b +h);
+        System.out.print("GG: " + cx);
+        System.out.print(" " + cy);
+        System.out.print(" " + b);
+        System.out.println(" " + h);
         g.setColor(Color.PINK);
         g.drawOval(cx, cy, b, h);
                 //g.drawOval(100, 100, 200,300);
