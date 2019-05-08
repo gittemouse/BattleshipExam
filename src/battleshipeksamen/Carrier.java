@@ -21,7 +21,11 @@ public class Carrier extends Ship {
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
         AffineTransform transform = g2.getTransform();
-        System.out.println(" WOLOLOLO " + transform.toString());
-        g2.drawImage(sprite, transform, null);
+        //transform.translate(pixelCoordinates1.y, pixelCoordinates1.x);
+        //transform.rotate(System.currentTimeMillis()*Math.PI/2000, pixelCoordinates1.y, pixelCoordinates1.x);
+        System.out.println((pixelCoordinates2.x-pixelCoordinates1.x) + " " + (pixelCoordinates2.y-pixelCoordinates1.y));
+        //g2.drawImage(sprite, transform, null);
+        g2.drawImage(sprite, pixelCoordinates1.x, pixelCoordinates1.y, pixelCoordinates2.x-pixelCoordinates1.x, pixelCoordinates2.y-pixelCoordinates1.y, null);
+        
     }  
 }
