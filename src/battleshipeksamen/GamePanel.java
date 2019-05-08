@@ -94,7 +94,7 @@ public class GamePanel extends javax.swing.JPanel {
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Laver finder ud af hvilken plads i matrixen der klikkes
         spil.checkSquare(p, spil.getShipMatrix());
         //spil.placeShip(p,boardPanel1.getLocation(), boardPanel1.getSize());
-        spil.drawSymbol(p,boardPanel1.getLocation(), boardPanel1.getSize());
+        spil.placeShip(p,boardPanel1.getLocation(), boardPanel1.getSize());
     }//GEN-LAST:event_boardPanel1MousePressed
 
 

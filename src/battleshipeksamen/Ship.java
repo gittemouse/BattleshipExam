@@ -20,6 +20,8 @@ public class Ship implements Drawable {
     protected Image sprite;
     protected Point pixelCoordinates1;
     protected Point pixelCoordinates2;
+    protected int width;
+    protected int height;
     
     
     public Ship(Point pPixel){
