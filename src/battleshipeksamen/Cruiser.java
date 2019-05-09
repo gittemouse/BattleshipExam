@@ -4,10 +4,10 @@ import java.awt.Point;
 import java.awt.Toolkit;
 
 public class Cruiser extends Ship {
-
+    int size = 4;
     public Cruiser(Point pPixel1, Point pPixel2) {
         super();
-        size = 3;
+        
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage(".png");
         pixelCoordinates1 = pPixel1;

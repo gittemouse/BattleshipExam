@@ -15,17 +15,17 @@ import java.awt.Point;
  * @author bruger
  */
 public class Ship implements Drawable {
-    protected int size;
     protected Boolean horizontal;
     protected Image sprite;
     protected Point pixelCoordinates1;
     protected Point pixelCoordinates2;
     protected int width;
     protected int height;
+    protected int hp;
     
-    
-    public Ship(Point pPixel){
+    public Ship(Point pPixel, Point pPixel2){
         pixelCoordinates1 = pPixel;
+        pixelCoordinates2 = pPixel2;
     }
     
     public Ship(){    
