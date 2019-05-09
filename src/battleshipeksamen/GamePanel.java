@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -112,9 +113,21 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         // TODO add your handling code here:
-        //TIL ANDET PANEL
+        //TIL HelpPanel
+        JOptionPane.showMessageDialog(null, "RULES"+"\n"+
+                        "\n"+
+                        "1. Place your ships"+"\n"+
+                        "2. Start guessing where your opponent have placed their ships"+"\n"+
+                        "3. Sink your oppenent's ships before they sink yours"+"\n"+
+                        "\n"+
+                        "You click with the mouse to use any buttons or guess on the board when it's your turn"+"\n"+
+                        "You can see your score at the bottom of the board"+"\n"+
+                        "\n"+
+                        "GOOD LUCK!"+"\n"+
+                        "Your fleet depends on you!", "Help", JOptionPane.INFORMATION_MESSAGE);
+       
+  
     }//GEN-LAST:event_helpButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private battleshipeksamen.BoardPanel boardPanel1;
