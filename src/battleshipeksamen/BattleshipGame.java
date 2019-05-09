@@ -128,12 +128,22 @@ public class BattleshipGame {
         int[] A = matrixIndexToPixelCoordinate(pIndex, offset, d);
         
         if((player1 == true) && (mode1 == true)){
+            int random = (int)(Math.round(Math.random()) % 5);
             shipMatrix[pIndex.x][pIndex.y] = 1;
-            if((Math.round(Math.random()) % 2) == 0){
+            if(random == 0){
                 p1Ships.add(new Carrier(new Point(A[0],A[1]), new Point(A[2], A[3])));
             }
-            else{
+            else if(random == 1){
                 p1Ships.add(new Battleship(new Point(A[0],A[1]), new Point(A[2], A[3])));
+            }
+            else if(random == 2){
+                p1Ships.add(new Cruiser(new Point(A[0],A[1]), new Point(A[2], A[3])));
+            }
+            else if(random == 3){
+                p1Ships.add(new Submarine(new Point(A[0],A[1]), new Point(A[2], A[3])));
+            }
+            else if(random == 4){
+                p1Ships.add(new Destroyer(new Point(A[0],A[1]), new Point(A[2], A[3])));
             }
         }
         
