@@ -8,6 +8,7 @@ package battleshipeksamen;
 import java.awt.*;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author bruger
@@ -16,6 +17,7 @@ public class BattleshipGame {
 
     Player p1;
     Player p2;
+    Sounds lyd;
 
     private Boolean player1 = true;
     private Boolean player2 = true;
@@ -74,6 +76,7 @@ public class BattleshipGame {
                 System.out.println("Space is empty");
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
+                Sounds.PlaySound(Sounds.Splash);
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");

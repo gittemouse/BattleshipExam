@@ -1,40 +1,30 @@
-
 package battleshipeksamen;
+
 import java.io.File;
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+
 public class Sounds {
-    String clickCross;
-    SoundEffect se=new SoundEffect();
-    
+
+    public static File Splash = new File("waterSplash.WAV");
 
 
-public void Sound(){
-clickCross=".//waterSplash.wav";
-}
+    public void Play() {
 
-public class SoundEffect{
-    Clip clip;
+        PlaySound(Splash);
 
-public void setFile(String soundFileName){
-    try{
-        File file=new File(soundFileName);
-        AudioInputStream sound = AudioSystem.getAudioInputStream(file);	
-	clip = AudioSystem.getClip();
-	clip.open(sound);
+
     }
-    catch(Exception e){
-        
+
+     static void PlaySound(File Sound) {
+        try {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(Sound));
+            clip.start();
+
+            //Thread.sleep(clip.getMicrosecondLength() / 1000);
+        } catch (Exception e) {
+
+        }
     }
-}
-public void play(){
-clip.setFramePosition(0);
-clip.start();
-		}
-public void action(){
-se.setFile(clickCross);
-se.play();
-}
-}
 }

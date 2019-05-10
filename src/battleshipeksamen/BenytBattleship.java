@@ -14,10 +14,12 @@ public class BenytBattleship {
 
         Player p1 = new Player();
         Player p2 = new Player();
+        Sounds lyd=new Sounds();
 
         BattleshipGame spillet = new BattleshipGame();
         spillet.p1 = p1;
         spillet.p2 = p2;
+        spillet.lyd=lyd;
         game.spil = spillet;
 
     }
