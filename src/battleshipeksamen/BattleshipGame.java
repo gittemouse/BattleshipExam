@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package battleshipeksamen;
 
 import java.awt.*;
-import java.util.ArrayList;
 
-
-/**
- *
- * @author bruger
- */
 public class BattleshipGame {
 
     Player p1;
@@ -77,6 +67,7 @@ public class BattleshipGame {
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
                 Sounds.PlaySound(Sounds.splash);
+                p1.setShotHit();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -87,6 +78,7 @@ public class BattleshipGame {
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
                 Sounds.PlaySound(Sounds.explosion);
+                p1.setShotMissed();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");

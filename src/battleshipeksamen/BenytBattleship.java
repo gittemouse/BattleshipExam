@@ -5,14 +5,14 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 
 public class BenytBattleship {
-    
-    public static void setFullScreen(JFrame frame){
+
+    public static void setFullScreen(JFrame frame) {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice dev = env.getDefaultScreenDevice();
-		frame.setName("Batteship Game");
-                frame.setTitle("Battleship Game");
-                frame.setUndecorated(true);
-		dev.setFullScreenWindow(frame);
+        GraphicsDevice dev = env.getDefaultScreenDevice();
+        frame.setName("Batteship Game");
+        frame.setTitle("Battleship Game");
+        frame.setUndecorated(true);
+        dev.setFullScreenWindow(frame);
     }
 
     public static void main(String[] args) {
@@ -26,12 +26,12 @@ public class BenytBattleship {
 
         Player p1 = new Player();
         Player p2 = new Player();
-        Sounds lyd=new Sounds();
+        Sounds lyd = new Sounds();
 
         BattleshipGame spillet = new BattleshipGame();
         spillet.p1 = p1;
         spillet.p2 = p2;
-        spillet.lyd=lyd;
+        spillet.lyd = lyd;
         game.spil = spillet;
 
     }

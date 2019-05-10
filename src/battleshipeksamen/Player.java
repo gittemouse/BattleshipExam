@@ -9,6 +9,16 @@ public class Player {
     private int[][] shipMatrix = new int[10][10];
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
+    private int shotHit = 0;
+    private int shotMissed = 0;
+
+    public void setShotHit() {
+        shotHit = shotHit + 1;
+    }
+
+    public void setShotMissed() {
+        shotMissed = shotMissed + 1;
+    }
 
     public Player() {
         for (int[] row : shipMatrix) {
