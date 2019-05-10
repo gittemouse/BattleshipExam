@@ -24,7 +24,7 @@ public class Player {
         for (int[] row : shipMatrix) {
             Arrays.fill(row, -1);
         }
-        ships.add(new Ship()); //Tilføjer et tomt skib på index 0 så rigtige skibe placeres fra index 1.
+
     }
 
     public int[][] getShipMatrix() {
