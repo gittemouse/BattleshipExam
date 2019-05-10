@@ -7,7 +7,6 @@ package battleshipeksamen;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -18,10 +17,7 @@ public class BattleshipGame {
     Player p1;
     Player p2;
 
-    private int[][] shipMatrix = new int[10][10];
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
-    private ArrayList<Ship> p1Ships = new ArrayList<Ship>();
-    //private ArrayList<Ship> p2Ships = new ArrayList<Ship>();
 
     private Boolean player1 = true;
     private Boolean player2 = true;
@@ -30,25 +26,6 @@ public class BattleshipGame {
 
     public ArrayList<Drawable> getDrawableObjects() {
         return drawableObjects;
-    }
-
-    public ArrayList<Ship> getP1Ships() {
-        return p1Ships;
-    }
-
-    BattleshipGame() {
-        for (int[] row : shipMatrix) {
-            Arrays.fill(row, -1);
-        }
-
-    }
-
-    public void setShipMatrix(int[][] gameMatrix) {
-        this.shipMatrix = gameMatrix;
-    }
-
-    public int[][] getShipMatrix() {
-        return shipMatrix;
     }
 
     public Point matrixCoordinateOfClick(Point pPixel, Dimension d) {
@@ -98,18 +75,18 @@ public class BattleshipGame {
 
         int A[] = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
-        if (checkSquare(pIndex, shipMatrix) == -1) {
+        if (checkSquare(pIndex, p1.getShipMatrix()) == -1) {
             System.out.println("Space is empty");
-            shipMatrix[pIndex.x][pIndex.y] = -2;
+            p1.setShipMatrix(pIndex, -2);
             drawableObjects.add(new Cross(A[0], A[1], A[2], A[3]));
             System.out.print(A[0] + " ");
             System.out.print(A[1] + ": ");
             System.out.print(A[2] + " ");
             System.out.print(A[3] + " ");
         }
-        if (checkSquare(pIndex, shipMatrix) >= 0) {
+        if (checkSquare(pIndex, p1.getShipMatrix()) >= 0) {
             System.out.println("Ship here");
-            shipMatrix[pIndex.x][pIndex.y] = -2;
+            p1.setShipMatrix(pIndex, -2);
             drawableObjects.add(new Cirkel(A[0], A[1], A[2], A[3]));
             System.out.print(A[0] + " ");
             System.out.print(A[1] + ": ");
@@ -124,23 +101,15 @@ public class BattleshipGame {
         int[] A = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
         if ((player1 == true) && (mode1 == true)) {
-            int random = (int) (Math.round(Math.random()) % 5);
+            //int random = (int) (Math.round(Math.random()) % 5);
             p1.setShipMatrix(pIndex, 1);
 
-            if (random == 0) {
-                p1Ships.add(new Carrier(new Point(A[0], A[1]), new Point(A[2], A[3])));
-            } else if (random == 1) {
-                p1Ships.add(new Battleship(new Point(A[0], A[1]), new Point(A[2], A[3])));
-            } else if (random == 2) {
-                p1Ships.add(new Cruiser(new Point(A[0], A[1]), new Point(A[2], A[3])));
-            } else if (random == 3) {
-                p1Ships.add(new Submarine(new Point(A[0], A[1]), new Point(A[2], A[3])));
-            } else if (random == 4) {
-                p1Ships.add(new Destroyer(new Point(A[0], A[1]), new Point(A[2], A[3])));
-
-            }
+            p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
+            p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
+            p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
+            p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
+            p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
         }
-
     }
 
 }

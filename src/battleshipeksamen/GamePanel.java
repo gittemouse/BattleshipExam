@@ -36,7 +36,7 @@ public class GamePanel extends javax.swing.JPanel {
         for (Drawable d: spil.getDrawableObjects()){
             d.draw(g);
         }
-        for (Ship s: spil.getP1Ships()){
+        for (Ship s: spil.p1.getShips()){
             s.draw(g);
         }
         this.repaint();
@@ -129,7 +129,7 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Laver finder ud af hvilken plads i matrixen der klikkes
-        spil.checkSquare(p, spil.getShipMatrix());
+        spil.checkSquare(p, spil.p1.getShipMatrix());
         //spil.placeShip(p,boardPanel1.getLocation(), boardPanel1.getSize());
         spil.placeShip(p,boardPanel1.getLocation(), boardPanel1.getSize());
     }//GEN-LAST:event_boardPanel1MousePressed
