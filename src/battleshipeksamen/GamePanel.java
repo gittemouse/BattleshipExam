@@ -163,27 +163,11 @@ public class GamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_boardPanel1MousePressed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        // TODO add your handling code here:
-        //TIL HelpPanel
         Sounds.PlaySound(Sounds.click);
-        JOptionPane.showMessageDialog(null, "RULES"+"\n"+
-                        "\n"+
-                        "1. Place your ships"+"\n"+
-                        "2. Start guessing where your opponent have placed their ships"+"\n"+
-                        "3. Sink your oppenent's ships before they sink yours"+"\n"+
-                        "\n"+
-                        "You click with the mouse to use any buttons or guess on the board when it's your turn"+"\n"+
-                        "You can see your score at the bottom of the board"+"\n"+
-                        "\n"+
-                        "GOOD LUCK!"+"\n"+
-                        "Your fleet depends on you!", "Help", JOptionPane.INFORMATION_MESSAGE);
-       
-  
+        spil.showHelp();
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //KODE TIL NEXT PLAYER
         Sounds.PlaySound(Sounds.click);
     }//GEN-LAST:event_jButton1ActionPerformed
 

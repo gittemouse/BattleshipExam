@@ -1,7 +1,7 @@
-
 package battleshipeksamen;
 
 import java.awt.*;
+import javax.swing.JOptionPane;
 
 public class BattleshipGame {
 
@@ -116,15 +116,14 @@ public class BattleshipGame {
 
         if ((player1 == true) && (mode1 == true)) {
             //int random = (int) (Math.round(Math.random()) % 5);
-            p1.setShipMatrix(pIndex, p1.getShips().size()+1);
+            p1.setShipMatrix(pIndex, p1.getShips().size() + 1);
 
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
             p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
-            
-            
+
         } else {
             p2.setShipMatrix(pIndex, 1);
 
@@ -136,5 +135,18 @@ public class BattleshipGame {
         }
     }
     
+    public void showHelp() {
+        JOptionPane.showMessageDialog(null, "RULES"+"\n"+
+                        "\n"+
+                        "1. Place your ships"+"\n"+
+                        "2. Start guessing where your opponent have placed their ships"+"\n"+
+                        "3. Sink your oppenent's ships before they sink yours"+"\n"+
+                        "\n"+
+                        "You click with the mouse to use any buttons or guess on the board when it's your turn"+"\n"+
+                        "You can see your score at the bottom of the board"+"\n"+
+                        "\n"+
+                        "GOOD LUCK!"+"\n"+
+                        "Your fleet depends on you!", "Help", JOptionPane.INFORMATION_MESSAGE);
+    }
 
 }
