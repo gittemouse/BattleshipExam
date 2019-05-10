@@ -17,16 +17,10 @@ public class BattleshipGame {
     Player p1;
     Player p2;
 
-    private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
-
     private Boolean player1 = true;
     private Boolean player2 = true;
     private Boolean mode1 = true;
     private Boolean mode2 = true;
-
-    public ArrayList<Drawable> getDrawableObjects() {
-        return drawableObjects;
-    }
 
     public Point matrixCoordinateOfClick(Point pPixel, Dimension d) {
         double dwidth = (float) d.width;
@@ -78,7 +72,7 @@ public class BattleshipGame {
         if (checkSquare(pIndex, p1.getShipMatrix()) == -1) {
             System.out.println("Space is empty");
             p1.setShipMatrix(pIndex, -2);
-            drawableObjects.add(new Cross(A[0], A[1], A[2], A[3]));
+            p1.setDrawableObjects(new Point(A[0], A[1]), new Point (A[2], A[3]),Player.symbolType.CROSS);
             System.out.print(A[0] + " ");
             System.out.print(A[1] + ": ");
             System.out.print(A[2] + " ");
@@ -87,7 +81,7 @@ public class BattleshipGame {
         if (checkSquare(pIndex, p1.getShipMatrix()) >= 0) {
             System.out.println("Ship here");
             p1.setShipMatrix(pIndex, -2);
-            drawableObjects.add(new Cirkel(A[0], A[1], A[2], A[3]));
+            p1.setDrawableObjects(new Point(A[0], A[1]), new Point (A[2], A[3]),Player.symbolType.CIRCLE);
             System.out.print(A[0] + " ");
             System.out.print(A[1] + ": ");
             System.out.print(A[2] + " ");
