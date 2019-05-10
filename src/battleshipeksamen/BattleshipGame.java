@@ -76,7 +76,7 @@ public class BattleshipGame {
                 System.out.println("Space is empty");
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
-                Sounds.PlaySound(Sounds.Splash);
+                Sounds.PlaySound(Sounds.splash);
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -86,6 +86,7 @@ public class BattleshipGame {
                 System.out.println("Ship here");
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
+                Sounds.PlaySound(Sounds.explosion);
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");

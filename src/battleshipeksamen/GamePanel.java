@@ -165,6 +165,7 @@ public class GamePanel extends javax.swing.JPanel {
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         // TODO add your handling code here:
         //TIL HelpPanel
+        Sounds.PlaySound(Sounds.click);
         JOptionPane.showMessageDialog(null, "RULES"+"\n"+
                         "\n"+
                         "1. Place your ships"+"\n"+
@@ -183,6 +184,7 @@ public class GamePanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //KODE TIL NEXT PLAYER
+        Sounds.PlaySound(Sounds.click);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void boardPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel2MousePressed
