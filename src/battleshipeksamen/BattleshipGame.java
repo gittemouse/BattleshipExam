@@ -123,10 +123,72 @@ public class BattleshipGame {
 
         if ((player1 == true) && (mode1 == true)) {
             //int random = (int) (Math.round(Math.random()) % 5);
+            int sizeOfCurrentShip = p1.getShips().size() +1;
+            Boolean spaceClear = true;
+            
+            try{
+                for(int i = 0; i < sizeOfCurrentShip; i++){
+                    if(p1.getShipMatrix()[pIndex.x+i][pIndex.y] != -1){
+                        spaceClear = false;
+                        break;
+                    }
+                }
+            }
+            catch(IndexOutOfBoundsException e){
+                System.out.println("The entire ship must be INSIDE the board");
+                spaceClear = false;
+            }
+            
+            
+            
+            switch(sizeOfCurrentShip){
+                case 2:
+                    if(spaceClear == true){
+                        for(int i = 0; i < sizeOfCurrentShip; i++){
+                            p1.setShipMatrix(new Point(pIndex.x+i, pIndex.y), sizeOfCurrentShip-1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                        }
+                        p1.setShips(new Point(A[0], A[1]), new Point(A[2],A[3]), Player.shipType.DESTROYER);
+                    }
+                    break;
+                case 3:
+                    if(spaceClear == true){
+                        for(int i = 0; i < sizeOfCurrentShip; i++){
+                            p1.setShipMatrix(new Point(pIndex.x+i, pIndex.y), sizeOfCurrentShip-1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                        }
+                        p1.setShips(new Point(A[0], A[1]), new Point(A[2],A[3]), Player.shipType.SUBMARINE);
+                    }
+                    break;
+                case 4:
+                    if(spaceClear == true){
+                        for(int i = 0; i < sizeOfCurrentShip; i++){
+                            p1.setShipMatrix(new Point(pIndex.x+i, pIndex.y), sizeOfCurrentShip-1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                        }
+                        p1.setShips(new Point(A[0], A[1]), new Point(A[2],A[3]), Player.shipType.CRUISER);
+                    }
+                    break;
+                case 5:
+                    if(spaceClear == true){
+                        for(int i = 0; i < sizeOfCurrentShip; i++){
+                            p1.setShipMatrix(new Point(pIndex.x+i, pIndex.y), sizeOfCurrentShip-1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                        }
+                        p1.setShips(new Point(A[0], A[1]), new Point(A[2],A[3]), Player.shipType.BATTLESHIP);
+                    }
+                    break;
+                case 6:
+                    if(spaceClear == true){
+                        for(int i = 0; i < sizeOfCurrentShip; i++){
+                            p1.setShipMatrix(new Point(pIndex.x+i, pIndex.y), sizeOfCurrentShip-1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                        }
+                        p1.setShips(new Point(A[0], A[1]), new Point(A[2],A[3]), Player.shipType.CARRIER);
+                    }
+                    break;
+            }
+            
+            
             p1.setShipMatrix(pIndex, p1.getShips().size()+1);
 
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
-            p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
+            //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
