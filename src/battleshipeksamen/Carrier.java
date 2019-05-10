@@ -24,12 +24,12 @@ public class Carrier extends Ship {
         AffineTransform transform = g2.getTransform();
         System.out.println(transform.getTranslateX() + " " + pixelCoordinates1.x);
         transform.setToTranslation((double) pixelCoordinates1.x, (double) pixelCoordinates1.y);
-        
-        transform.rotate(-System.currentTimeMillis()/(200*Math.PI), (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
+        transform.rotate(Math.PI/2, (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
+        //transform.rotate(-System.currentTimeMillis()/(200*Math.PI), (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
         transform.scale(0.075*size,0.25);
-        //transform.rotate(System.currentTimeMillis()*Math.PI/2000);
+        
         g2.drawImage(sprite, transform, null);
         //g2.drawImage(sprite, pixelCoordinates1.x, pixelCoordinates1.y, pixelCoordinates2.x-pixelCoordinates1.x, pixelCoordinates2.y-pixelCoordinates1.y, null);
-        
+       
     }  
 }
