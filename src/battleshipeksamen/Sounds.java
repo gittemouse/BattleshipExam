@@ -6,15 +6,9 @@ import javax.sound.sampled.Clip;
 
 public class Sounds {
 
-    public static File Splash = new File("waterSplash.WAV");
-
-
-    public void Play() {
-
-        PlaySound(Splash);
-
-
-    }
+    public static File splash = new File("waterSplash.WAV");
+    public static File explosion = new File("shipExplosion.WAV");
+    public static File click = new File("click.WAV");
 
      static void PlaySound(File Sound) {
         try {

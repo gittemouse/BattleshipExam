@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleshipeksamen;
 
 import java.awt.*;
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author bruger
- */
 public class BattleshipGame {
 
     Player p1;
@@ -76,7 +66,8 @@ public class BattleshipGame {
                 System.out.println("Space is empty");
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
-                Sounds.PlaySound(Sounds.Splash);
+                Sounds.PlaySound(Sounds.splash);
+                p1.setShotHit();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -86,6 +77,8 @@ public class BattleshipGame {
                 System.out.println("Ship here");
                 p1.setShipMatrix(pIndex, -2);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
+                Sounds.PlaySound(Sounds.explosion);
+                p1.setShotMissed();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -192,8 +185,7 @@ public class BattleshipGame {
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
             //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
-            
-            
+
         } else {
             p2.setShipMatrix(pIndex, 1);
 
@@ -205,5 +197,18 @@ public class BattleshipGame {
         }
     }
     
+    public void showHelp() {
+        JOptionPane.showMessageDialog(null, "RULES"+"\n"+
+                        "\n"+
+                        "1. Place your ships"+"\n"+
+                        "2. Start guessing where your opponent have placed their ships"+"\n"+
+                        "3. Sink your oppenent's ships before they sink yours"+"\n"+
+                        "\n"+
+                        "You click with the mouse to use any buttons or guess on the board when it's your turn"+"\n"+
+                        "You can see your score at the bottom of the board"+"\n"+
+                        "\n"+
+                        "GOOD LUCK!"+"\n"+
+                        "Your fleet depends on you!", "Help", JOptionPane.INFORMATION_MESSAGE);
+    }
 
 }
