@@ -34,7 +34,7 @@ public class Player {
     }
 
     public enum symbolType {
-        CROSS, CIRCLE,
+        CROSS, CIRCLE
     }
 
     public void setDrawableObjects(Point A, Point B, symbolType S) {
@@ -45,12 +45,11 @@ public class Player {
             case CIRCLE:
                 this.drawableObjects.add(new Circle(A, B));
                 break;
-
         }
     }
 
     public enum shipType {
-        DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER,
+        DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
 
     public void setShips(Point A, Point B, shipType K) {

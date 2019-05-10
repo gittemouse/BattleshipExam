@@ -69,26 +69,50 @@ public class BattleshipGame {
 
         int A[] = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
-        if (checkSquare(pIndex, p1.getShipMatrix()) == -1) {
-            System.out.println("Space is empty");
-            p1.setShipMatrix(pIndex, -2);
-            p1.setDrawableObjects(new Point(A[0], A[1]), new Point (A[2], A[3]),Player.symbolType.CROSS);
-            System.out.print(A[0] + " ");
-            System.out.print(A[1] + ": ");
-            System.out.print(A[2] + " ");
-            System.out.print(A[3] + " ");
-        }
-        if (checkSquare(pIndex, p1.getShipMatrix()) >= 0) {
-            System.out.println("Ship here");
-            p1.setShipMatrix(pIndex, -2);
-            p1.setDrawableObjects(new Point(A[0], A[1]), new Point (A[2], A[3]),Player.symbolType.CIRCLE);
-            System.out.print(A[0] + " ");
-            System.out.print(A[1] + ": ");
-            System.out.print(A[2] + " ");
-            System.out.print(A[3] + " ");
+        if ((player1 == true) && (mode2 == true)) {
+            if (checkSquare(pIndex, p1.getShipMatrix()) == -1) {
+                System.out.println("Space is empty");
+                p1.setShipMatrix(pIndex, -2);
+                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
+                System.out.print(A[0] + " ");
+                System.out.print(A[1] + ": ");
+                System.out.print(A[2] + " ");
+                System.out.print(A[3] + " ");
+            }
+            if (checkSquare(pIndex, p1.getShipMatrix()) >= 0) {
+                System.out.println("Ship here");
+                p1.setShipMatrix(pIndex, -2);
+                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
+                System.out.print(A[0] + " ");
+                System.out.print(A[1] + ": ");
+                System.out.print(A[2] + " ");
+                System.out.print(A[3] + " ");
+            } else {
+                System.out.println("Space is taken");
+            }
         } else {
-            System.out.println("Space is taken");
+            if (checkSquare(pIndex, p2.getShipMatrix()) == -1) {
+                System.out.println("Space is empty");
+                p2.setShipMatrix(pIndex, -2);
+                p2.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
+                System.out.print(A[0] + " ");
+                System.out.print(A[1] + ": ");
+                System.out.print(A[2] + " ");
+                System.out.print(A[3] + " ");
+            }
+            if (checkSquare(pIndex, p2.getShipMatrix()) >= 0) {
+                System.out.println("Ship here");
+                p2.setShipMatrix(pIndex, -2);
+                p2.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
+                System.out.print(A[0] + " ");
+                System.out.print(A[1] + ": ");
+                System.out.print(A[2] + " ");
+                System.out.print(A[3] + " ");
+            } else {
+                System.out.println("Space is taken");
+            }
         }
+
     }
 
     public void placeShip(Point pIndex, Point offset, Dimension d) {
@@ -103,6 +127,14 @@ public class BattleshipGame {
             p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
             p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
             p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
+        } else {
+            p2.setShipMatrix(pIndex, 1);
+
+            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
+            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
+            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
+            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
+            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
         }
     }
 
