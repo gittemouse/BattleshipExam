@@ -29,8 +29,27 @@ public class Player {
         return ships;
     }
 
+    public ArrayList<Drawable> getDrawableObjects() {
+        return drawableObjects;
+    }
+
+    public enum symbolType {
+        CROSS, CIRCLE
+    }
+
+    public void setDrawableObjects(Point A, Point B, symbolType S) {
+        switch (S) {
+            case CROSS:
+                this.drawableObjects.add(new Cross(A, B));
+                break;
+            case CIRCLE:
+                this.drawableObjects.add(new Circle(A, B));
+                break;
+        }
+    }
+
     public enum shipType {
-        DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER,
+        DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
 
     public void setShips(Point A, Point B, shipType K) {

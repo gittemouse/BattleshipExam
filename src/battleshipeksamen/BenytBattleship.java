@@ -9,7 +9,7 @@ public class BenytBattleship {
         GamePanel game = new GamePanel();
         mainWindow.add(game);
         mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mainWindow.setSize(800, 800);
+        mainWindow.setSize(1080, 800);
         mainWindow.setVisible(true);
 
         Player p1 = new Player();
