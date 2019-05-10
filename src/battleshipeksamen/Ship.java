@@ -34,8 +34,7 @@ public class Ship implements Drawable {
 
     @Override
     public void draw(Graphics g){
-        g.setColor(Color.red);
-        g.fillRect(pixelCoordinates1.y, pixelCoordinates1.x, 22, 15);
+    
     }
     
     @Override
