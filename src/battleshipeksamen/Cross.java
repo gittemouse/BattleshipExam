@@ -19,11 +19,21 @@ public class Cross implements Drawable {
     private int ex = 0;
     private int ey = 0;
     
-    Cross(int x1, int y1, int x2, int y2){
+    public Cross(int x1, int y1, int x2, int y2){
         bx = x1;
         by = y1;
         ex = x2;
         ey = y2;
+    }
+    
+    public Cross(Point pPixel1, Point pPixel2){
+        bx = pPixel1.x;
+        by = pPixel1.y;
+        ex = pPixel2.x;
+        ey = pPixel2.y;
+                
+                
+                
     }
     
     @Override
