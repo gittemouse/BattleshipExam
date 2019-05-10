@@ -24,25 +24,25 @@ public class GamePanel extends javax.swing.JPanel {
      */
     BattleshipGame spil;
     Image backgroundIMG = Toolkit.getDefaultToolkit().getImage("InstrumentPanel.png");
-    
+
     public GamePanel() {
         initComponents();
         boardPanel1.setOpaque(false);
     }
-    
+
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+
         g.drawImage(backgroundIMG, 0, 0, this.getParent().getWidth(), this.getParent().getHeight(), this);
-        
+
         g.setColor(Color.cyan);
         g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
-        for (Drawable d: spil.p1.getDrawableObjects()){
-            d.draw(g);
-        }
-        for (Ship s: spil.p1.getShips()){
+        for (Ship s : spil.p1.getShips()) {
             s.draw(g);
+        }
+        for (Drawable d : spil.p1.getDrawableObjects()) {
+            d.draw(g);
         }
         this.repaint();
     }
@@ -157,9 +157,22 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Laver finder ud af hvilken plads i matrixen der klikkes
-        spil.checkSquare(p, spil.p1.getShipMatrix());
-        //spil.drawSymbol(p,boardPanel1.getLocation(), boardPanel1.getSize());
-        spil.placeShip(p,boardPanel1.getLocation(), boardPanel1.getSize());
+        if (spil.getPlayer1Turn() == true) {
+            spil.checkSquare(p, spil.p1.getShipMatrix());
+            if (spil.getPlayer1PlaceShips() == true) {
+                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            } else {
+                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            }
+
+        } else {
+            spil.checkSquare(p, spil.p2.getShipMatrix());
+            if (spil.getPlayer2PlaceShips() == true) {
+                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            } else {
+                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            }
+        }
     }//GEN-LAST:event_boardPanel1MousePressed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed

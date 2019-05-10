@@ -36,7 +36,7 @@ public class Circle implements Drawable {
         System.out.print(" " + cy);
         System.out.print(" " + b);
         System.out.println(" " + h);
-        g.setColor(Color.PINK);
+        g.setColor(Color.RED);
         g.drawOval(cx, cy, b, h);
                 //g.drawOval(100, 100, 200,300);
 
