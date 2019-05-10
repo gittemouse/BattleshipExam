@@ -9,6 +9,7 @@ public class Sounds {
     public static File splash = new File("waterSplash.WAV");
     public static File explosion = new File("shipExplosion.WAV");
     public static File click = new File("click.WAV");
+    public static File hit = new File("bombaway.WAV");
 
      static void PlaySound(File Sound) {
         try {
