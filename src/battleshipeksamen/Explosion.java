@@ -14,34 +14,18 @@ import java.util.ArrayList;
  *
  * @author bruger
  */
-public class Explosion implements Drawable{
-    Image spriteImage = Toolkit.getDefaultToolkit().getImage("explosion.png");
-    Point pixelPoint1;
-    Point pixelPoint2;
-    int durationMillis = 1000;
-    long initTime;
-    int frameX;
-    int frameY;
+public class Explosion  extends SpriteAnimation{
+
 
    
     Explosion(Point pPixel1, Point pPixel2){
-        initTime = System.currentTimeMillis();
-        pixelPoint1 = pPixel1;
-        pixelPoint2 = pPixel2;
+        super(pPixel1, pPixel2);
+        spriteImage = Toolkit.getDefaultToolkit().getImage("explosion.png");
+        fileSizeX = 320;
+        fileSizeY = 320;
+        rows = 5;
+        cols = 5;
+        scalingConstant = 10;
     }
-    
-    @Override
-    public void draw(Graphics g){
-        double deltaTime = System.currentTimeMillis() - initTime;
-        frameX = (int) ((5*deltaTime / durationMillis) % 6);
-        frameY = (int) ((deltaTime / durationMillis)*5);
-        g.drawImage(spriteImage, pixelPoint1.x, pixelPoint1.y, pixelPoint2.x, pixelPoint2.y, 64*frameX, 64*frameY, 64*(frameX+1), 64*(frameY+1), null);
-        System.out.println(pixelPoint1.x + " " + pixelPoint1.y);
-        if(deltaTime > durationMillis){}
-    }
-    
-    @Override
-    public void setPosition(Point p){
-        
-    }
+
 }

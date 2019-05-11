@@ -45,7 +45,7 @@ public class Player {
     }
 
     public enum symbolType {
-        CROSS, CIRCLE, EXPLOSION
+        CROSS, CIRCLE, EXPLOSION, SPLASH
     }
 
     public void setDrawableObjects(Point A, Point B, symbolType S) {
@@ -58,6 +58,9 @@ public class Player {
                 break;
             case EXPLOSION:
                 this.drawableObjects.add(new Explosion(A, B));
+                break;
+            case SPLASH:
+                this.drawableObjects.add(new Splash(A, B));
                 break;
         }
     }
