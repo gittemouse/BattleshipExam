@@ -11,6 +11,8 @@ import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -156,13 +158,17 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
 
-        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Laver finder ud af hvilken plads i matrixen der klikkes
+        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
         if (spil.getPlayer1Turn() == true) {
             spil.checkSquare(p, spil.p1.getShipMatrix());
             if (spil.getPlayer1PlaceShips() == true) {
                 spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
             } else {
-                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                try {
+                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         } else {
@@ -170,7 +176,11 @@ public class GamePanel extends javax.swing.JPanel {
             if (spil.getPlayer2PlaceShips() == true) {
                 spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
             } else {
-                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                try {
+                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_boardPanel1MousePressed

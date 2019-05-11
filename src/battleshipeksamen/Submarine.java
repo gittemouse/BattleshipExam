@@ -22,7 +22,7 @@ public class Submarine extends Ship {
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
         AffineTransform transform = g2.getTransform();
-        System.out.println(transform.getTranslateX() + " " + pixelCoordinates1.x);
+        //System.out.println(transform.getTranslateX() + " " + pixelCoordinates1.x);
         transform.setToTranslation((double) pixelCoordinates1.x, (double) pixelCoordinates1.y);
         
         //transform.rotate(-System.currentTimeMillis()/(100*Math.PI), (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
@@ -30,7 +30,6 @@ public class Submarine extends Ship {
         //transform.rotate(System.currentTimeMillis()*Math.PI/2000);
         g2.drawImage(sprite, transform, null);
         //g2.drawImage(sprite, pixelCoordinates1.x, pixelCoordinates1.y, pixelCoordinates2.x-pixelCoordinates1.x, pixelCoordinates2.y-pixelCoordinates1.y, null);
-        
     }  
     
 }

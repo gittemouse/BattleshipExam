@@ -21,7 +21,7 @@ public class Cruiser extends Ship {
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
         AffineTransform transform = g2.getTransform();
-        System.out.println(transform.getTranslateX() + " " + pixelCoordinates1.x);
+        //System.out.println(transform.getTranslateX() + " " + pixelCoordinates1.x);
         transform.setToTranslation((double) pixelCoordinates1.x, (double) pixelCoordinates1.y);
         
         //transform.rotate(-System.currentTimeMillis()/(120*Math.PI), (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
