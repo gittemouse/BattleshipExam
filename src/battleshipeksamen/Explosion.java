@@ -23,6 +23,7 @@ public class Explosion  extends SpriteAnimation{
         spriteImage = Toolkit.getDefaultToolkit().getImage("explosion.png");
         fileSizeX = 320;
         fileSizeY = 320;
+        durationMillis = 1000;
         rows = 5;
         cols = 5;
         scalingConstant = 10;
