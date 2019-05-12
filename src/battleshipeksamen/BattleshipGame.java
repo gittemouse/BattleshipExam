@@ -81,6 +81,7 @@ public class BattleshipGame {
                 Sounds.PlaySound(Sounds.splash);
                 p1.setShotMissed();
                 p1.setAllShots();
+                p1.setAllAcc();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -94,6 +95,7 @@ public class BattleshipGame {
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
                 p1.setShotHit();
                 p1.setAllShots();
+                p1.setAllAcc();
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.EXPLOSION);
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");

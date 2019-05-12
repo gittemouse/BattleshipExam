@@ -211,15 +211,14 @@ public class GamePanel extends javax.swing.JPanel {
             } else {
                 try {
                     spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
-                    allHits.setText("Hits: "+spil.p1.getShotHit());
-                    allShots.setText("Shots: "+spil.p1.getAllShots());
-                    allMiss.setText("Missed: "+spil.p1.getShotMissed());
-                    allAcc.setText("Acc: "+spil.p1.getAllAcc());
+                    allHits.setText("Hits: " + spil.p1.getShotHit());
+                    allShots.setText("Shots: " + spil.p1.getAllShots());
+                    allMiss.setText("Missed: " + spil.p1.getShotMissed());
+                    allAcc.setText("Acc: " + spil.p1.getAllAcc()+"%");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
         } else {
             spil.checkSquare(p, spil.p2.getShipMatrix());
             if (spil.getPlayer2PlaceShips() == true) {
