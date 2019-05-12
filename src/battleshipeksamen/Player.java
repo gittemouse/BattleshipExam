@@ -39,7 +39,7 @@ public class Player {
     }
     
     public void setAllAcc(){
-        allAcc=shotHit/allShots;
+        allAcc=(shotHit/allShots)*100;
     }
     
     public int getAllAcc(){
