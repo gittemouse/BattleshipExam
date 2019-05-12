@@ -17,9 +17,8 @@ public class Sounds {
             clip.open(AudioSystem.getAudioInputStream(Sound));
             clip.start();
 
-            //Thread.sleep(clip.getMicrosecondLength() / 1000);
         } catch (Exception e) {
-
+e.printStackTrace();
         }
     }
 }

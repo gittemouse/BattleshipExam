@@ -11,13 +11,39 @@ public class Player {
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
     private int shotHit = 0;
     private int shotMissed = 0;
+    private int allShots=0;
+    private int allAcc=0;
 
+    public void setAllShots(){
+        allShots=shotHit+shotMissed;
+    }
+    
+    public int getAllShots(){
+        return allShots;
+    }
+    
     public void setShotHit() {
         shotHit = shotHit + 1;
     }
 
+    public int getShotHit() {
+        return shotHit;
+    }
+
+    public int getShotMissed() {
+        return shotMissed;
+    }
+
     public void setShotMissed() {
         shotMissed = shotMissed + 1;
+    }
+    
+    public void setAllAcc(){
+        allAcc=shotHit/allShots;
+    }
+    
+    public int getAllAcc(){
+        return allAcc;
     }
 
     public Player() {
