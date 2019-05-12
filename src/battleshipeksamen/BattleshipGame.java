@@ -13,6 +13,10 @@ public class BattleshipGame {
     private Boolean Player1PlaceShips = true;
     private Boolean Player2PlaceShips = true;
 
+    public void setPlayer1Turn(Boolean player1Turn) {
+        this.player1Turn = player1Turn;
+    }
+
     public Boolean getPlayer1Turn() {
         return player1Turn;
     }

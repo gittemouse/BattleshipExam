@@ -5,6 +5,7 @@
  */
 package battleshipeksamen;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,6 +15,7 @@ import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -26,10 +28,14 @@ public class GamePanel extends javax.swing.JPanel {
      */
     BattleshipGame spil;
     Image backgroundIMG = Toolkit.getDefaultToolkit().getImage("InstrumentPanel.png");
+    CardLayout cardLayout;
+    JPanel parentPanel;
 
-    public GamePanel() {
+    public GamePanel(JPanel p) {
         initComponents();
         boardPanel1.setOpaque(false);
+        this.parentPanel = p;
+        cardLayout = (CardLayout) parentPanel.getLayout();
 
     }
 
@@ -41,12 +47,23 @@ public class GamePanel extends javax.swing.JPanel {
 
         g.setColor(Color.cyan);
         g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
-        for (Ship s : spil.p1.getShips()) {
-            s.draw(g);
+
+        if (spil.getPlayer1Turn() == true) {
+            for (Ship s : spil.p1.getShips()) {
+                s.draw(g);
+            }
+            for (Drawable d : spil.p1.getDrawableObjects()) {
+                d.draw(g);
+            }
+        } else {
+            for (Ship s : spil.p2.getShips()) {
+                s.draw(g);
+            }
+            for (Drawable d : spil.p2.getDrawableObjects()) {
+                d.draw(g);
+            }
         }
-        for (Drawable d : spil.p1.getDrawableObjects()) {
-            d.draw(g);
-        }
+
         this.repaint();
     }
 
@@ -214,7 +231,7 @@ public class GamePanel extends javax.swing.JPanel {
                     allHits.setText("Hits: " + spil.p1.getShotHit());
                     allShots.setText("Shots: " + spil.p1.getAllShots());
                     allMiss.setText("Missed: " + spil.p1.getShotMissed());
-                    allAcc.setText("Acc: " + spil.p1.getAllAcc()+"%");
+                    allAcc.setText("Acc: " + spil.p1.getAllAcc() + "%");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -240,6 +257,7 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Sounds.PlaySound(Sounds.click);
+        cardLayout.show(parentPanel, "next");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void boardPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel2MousePressed
