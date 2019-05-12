@@ -9,16 +9,16 @@ public class Player {
     private int[][] shipMatrix = new int[10][10];
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
-    private int shotHit = 0;
-    private int shotMissed = 0;
-    private int allShots=0;
-    private int allAcc=0;
+    private float shotHit = 0;
+    private float shotMissed = 0;
+    private float allShots=0;
+    private float allAcc=0;
 
     public void setAllShots(){
         allShots=shotHit+shotMissed;
     }
     
-    public int getAllShots(){
+    public float getAllShots(){
         return allShots;
     }
     
@@ -26,11 +26,11 @@ public class Player {
         shotHit = shotHit + 1;
     }
 
-    public int getShotHit() {
+    public float getShotHit() {
         return shotHit;
     }
 
-    public int getShotMissed() {
+    public float getShotMissed() {
         return shotMissed;
     }
 
@@ -42,7 +42,8 @@ public class Player {
         allAcc=(shotHit/allShots)*100;
     }
     
-    public int getAllAcc(){
+    public float getAllAcc(){
+        allAcc=(shotHit/allShots)*100;
         return allAcc;
     }
 
