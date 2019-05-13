@@ -72,7 +72,8 @@ public class BattleshipGame {
             }
             if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
                 System.out.println("Ship here");
-                x.getShips().get(checkShip)
+                x.getShips().get(checkSquare(pIndex, x.getShipMatrix())).decrementHP(); //Find the ship that has been hin and decrement its HP
+                
                 x.setShipMatrix(pIndex, -2);
                 Sounds.PlaySound(Sounds.explosion);
                 //Thread.sleep(1500);
