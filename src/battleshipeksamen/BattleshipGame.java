@@ -80,8 +80,8 @@ public class BattleshipGame {
             if (checkSquare(pIndex, p1.getShipMatrix()) == -1) {
                 System.out.println("Space is empty");
                 p1.setShipMatrix(pIndex, -2);
-                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.SPLASH);
+                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
                 Sounds.PlaySound(Sounds.splash);
                 p1.setShotMissed();
                 p1.setAllShots();
@@ -96,11 +96,11 @@ public class BattleshipGame {
                 p1.setShipMatrix(pIndex, -2);
                 Sounds.PlaySound(Sounds.hit);
                 Thread.sleep(1500);
+                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.EXPLOSION);
                 p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
                 p1.setShotHit();
                 p1.setAllShots();
                 p1.setAllAcc();
-                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.EXPLOSION);
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -112,7 +112,11 @@ public class BattleshipGame {
             if (checkSquare(pIndex, p2.getShipMatrix()) == -1) {
                 System.out.println("Space is empty");
                 p2.setShipMatrix(pIndex, -2);
+                Sounds.PlaySound(Sounds.splash);
                 p2.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
+                p2.setShotMissed();
+                p2.setAllShots();
+                p2.setAllAcc();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -121,7 +125,12 @@ public class BattleshipGame {
             if (checkSquare(pIndex, p2.getShipMatrix()) >= 0) {
                 System.out.println("Ship here");
                 p2.setShipMatrix(pIndex, -2);
+                Sounds.PlaySound(Sounds.hit);
+                Thread.sleep(1500);
                 p2.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
+                p2.setShotHit();
+                p2.setAllShots();
+                p2.setAllAcc();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
