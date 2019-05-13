@@ -9,19 +9,38 @@ public class Player {
     private int[][] shipMatrix = new int[10][10];
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
+    private ArrayList<SpriteAnimation> animations = new ArrayList<SpriteAnimation>();
+    private Boolean PlaceShips = true;
+    private Boolean playerTurn = true;
     private float shotHit = 0;
     private float shotMissed = 0;
-    private float allShots=0;
-    private float allAcc=0;
+    private float allShots = 0;
+    private float allAcc = 0;
 
-    public void setAllShots(){
-        allShots=shotHit+shotMissed;
+    public Boolean getPlayerTurn() {
+        return playerTurn;
     }
-    
-    public float getAllShots(){
+
+    public void setPlayerTurn(Boolean playerTurn) {
+        this.playerTurn = playerTurn;
+    }
+
+    public Boolean getPlaceShips() {
+        return PlaceShips;
+    }
+
+    public void setPlaceShips(Boolean PlaceShips) {
+        this.PlaceShips = PlaceShips;
+    }
+
+    public void setAllShots() {
+        allShots = shotHit + shotMissed;
+    }
+
+    public float getAllShots() {
         return allShots;
     }
-    
+
     public void setShotHit() {
         shotHit = shotHit + 1;
     }
@@ -37,13 +56,13 @@ public class Player {
     public void setShotMissed() {
         shotMissed = shotMissed + 1;
     }
-    
-    public void setAllAcc(){
-        allAcc=(shotHit/allShots)*100;
+
+    public void setAllAcc() {
+        allAcc = (shotHit / allShots) * 100;
     }
-    
-    public float getAllAcc(){
-        allAcc=(shotHit/allShots)*100;
+
+    public float getAllAcc() {
+        allAcc = (shotHit / allShots) * 100;
         return allAcc;
     }
 
@@ -72,7 +91,11 @@ public class Player {
     }
 
     public enum symbolType {
-        CROSS, CIRCLE, EXPLOSION, SPLASH
+        CROSS, CIRCLE
+    }
+    
+    public enum animationType{
+        EXPLOSION, SPLASH
     }
 
     public void setDrawableObjects(Point A, Point B, symbolType S) {
@@ -83,19 +106,13 @@ public class Player {
             case CIRCLE:
                 this.drawableObjects.add(new Circle(A, B));
                 break;
-            case EXPLOSION:
-                this.drawableObjects.add(new Explosion(A, B));
-                break;
-            case SPLASH:
-                this.drawableObjects.add(new Splash(A, B));
-                break;
+            
         }
     }
 
     public enum shipType {
         DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
-    
 
     public void setShips(Point A, Point B, shipType K) {
         switch (K) {
@@ -115,6 +132,24 @@ public class Player {
                 this.ships.add(new Carrier(A, B));
                 break;
         }
+    }
+    
+    public void setAnimations(Point pPixel1, Point pPixel2, animationType a){
+        switch(a){
+            case EXPLOSION:
+                animations.add(new Explosion(pPixel1, pPixel2));
+                break;
+            case SPLASH:
+                animations.add(new Splash(pPixel1, pPixel2));
+        }
+    }
+
+    public ArrayList<SpriteAnimation> getAnimations() {
+        return animations;
+    }
+    
+    public void removeAnimation(SpriteAnimation a){
+        animations.remove(a);
     }
 
 }

@@ -9,26 +9,6 @@ public class BattleshipGame {
     Player p2;
     Sounds lyd;
 
-    private Boolean player1Turn = true;
-    private Boolean Player1PlaceShips = true;
-    private Boolean Player2PlaceShips = true;
-
-    public void setPlayer1Turn(Boolean player1Turn) {
-        this.player1Turn = player1Turn;
-    }
-
-    public Boolean getPlayer1Turn() {
-        return player1Turn;
-    }
-
-    public Boolean getPlayer1PlaceShips() {
-        return Player1PlaceShips;
-    }
-
-    public Boolean getPlayer2PlaceShips() {
-        return Player2PlaceShips;
-    }
-
     public Point matrixCoordinateOfClick(Point pPixel, Dimension d) {
         double dwidth = (float) d.width;
         double dheight = (float) d.height;
@@ -72,65 +52,36 @@ public class BattleshipGame {
         return result;
     }
 
-    public void drawSymbol(Point pIndex, Point offset, Dimension d) throws InterruptedException {
+    public void drawSymbol(Point pIndex, Point offset, Dimension d, Player x) throws InterruptedException {
 
         int A[] = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
-        if (player1Turn == true) {
-            if (checkSquare(pIndex, p1.getShipMatrix()) == -1) {
+        if (x.getPlayerTurn() == true) {
+            if (checkSquare(pIndex, x.getShipMatrix()) == -1) {
                 System.out.println("Space is empty");
-                p1.setShipMatrix(pIndex, -2);
-                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.SPLASH);
-                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
+                x.setShipMatrix(pIndex, -2);
+                
+                x.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
+                x.setAnimations(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.animationType.SPLASH);
                 Sounds.PlaySound(Sounds.splash);
-                p1.setShotMissed();
-                p1.setAllShots();
-                p1.setAllAcc();
+                x.setShotMissed();
+                x.setAllShots();
+                x.setAllAcc();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
                 System.out.print(A[3] + " ");
             }
-            if (checkSquare(pIndex, p1.getShipMatrix()) >= 0) {
+            if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
                 System.out.println("Ship here");
-                p1.setShipMatrix(pIndex, -2);
+                x.setShipMatrix(pIndex, -2);
                 Sounds.PlaySound(Sounds.hit);
                 Thread.sleep(1500);
-                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.EXPLOSION);
-                p1.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
-                p1.setShotHit();
-                p1.setAllShots();
-                p1.setAllAcc();
-                System.out.print(A[0] + " ");
-                System.out.print(A[1] + ": ");
-                System.out.print(A[2] + " ");
-                System.out.print(A[3] + " ");
-            } else {
-                System.out.println("Space is taken");
-            }
-        } else {
-            if (checkSquare(pIndex, p2.getShipMatrix()) == -1) {
-                System.out.println("Space is empty");
-                p2.setShipMatrix(pIndex, -2);
-                Sounds.PlaySound(Sounds.splash);
-                p2.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CROSS);
-                p2.setShotMissed();
-                p2.setAllShots();
-                p2.setAllAcc();
-                System.out.print(A[0] + " ");
-                System.out.print(A[1] + ": ");
-                System.out.print(A[2] + " ");
-                System.out.print(A[3] + " ");
-            }
-            if (checkSquare(pIndex, p2.getShipMatrix()) >= 0) {
-                System.out.println("Ship here");
-                p2.setShipMatrix(pIndex, -2);
-                Sounds.PlaySound(Sounds.hit);
-                Thread.sleep(1500);
-                p2.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
-                p2.setShotHit();
-                p2.setAllShots();
-                p2.setAllAcc();
+                x.setAnimations(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.animationType.EXPLOSION);
+                x.setDrawableObjects(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.symbolType.CIRCLE);
+                x.setShotHit();
+                x.setAllShots();
+                x.setAllAcc();
                 System.out.print(A[0] + " ");
                 System.out.print(A[1] + ": ");
                 System.out.print(A[2] + " ");
@@ -139,20 +90,19 @@ public class BattleshipGame {
                 System.out.println("Space is taken");
             }
         }
-
     }
 
-    public void placeShip(Point pIndex, Point offset, Dimension d) {
+    public void placeShip(Point pIndex, Point offset, Dimension d, Player x) {
         int[] A = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
-        if ((player1Turn == true) && (Player1PlaceShips == true)) {
+        if ((x.getPlayerTurn() == true) && (x.getPlaceShips() == true)) {
             //int random = (int) (Math.round(Math.random()) % 5);
-            int sizeOfCurrentShip = p1.getShips().size() + 2;
+            int sizeOfCurrentShip = x.getShips().size() + 2;
             Boolean spaceClear = true;
 
             try {
                 for (int i = 0; i < sizeOfCurrentShip; i++) {
-                    if (p1.getShipMatrix()[pIndex.x + i][pIndex.y] != -1) {
+                    if (x.getShipMatrix()[pIndex.x + i][pIndex.y] != -1) {
                         spaceClear = false;
                         break;
                     }
@@ -166,9 +116,9 @@ public class BattleshipGame {
                 case 2:
                     if (spaceClear == true) {
                         for (int i = 0; i < sizeOfCurrentShip; i++) {
-                            p1.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                            x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                         }
-                        p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
+                        x.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
                         System.out.println("Spawning Destroyer");
                     }
 
@@ -176,58 +126,44 @@ public class BattleshipGame {
                 case 3:
                     if (spaceClear == true) {
                         for (int i = 0; i < sizeOfCurrentShip; i++) {
-                            p1.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                            x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                         }
-                        p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
+                        x.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
                         System.out.println("Spawning Submarine");
                     }
                     break;
                 case 4:
                     if (spaceClear == true) {
                         for (int i = 0; i < sizeOfCurrentShip; i++) {
-                            p1.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                            x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                         }
-                        p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
+                        x.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
                         System.out.println("Spawning Cruiser");
                     }
                     break;
                 case 5:
                     if (spaceClear == true) {
                         for (int i = 0; i < sizeOfCurrentShip; i++) {
-                            p1.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                            x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                         }
-                        p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
+                        x.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
                         System.out.println("Spawning Battleship");
                     }
                     break;
                 case 6:
                     if (spaceClear == true) {
                         for (int i = 0; i < sizeOfCurrentShip; i++) {
-                            p1.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
+                            x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 1); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                         }
-                        p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
+                        x.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
                         System.out.println("Spawning Carrier");
                     }
                     break;
 
             }
-            if (p1.getShips().size() == 5) {
-                Player1PlaceShips = false;
+            if (x.getShips().size() == 5) {
+                x.setPlaceShips(false);
             }
-
-            //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
-            //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
-            //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
-            //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
-            //p1.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
-        } else {
-            p2.setShipMatrix(pIndex, 1);
-
-            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.DESTROYER);
-            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CARRIER);
-            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.CRUISER);
-            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.SUBMARINE);
-            p2.setShips(new Point(A[0], A[1]), new Point(A[2], A[3]), Player.shipType.BATTLESHIP);
         }
     }
 

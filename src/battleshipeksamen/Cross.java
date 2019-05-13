@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package battleshipeksamen;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.*;
 
-/**
- *
- * @author bruger
- */
 public class Cross implements Drawable {
     private int bx = 0;
     private int by = 0;
@@ -35,18 +28,23 @@ public class Cross implements Drawable {
                 
                 
     }
-    
+
     @Override
     public void draw(Graphics g){
-     g.setColor(Color.BLACK);
-     g.drawLine(bx, by, ex, ey);
-     g.drawLine(bx, ey, ex, by);
+    Graphics2D g2 = (Graphics2D) g;
+    g2.setStroke(new BasicStroke(3));
+    g2.setColor(Color.BLACK);
+     g2.drawLine(bx, by, ex, ey);
+     g2.drawLine(bx, ey, ex, by);
      
      
     }
     
     @Override
-    public void setPosition(Point pPixel){
-     
+    public void setPosition(Point pPixel1, Point pPixel2){
+        bx = pPixel1.x;
+        by = pPixel1.y;
+        ex = pPixel2.x;
+        ey = pPixel2.y;
     }
 }

@@ -57,7 +57,8 @@ public class SpriteAnimation implements Drawable{
     }
     
     @Override
-    public void setPosition(Point p){
-        
+    public void setPosition(Point pPixel1, Point pPixel2){
+        pixelPoint1 = pPixel1;
+        pixelPoint2 = pPixel2;
     }
 }

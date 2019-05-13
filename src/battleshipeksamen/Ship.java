@@ -38,8 +38,9 @@ public class Ship implements Drawable {
     }
     
     @Override
-    public void setPosition(Point pPixel){
-        
+    public void setPosition(Point pPixel1, Point pPixel2){
+        pixelCoordinates1 = pPixel1;
+        pixelCoordinates2 = pPixel2;
         
     }
 }

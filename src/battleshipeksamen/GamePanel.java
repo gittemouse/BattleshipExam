@@ -9,12 +9,10 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -51,25 +49,52 @@ public class GamePanel extends javax.swing.JPanel {
 
         g.setColor(Color.cyan);
         g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
+        water.setPosition(new Point(boardPanel1.getLocation().x,boardPanel1.getLocation().y), new Point(boardPanel1.getX()+boardPanel1.getWidth()-10, boardPanel1.getY()+boardPanel1.getHeight()-10));
         water.draw(g);
 
-        if (spil.getPlayer1Turn() == true) {
+        if (spil.p1.getPlayerTurn() == true) {
             for (Ship s : spil.p1.getShips()) {
                 s.draw(g);
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
                 d.draw(g);
             }
-        } else {
+            for(SpriteAnimation a: spil.p1.getAnimations()){
+                if(a.isDone()){
+                    spil.p1.removeAnimation(a);
+                }
+                else{
+                    a.draw(g);
+                }
+            }
+        }
+        if (spil.p2.getPlayerTurn() == true) {
             for (Ship s : spil.p2.getShips()) {
                 s.draw(g);
             }
             for (Drawable d : spil.p2.getDrawableObjects()) {
                 d.draw(g);
             }
+            for(SpriteAnimation a: spil.p2.getAnimations()){
+                if(a.isDone()){
+                    spil.p2.removeAnimation(a);
+                }
+                else{
+                    a.draw(g);
+                }
+            }
         }
 
-        this.repaint();
+        this.repaint(10);
+    }
+
+    public void showPlayerTurn() {
+        labelPlayerTurn.setForeground(Color.RED);
+        if (spil.p1.getPlayerTurn() == true) {
+            labelPlayerTurn.setText("PLAYER 1 TURN");
+        } else {
+            labelPlayerTurn.setText("PLAYER 2 TURN");
+        }
     }
 
     /**
@@ -90,6 +115,7 @@ public class GamePanel extends javax.swing.JPanel {
         allHits = new javax.swing.JLabel();
         allMiss = new javax.swing.JLabel();
         allAcc = new javax.swing.JLabel();
+        labelPlayerTurn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 153, 0));
 
@@ -168,6 +194,8 @@ public class GamePanel extends javax.swing.JPanel {
         allAcc.setBackground(new java.awt.Color(255, 255, 255));
         allAcc.setText("Acc:");
 
+        labelPlayerTurn.setText("HEJ HEJ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,15 +229,21 @@ public class GamePanel extends javax.swing.JPanel {
                                 .addComponent(allAcc))
                             .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelPlayerTurn)
+                .addGap(388, 388, 388))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(helpButton)
-                .addGap(69, 69, 69)
+                .addGap(4, 4, 4)
+                .addComponent(labelPlayerTurn)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(layout.createSequentialGroup()
@@ -224,7 +258,7 @@ public class GamePanel extends javax.swing.JPanel {
                             .addComponent(allHits)
                             .addComponent(allMiss)
                             .addComponent(allAcc))
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         jButton1.getAccessibleContext().setAccessibleName("nextPlayerButton");
@@ -233,13 +267,13 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
-        if (spil.getPlayer1Turn() == true) {
+        if (spil.p1.getPlayerTurn() == true) {
             spil.checkSquare(p, spil.p1.getShipMatrix());
-            if (spil.getPlayer1PlaceShips() == true) {
-                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            if (spil.p1.getPlaceShips() == true) {
+                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
             } else {
                 try {
-                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
                     allHits.setText("Hits: " + spil.p1.getShotHit());
                     allShots.setText("Shots: " + spil.p1.getAllShots());
                     allMiss.setText("Missed: " + spil.p1.getShotMissed());
@@ -250,11 +284,15 @@ public class GamePanel extends javax.swing.JPanel {
             }
         } else {
             spil.checkSquare(p, spil.p2.getShipMatrix());
-            if (spil.getPlayer2PlaceShips() == true) {
-                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            if (spil.p2.getPlaceShips() == true) {
+                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
             } else {
                 try {
-                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
+                    allHits.setText("Hits: " + spil.p2.getShotHit());
+                    allShots.setText("Shots: " + spil.p2.getAllShots());
+                    allMiss.setText("Missed: " + spil.p2.getShotMissed());
+                    allAcc.setText("Acc: " + spil.p2.getAllAcc() + "%");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -289,6 +327,7 @@ public class GamePanel extends javax.swing.JPanel {
     private battleshipeksamen.BoardPanel boardPanel2;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel labelPlayerTurn;
     private javax.swing.JLabel statsTitle;
     // End of variables declaration//GEN-END:variables
 }
