@@ -98,7 +98,7 @@ public class Player {
         EXPLOSION, SPLASH
     }
 
-    public void setDrawableObjects(Point A, Point B, Point C symbolType S) {
+    public void setDrawableObjects(Point A, Point B, Point C, symbolType S) {
         switch (S) {
             case CROSS:
                 this.drawableObjects.add(new Cross(A, B, C));
