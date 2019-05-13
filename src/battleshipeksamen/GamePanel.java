@@ -65,6 +65,15 @@ public class GamePanel extends javax.swing.JPanel {
         this.repaint();
     }
 
+    public void showPlayerTurn() {
+        labelPlayerTurn.setForeground(Color.RED);
+        if (spil.p1.getPlayerTurn() == true) {
+            labelPlayerTurn.setText("PLAYER 1 TURN");
+        } else {
+            labelPlayerTurn.setText("PLAYER 2 TURN");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +92,7 @@ public class GamePanel extends javax.swing.JPanel {
         allHits = new javax.swing.JLabel();
         allMiss = new javax.swing.JLabel();
         allAcc = new javax.swing.JLabel();
+        labelPlayerTurn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 153, 0));
 
@@ -154,6 +164,8 @@ public class GamePanel extends javax.swing.JPanel {
         allAcc.setBackground(new java.awt.Color(255, 255, 255));
         allAcc.setText("Acc:");
 
+        labelPlayerTurn.setText("HEJ HEJ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,15 +199,21 @@ public class GamePanel extends javax.swing.JPanel {
                                 .addComponent(allAcc))
                             .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelPlayerTurn)
+                .addGap(388, 388, 388))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(helpButton)
-                .addGap(69, 69, 69)
+                .addGap(4, 4, 4)
+                .addComponent(labelPlayerTurn)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(71, 71, 71))
                     .addGroup(layout.createSequentialGroup()
@@ -210,7 +228,7 @@ public class GamePanel extends javax.swing.JPanel {
                             .addComponent(allHits)
                             .addComponent(allMiss)
                             .addComponent(allAcc))
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         jButton1.getAccessibleContext().setAccessibleName("nextPlayerButton");
@@ -275,6 +293,7 @@ public class GamePanel extends javax.swing.JPanel {
     private battleshipeksamen.BoardPanel boardPanel2;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel labelPlayerTurn;
     private javax.swing.JLabel statsTitle;
     // End of variables declaration//GEN-END:variables
 }
