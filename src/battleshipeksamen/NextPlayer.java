@@ -14,9 +14,9 @@ public class NextPlayer extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);
-        
+        g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);  
     }
+    
     public NextPlayer(JPanel p) {
         initComponents();
         this.parentPanel = p;
