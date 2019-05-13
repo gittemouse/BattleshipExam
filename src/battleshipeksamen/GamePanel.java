@@ -32,10 +32,11 @@ public class GamePanel extends javax.swing.JPanel {
 
     public GamePanel(JPanel p) {
         initComponents();
-        boardPanel1.setOpaque(false);
+        boardPanelLeft.setOpaque(false);
+        boardPanelRight.setOpaque(false);
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
-        water = new WaterAnimation(new Point(boardPanel1.getLocation().x,boardPanel1.getLocation().y), new Point(boardPanel1.getX()+boardPanel1.getWidth()+200, boardPanel1.getY()+boardPanel1.getHeight()+200));
+        water = new WaterAnimation(new Point(boardPanelLeft.getLocation().x,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth()+200, boardPanelLeft.getY()+boardPanelLeft.getHeight()+200));
         
 
     }
@@ -48,13 +49,13 @@ public class GamePanel extends javax.swing.JPanel {
         
 
         g.setColor(Color.cyan);
-        g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
-        water.setPosition(new Point(boardPanel1.getLocation().x,boardPanel1.getLocation().y), new Point(boardPanel1.getX()+boardPanel1.getWidth()-10, boardPanel1.getY()+boardPanel1.getHeight()-10));
+        g.fillRect(boardPanelLeft.getX(), boardPanelLeft.getY(), boardPanelLeft.getWidth(), boardPanelLeft.getHeight());
+        water.setPosition(new Point(boardPanelLeft.getLocation().x,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth()-10, boardPanelLeft.getY()+boardPanelLeft.getHeight()-10));
         water.draw(g);
 
         if (spil.p1.getPlayerTurn() == true) {
             for (Ship s : spil.p1.getShips()) {
-                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanel1.getLocation(), boardPanel1.getSize())[0], spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanel1.getLocation(), boardPanel1.getSize())[1]);
+                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0], spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 s.draw(g);
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
@@ -109,10 +110,10 @@ public class GamePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        boardPanel1 = new battleshipeksamen.BoardPanel();
+        boardPanelLeft = new battleshipeksamen.BoardPanel();
         helpButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        boardPanel2 = new battleshipeksamen.BoardPanel();
+        boardPanelRight = new battleshipeksamen.BoardPanel();
         statsTitle = new javax.swing.JLabel();
         allShots = new javax.swing.JLabel();
         allHits = new javax.swing.JLabel();
@@ -121,25 +122,27 @@ public class GamePanel extends javax.swing.JPanel {
         labelPlayerTurn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 153, 0));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        boardPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        boardPanelLeft.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                boardPanel1MousePressed(evt);
+                boardPanelLeftMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout boardPanel1Layout = new javax.swing.GroupLayout(boardPanel1);
-        boardPanel1.setLayout(boardPanel1Layout);
-        boardPanel1Layout.setHorizontalGroup(
-            boardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+        javax.swing.GroupLayout boardPanelLeftLayout = new javax.swing.GroupLayout(boardPanelLeft);
+        boardPanelLeft.setLayout(boardPanelLeftLayout);
+        boardPanelLeftLayout.setHorizontalGroup(
+            boardPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
         );
-        boardPanel1Layout.setVerticalGroup(
-            boardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+        boardPanelLeftLayout.setVerticalGroup(
+            boardPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
         );
 
         helpButton.setBackground(new java.awt.Color(255, 255, 255));
+        helpButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         helpButton.setText("Help!");
         helpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,28 +159,28 @@ public class GamePanel extends javax.swing.JPanel {
             }
         });
 
-        boardPanel2.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+        boardPanelRight.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
             public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
             }
             public void ancestorResized(java.awt.event.HierarchyEvent evt) {
-                boardPanel2AncestorResized(evt);
+                boardPanelRightAncestorResized(evt);
             }
         });
-        boardPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        boardPanelRight.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                boardPanel2MousePressed(evt);
+                boardPanelRightMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout boardPanel2Layout = new javax.swing.GroupLayout(boardPanel2);
-        boardPanel2.setLayout(boardPanel2Layout);
-        boardPanel2Layout.setHorizontalGroup(
-            boardPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+        javax.swing.GroupLayout boardPanelRightLayout = new javax.swing.GroupLayout(boardPanelRight);
+        boardPanelRight.setLayout(boardPanelRightLayout);
+        boardPanelRightLayout.setHorizontalGroup(
+            boardPanelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
         );
-        boardPanel2Layout.setVerticalGroup(
-            boardPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 235, Short.MAX_VALUE)
+        boardPanelRightLayout.setVerticalGroup(
+            boardPanelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
         );
 
         statsTitle.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,18 +206,23 @@ public class GamePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(helpButton))
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(125, 125, 125)
+                .addComponent(boardPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(boardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(boardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))
+                        .addGap(616, 616, 616)
+                        .addComponent(labelPlayerTurn))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(allShots)
@@ -223,50 +231,47 @@ public class GamePanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(allMiss)
                                 .addGap(18, 18, 18)
-                                .addComponent(allAcc)
-                                .addGap(167, 167, 167)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(317, 317, 317))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelPlayerTurn)
-                .addGap(388, 388, 388))
+                                .addComponent(allAcc))
+                            .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(helpButton)
-                .addGap(4, 4, 4)
+                .addGap(32, 32, 32)
                 .addComponent(labelPlayerTurn)
-                .addGap(51, 51, 51)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boardPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(boardPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addComponent(statsTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(allShots)
                     .addComponent(allHits)
                     .addComponent(allMiss)
-                    .addComponent(allAcc)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(allAcc))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         jButton1.getAccessibleContext().setAccessibleName("nextPlayerButton");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
+    private void boardPanelLeftMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelLeftMousePressed
 
-        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
+        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanelLeft.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
         if (spil.p1.getPlayerTurn() == true) {
             spil.checkSquare(p, spil.p1.getShipMatrix());
             if (spil.p1.getPlaceShips() == true) {
-                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
+                spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
             } else {
-                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
+                spil.drawSymbol(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
                 allHits.setText("Hits: " + spil.p1.getShotHit());
                 allShots.setText("Shots: " + spil.p1.getAllShots());
                 allMiss.setText("Missed: " + spil.p1.getShotMissed());
@@ -275,16 +280,16 @@ public class GamePanel extends javax.swing.JPanel {
         } else {
             spil.checkSquare(p, spil.p2.getShipMatrix());
             if (spil.p2.getPlaceShips() == true) {
-                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
+                spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
             } else {
-                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
+                spil.drawSymbol(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
                 allHits.setText("Hits: " + spil.p2.getShotHit());
                 allShots.setText("Shots: " + spil.p2.getAllShots());
                 allMiss.setText("Missed: " + spil.p2.getShotMissed());
                 allAcc.setText("Acc: " + spil.p2.getAllAcc() + "%");
             }
         }
-    }//GEN-LAST:event_boardPanel1MousePressed
+    }//GEN-LAST:event_boardPanelLeftMousePressed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         Sounds.PlaySound(Sounds.click);
@@ -296,21 +301,21 @@ public class GamePanel extends javax.swing.JPanel {
         cardLayout.show(parentPanel, "next");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void boardPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel2MousePressed
+    private void boardPanelRightMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelRightMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardPanel2MousePressed
+    }//GEN-LAST:event_boardPanelRightMousePressed
 
-    private void boardPanel2AncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanel2AncestorResized
+    private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized
         System.out.println("battleshipeksamen.GamePanel.boardPanel2AncestorResized()");// TODO add your handling code here:
-    }//GEN-LAST:event_boardPanel2AncestorResized
+    }//GEN-LAST:event_boardPanelRightAncestorResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel allAcc;
     private javax.swing.JLabel allHits;
     private javax.swing.JLabel allMiss;
     private javax.swing.JLabel allShots;
-    private battleshipeksamen.BoardPanel boardPanel1;
-    private battleshipeksamen.BoardPanel boardPanel2;
+    private battleshipeksamen.BoardPanel boardPanelLeft;
+    private battleshipeksamen.BoardPanel boardPanelRight;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel labelPlayerTurn;

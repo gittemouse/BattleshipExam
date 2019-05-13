@@ -29,7 +29,6 @@ public class BenytBattleship {
         WinnerPanel winner = new WinnerPanel(parentPanel);
         //game.setSize(720, 576);
         //setFullScreen(mainWindow);
-
         parentPanel.add(game, "game");
         parentPanel.add(next, "next");
 
@@ -41,9 +40,8 @@ public class BenytBattleship {
         mainWindow.pack();
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
-        
-        // card.show(parentPanel, "next");
 
+        // card.show(parentPanel, "next");
         Player p1 = new Player();
         Player p2 = new Player();
         Sounds lyd = new Sounds();
