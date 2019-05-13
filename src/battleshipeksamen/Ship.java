@@ -56,4 +56,12 @@ public class Ship implements Drawable {
     public Point getMatrixPoint(){
         return matrixCoordinates;
     }
+    
+    public int getHP(){
+        return hp;
+    }
+    
+    public void decrementHP(){
+        hp--;
+    }
 }
