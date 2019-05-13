@@ -11,8 +11,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -37,7 +35,7 @@ public class GamePanel extends javax.swing.JPanel {
         boardPanelRight.setOpaque(false);
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
-        water1 = new WaterAnimation(new Point(boardPanelLeft.getLocation().x ,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth(), boardPanelLeft.getY()+boardPanelLeft.getHeight()));
+        water1 = new WaterAnimation(new Point(boardPanelLeft.getLocation().x, boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX() + boardPanelLeft.getWidth(), boardPanelLeft.getY() + boardPanelLeft.getHeight()));
         //water2 = new WaterAnimation(new Point(boardPanelRight.getLocation().x ,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
 
     }
@@ -47,46 +45,49 @@ public class GamePanel extends javax.swing.JPanel {
         super.paintComponent(g);
 
         g.drawImage(backgroundIMG, 0, 0, this.getParent().getWidth(), this.getParent().getHeight(), this);
-        
 
         g.setColor(Color.cyan);
         g.fillRect(boardPanelLeft.getX(), boardPanelLeft.getY(), boardPanelLeft.getWidth(), boardPanelLeft.getHeight());
         g.fillRect(boardPanelRight.getX(), boardPanelRight.getY(), boardPanelRight.getWidth(), boardPanelRight.getHeight());
-        water1.setPosition(new Point(boardPanelLeft.getLocation().x ,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth(), boardPanelLeft.getY()+boardPanelLeft.getHeight()));
+        water1.setPosition(new Point(boardPanelLeft.getLocation().x, boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX() + boardPanelLeft.getWidth(), boardPanelLeft.getY() + boardPanelLeft.getHeight()));
         //water2.setPosition(new Point(boardPanelRight.getLocation().x,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
         water1.draw(g);
 
         if (spil.p1.getPlayerTurn() == true) {
             for (Ship s : spil.p1.getShips()) {
-                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0], spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 s.draw(g);
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
+                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
+                        spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 d.draw(g);
             }
-            for(SpriteAnimation a: spil.p1.getAnimations()){
-                if(a.isDone()){
+            
+            for (SpriteAnimation a : spil.p1.getAnimations()) {
+                if (a.isDone()) {
                     spil.p1.removeAnimation(a);
                     this.repaint(10);
-                }
-                else{
+                } else {
                     a.draw(g);
                 }
             }
         }
         if (spil.p2.getPlayerTurn() == true) {
             for (Ship s : spil.p2.getShips()) {
+                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 s.draw(g);
             }
             for (Drawable d : spil.p2.getDrawableObjects()) {
                 d.draw(g);
             }
-            for(SpriteAnimation a: spil.p2.getAnimations()){
-                if(a.isDone()){
+            for (SpriteAnimation a : spil.p2.getAnimations()) {
+                if (a.isDone()) {
                     spil.p2.removeAnimation(a);
                     this.repaint(10);
-                }
-                else{
+                } else {
                     a.draw(g);
                 }
             }
@@ -104,6 +105,13 @@ public class GamePanel extends javax.swing.JPanel {
         }
     }
 
+    public void updateLabels(Player x) {
+        labelAllHits.setText("Hits: " + x.getShotHit());
+        labelAllShots.setText("Shots: " + x.getAllShots());
+        labelAllMiss.setText("Missed: " + x.getShotMissed());
+        labelAllAccuracy.setText("Acc: " + x.getAllAcc() + "%");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,14 +122,14 @@ public class GamePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         boardPanelLeft = new battleshipeksamen.BoardPanel();
-        helpButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonHelp = new javax.swing.JButton();
+        buttonNextPlayer = new javax.swing.JButton();
         boardPanelRight = new battleshipeksamen.BoardPanel();
         statsTitle = new javax.swing.JLabel();
-        allShots = new javax.swing.JLabel();
-        allHits = new javax.swing.JLabel();
-        allMiss = new javax.swing.JLabel();
-        allAcc = new javax.swing.JLabel();
+        labelAllShots = new javax.swing.JLabel();
+        labelAllHits = new javax.swing.JLabel();
+        labelAllMiss = new javax.swing.JLabel();
+        labelAllAccuracy = new javax.swing.JLabel();
         labelPlayerTurn = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 153, 0));
@@ -144,21 +152,21 @@ public class GamePanel extends javax.swing.JPanel {
             .addGap(0, 330, Short.MAX_VALUE)
         );
 
-        helpButton.setBackground(new java.awt.Color(255, 255, 255));
-        helpButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        helpButton.setText("Help!");
-        helpButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonHelp.setBackground(new java.awt.Color(255, 255, 255));
+        buttonHelp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        buttonHelp.setText("Help!");
+        buttonHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpButtonActionPerformed(evt);
+                buttonHelpActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setLabel("Next player!");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonNextPlayer.setBackground(new java.awt.Color(255, 255, 255));
+        buttonNextPlayer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        buttonNextPlayer.setLabel("Next player!");
+        buttonNextPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonNextPlayerActionPerformed(evt);
             }
         });
 
@@ -191,17 +199,17 @@ public class GamePanel extends javax.swing.JPanel {
         statsTitle.setText("Stats");
         statsTitle.setName(""); // NOI18N
 
-        allShots.setBackground(new java.awt.Color(255, 255, 255));
-        allShots.setText("Shots:");
+        labelAllShots.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllShots.setText("Shots:");
 
-        allHits.setBackground(new java.awt.Color(255, 255, 255));
-        allHits.setText("Hits:");
+        labelAllHits.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllHits.setText("Hits:");
 
-        allMiss.setBackground(new java.awt.Color(255, 255, 255));
-        allMiss.setText("Miss:");
+        labelAllMiss.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllMiss.setText("Miss:");
 
-        allAcc.setBackground(new java.awt.Color(255, 255, 255));
-        allAcc.setText("Acc:");
+        labelAllAccuracy.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllAccuracy.setText("Acc:");
 
         labelPlayerTurn.setText("HEJ HEJ");
 
@@ -214,8 +222,8 @@ public class GamePanel extends javax.swing.JPanel {
                 .addComponent(boardPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonNextPlayer)
+                    .addComponent(buttonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112))
@@ -228,13 +236,13 @@ public class GamePanel extends javax.swing.JPanel {
                         .addGap(200, 200, 200)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(allShots)
+                                .addComponent(labelAllShots)
                                 .addGap(18, 18, 18)
-                                .addComponent(allHits)
+                                .addComponent(labelAllHits)
                                 .addGap(18, 18, 18)
-                                .addComponent(allMiss)
+                                .addComponent(labelAllMiss)
                                 .addGap(18, 18, 18)
-                                .addComponent(allAcc))
+                                .addComponent(labelAllAccuracy))
                             .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -248,22 +256,22 @@ public class GamePanel extends javax.swing.JPanel {
                     .addComponent(boardPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonNextPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(statsTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(allShots)
-                    .addComponent(allHits)
-                    .addComponent(allMiss)
-                    .addComponent(allAcc))
+                    .addComponent(labelAllShots)
+                    .addComponent(labelAllHits)
+                    .addComponent(labelAllMiss)
+                    .addComponent(labelAllAccuracy))
                 .addContainerGap(209, Short.MAX_VALUE))
         );
 
-        jButton1.getAccessibleContext().setAccessibleName("nextPlayerButton");
+        buttonNextPlayer.getAccessibleContext().setAccessibleName("nextPlayerButton");
     }// </editor-fold>//GEN-END:initComponents
 
     private void boardPanelLeftMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelLeftMousePressed
@@ -273,39 +281,40 @@ public class GamePanel extends javax.swing.JPanel {
             spil.checkSquare(p, spil.p1.getShipMatrix());
             if (spil.p1.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
-            } else {
-                spil.drawSymbol(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
-                allHits.setText("Hits: " + spil.p1.getShotHit());
-                allShots.setText("Shots: " + spil.p1.getAllShots());
-                allMiss.setText("Missed: " + spil.p1.getShotMissed());
-                allAcc.setText("Acc: " + spil.p1.getAllAcc() + "%");
             }
         } else {
             spil.checkSquare(p, spil.p2.getShipMatrix());
             if (spil.p2.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
-            } else {
-                spil.drawSymbol(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
-                allHits.setText("Hits: " + spil.p2.getShotHit());
-                allShots.setText("Shots: " + spil.p2.getAllShots());
-                allMiss.setText("Missed: " + spil.p2.getShotMissed());
-                allAcc.setText("Acc: " + spil.p2.getAllAcc() + "%");
             }
         }
     }//GEN-LAST:event_boardPanelLeftMousePressed
 
-    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+    private void buttonHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHelpActionPerformed
         Sounds.PlaySound(Sounds.click);
         spil.showHelp();
-    }//GEN-LAST:event_helpButtonActionPerformed
+    }//GEN-LAST:event_buttonHelpActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonNextPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNextPlayerActionPerformed
         Sounds.PlaySound(Sounds.click);
         cardLayout.show(parentPanel, "next");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonNextPlayerActionPerformed
 
     private void boardPanelRightMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelRightMousePressed
-        // TODO add your handling code here:
+        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanelRight.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
+        if (spil.p1.getPlayerTurn() == true) {
+            spil.checkSquare(p, spil.p1.getShipMatrix());
+            if (spil.p1.getPlaceShips() == false) {
+                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1);
+                updateLabels(spil.p1);
+            }
+        } else {
+            spil.checkSquare(p, spil.p2.getShipMatrix());
+            if (spil.p2.getPlaceShips() == false) {
+                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2);
+                updateLabels(spil.p2);
+            }
+        }
     }//GEN-LAST:event_boardPanelRightMousePressed
 
     private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized
@@ -313,14 +322,14 @@ public class GamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_boardPanelRightAncestorResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel allAcc;
-    private javax.swing.JLabel allHits;
-    private javax.swing.JLabel allMiss;
-    private javax.swing.JLabel allShots;
     private battleshipeksamen.BoardPanel boardPanelLeft;
     private battleshipeksamen.BoardPanel boardPanelRight;
-    private javax.swing.JButton helpButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonHelp;
+    private javax.swing.JButton buttonNextPlayer;
+    private javax.swing.JLabel labelAllAccuracy;
+    private javax.swing.JLabel labelAllHits;
+    private javax.swing.JLabel labelAllMiss;
+    private javax.swing.JLabel labelAllShots;
     private javax.swing.JLabel labelPlayerTurn;
     private javax.swing.JLabel statsTitle;
     // End of variables declaration//GEN-END:variables

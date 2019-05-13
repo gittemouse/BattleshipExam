@@ -29,8 +29,8 @@
               <Component id="boardPanelLeft" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <Component id="helpButton" min="-2" pref="129" max="-2" attributes="0"/>
+                  <Component id="buttonNextPlayer" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonHelp" min="-2" pref="129" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="134" max="32767" attributes="0"/>
               <Component id="boardPanelRight" min="-2" max="-2" attributes="0"/>
@@ -46,13 +46,13 @@
                       <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="allShots" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAllShots" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="allHits" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAllHits" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="allMiss" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAllMiss" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="allAcc" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelAllAccuracy" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="statsTitle" min="-2" pref="67" max="-2" attributes="0"/>
                       </Group>
@@ -72,9 +72,9 @@
                   <Component id="boardPanelLeft" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="buttonNextPlayer" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="helpButton" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="buttonHelp" min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
                   <Component id="boardPanelRight" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -82,10 +82,10 @@
               <Component id="statsTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="allShots" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="allHits" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="allMiss" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="allAcc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAllShots" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAllHits" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAllMiss" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelAllAccuracy" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="209" max="32767" attributes="0"/>
           </Group>
@@ -111,7 +111,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="helpButton">
+    <Component class="javax.swing.JButton" name="buttonHelp">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -122,10 +122,10 @@
         <Property name="text" type="java.lang.String" value="Help!"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="helpButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonHelpActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="buttonNextPlayer">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -139,7 +139,7 @@
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="nextPlayerButton"/>
       </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNextPlayerActionPerformed"/>
       </Events>
     </Component>
     <Container class="battleshipeksamen.BoardPanel" name="boardPanelRight">
@@ -173,7 +173,7 @@
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="allShots">
+    <Component class="javax.swing.JLabel" name="labelAllShots">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -181,7 +181,7 @@
         <Property name="text" type="java.lang.String" value="Shots:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="allHits">
+    <Component class="javax.swing.JLabel" name="labelAllHits">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -189,7 +189,7 @@
         <Property name="text" type="java.lang.String" value="Hits:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="allMiss">
+    <Component class="javax.swing.JLabel" name="labelAllMiss">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -197,7 +197,7 @@
         <Property name="text" type="java.lang.String" value="Miss:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="allAcc">
+    <Component class="javax.swing.JLabel" name="labelAllAccuracy">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -24,7 +24,7 @@ public class BenytBattleship {
         CardLayout card = new CardLayout();
 
         Sounds.initSounds();
-        
+
         parentPanel.setLayout(card);
         GamePanel game = new GamePanel(parentPanel);
         NextPlayer next = new NextPlayer(parentPanel);
@@ -33,6 +33,7 @@ public class BenytBattleship {
         //setFullScreen(mainWindow);
         parentPanel.add(game, "game");
         parentPanel.add(next, "next");
+        parentPanel.add(winner, "winner");
 
         mainWindow.add(parentPanel);
 
@@ -43,7 +44,7 @@ public class BenytBattleship {
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
 
-        // card.show(parentPanel, "next");
+        //card.show(parentPanel, "winner");
         Player p1 = new Player();
         Player p2 = new Player();
         Sounds lyd = new Sounds();
