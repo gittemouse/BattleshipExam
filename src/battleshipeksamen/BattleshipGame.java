@@ -59,7 +59,7 @@ public class BattleshipGame {
                 System.out.println("Space is empty");
                 x.setShipMatrix(pIndex, -2);
                 
-                x.setDrawableObjects( A[0], A[1], Player.symbolType.CROSS);
+                x.setDrawableObjects( A[0], A[1], pIndex, Player.symbolType.CROSS);
                 x.setAnimations(A[0], A[1], Player.animationType.SPLASH);
                 Sounds.PlaySound(Sounds.splash);
                 x.setShotMissed();
@@ -72,11 +72,13 @@ public class BattleshipGame {
             }
             if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
                 System.out.println("Ship here");
+                x.getShips().get(checkSquare(pIndex, x.getShipMatrix())).decrementHP(); //Find the ship that has been hin and decrement its HP
+                
                 x.setShipMatrix(pIndex, -2);
                 Sounds.PlaySound(Sounds.explosion);
                 //Thread.sleep(1500);
                 x.setAnimations(A[0], A[1], Player.animationType.EXPLOSION);
-                x.setDrawableObjects(A[0], A[1], Player.symbolType.CIRCLE);
+                x.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CIRCLE);
                 x.setShotHit();
                 x.setAllShots();
                 x.setAllAcc();
