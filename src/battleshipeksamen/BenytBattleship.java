@@ -1,6 +1,7 @@
 package battleshipeksamen;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
@@ -26,6 +27,7 @@ public class BenytBattleship {
         GamePanel game = new GamePanel(parentPanel);
         NextPlayer next = new NextPlayer(parentPanel);
         WinnerPanel winner = new WinnerPanel(parentPanel);
+        //game.setSize(720, 576);
         //setFullScreen(mainWindow);
 
         parentPanel.add(game, "game");
@@ -35,8 +37,11 @@ public class BenytBattleship {
 
         //mainWindow.add(game);
         mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        mainWindow.setSize(1080, 800);
+        mainWindow.setPreferredSize(new Dimension(1280, 720));
+        mainWindow.pack();
+        mainWindow.setResizable(false);
         mainWindow.setVisible(true);
+        
         // card.show(parentPanel, "next");
 
         Player p1 = new Player();

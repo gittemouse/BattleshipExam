@@ -9,13 +9,12 @@ import java.awt.geom.AffineTransform;
 public class Carrier extends Ship {
     int size = 6;
 
-    public Carrier(Point pPixel1, Point pPixel2) {
-        super();
+    public Carrier(Point pPixel1, Point pPixel2, Point pIndex) {
+        super(pPixel1, pPixel2, pIndex);
         hp = size; 
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("QueenElizabethClassCarrier.png");
-        pixelCoordinates1 = pPixel1;
-        pixelCoordinates2 = pPixel2;
+        
 
     }
     @Override

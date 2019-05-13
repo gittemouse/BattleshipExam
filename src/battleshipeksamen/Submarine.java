@@ -8,14 +8,12 @@ import java.awt.geom.AffineTransform;
 
 public class Submarine extends Ship {
     int size = 3;
-    public Submarine(Point pPixel1, Point pPixel2) {
-        super();
+    public Submarine(Point pPixel1, Point pPixel2, Point pIndex) {
+        super(pPixel1, pPixel2, pIndex);
         
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("AstuteClassSub.png");
-        pixelCoordinates1 = pPixel1;
-        pixelCoordinates2 = pPixel2;
-        
+
     }
     
     @Override

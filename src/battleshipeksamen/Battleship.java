@@ -9,13 +9,12 @@ import java.awt.geom.AffineTransform;
 public class Battleship extends Ship {
     int size = 5;
     
-    public Battleship(Point pPixel1, Point pPixel2) {
-        super();
+    public Battleship(Point pPixel1, Point pPixel2,Point pIndex) {
+        super(pPixel1, pPixel2, pIndex);
         
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("KirovClassBattleship.png");
-        pixelCoordinates1 = pPixel1;
-        pixelCoordinates2 = pPixel2;
+        
     }
     @Override
     public void draw(Graphics g){

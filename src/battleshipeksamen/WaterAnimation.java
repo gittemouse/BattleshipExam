@@ -17,7 +17,7 @@ public class WaterAnimation extends SpriteAnimation{
         super(pPixel1, pPixel2);
         rows = 2;
         cols = 3;
-        durationMillis = 2000;
+        durationMillis = 1000;
         isContinuous = true;
         spriteImage = Toolkit.getDefaultToolkit().getImage("2x3WaterSprite.png");
         fileSizeX = 768;

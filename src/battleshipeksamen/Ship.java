@@ -15,17 +15,19 @@ import java.awt.Point;
  * @author bruger
  */
 public class Ship implements Drawable {
-    protected Boolean horizontal;
-    protected Image sprite;
-    protected Point pixelCoordinates1;
-    protected Point pixelCoordinates2;
-    protected int width;
-    protected int height;
-    protected int hp;
+    Boolean horizontal;
+    Image sprite;
+    Point pixelCoordinates1;
+    Point pixelCoordinates2;
+    Point matrixCoordinates;
+    int width;
+    int height;
+    int hp;
     
-    public Ship(Point pPixel, Point pPixel2){
+    public Ship(Point pPixel, Point pPixel2, Point pIndex){
         pixelCoordinates1 = pPixel;
         pixelCoordinates2 = pPixel2;
+        matrixCoordinates = pIndex;
     }
     
     public Ship(){    
@@ -42,5 +44,16 @@ public class Ship implements Drawable {
         pixelCoordinates1 = pPixel1;
         pixelCoordinates2 = pPixel2;
         
+    }
+    
+    public Point[] getPixelPoints(){
+        Point[]  result = new Point[2];
+        result[0] = pixelCoordinates1;
+        result[1] = pixelCoordinates2;
+        return result;
+    }
+    
+    public Point getMatrixPoint(){
+        return matrixCoordinates;
     }
 }

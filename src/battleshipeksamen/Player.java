@@ -114,22 +114,22 @@ public class Player {
         DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
 
-    public void setShips(Point A, Point B, shipType K) {
+    public void setShips(Point A, Point B, Point C, shipType K) {
         switch (K) {
             case DESTROYER:
-                this.ships.add(new Destroyer(A, B));
+                this.ships.add(new Destroyer(A, B, C));
                 break;
             case SUBMARINE:
-                this.ships.add(new Submarine(A, B));
+                this.ships.add(new Submarine(A, B, C));
                 break;
             case CRUISER:
-                this.ships.add(new Cruiser(A, B));
+                this.ships.add(new Cruiser(A, B, C));
                 break;
             case BATTLESHIP:
-                this.ships.add(new Battleship(A, B));
+                this.ships.add(new Battleship(A, B, C));
                 break;
             case CARRIER:
-                this.ships.add(new Carrier(A, B));
+                this.ships.add(new Carrier(A, B, C));
                 break;
         }
     }

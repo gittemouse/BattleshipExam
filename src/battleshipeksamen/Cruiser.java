@@ -8,13 +8,11 @@ import java.awt.geom.AffineTransform;
 
 public class Cruiser extends Ship {
     int size = 4;
-    public Cruiser(Point pPixel1, Point pPixel2) {
-        super();
+    public Cruiser(Point pPixel1, Point pPixel2, Point pIndex) {
+        super(pPixel1, pPixel2, pIndex);
         
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("TicondarogaClassCruiser.png");
-        pixelCoordinates1 = pPixel1;
-        pixelCoordinates2 = pPixel2;
     }
     
     @Override
