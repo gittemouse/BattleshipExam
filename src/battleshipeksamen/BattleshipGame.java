@@ -50,7 +50,7 @@ public class BattleshipGame {
         return result;
     }
 
-    public void drawSymbol(Point pIndex, Point offset, Dimension d, Player x) throws InterruptedException {
+    public void drawSymbol(Point pIndex, Point offset, Dimension d, Player x) /*throws InterruptedException*/ {
 
         Point A[] = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
@@ -73,8 +73,8 @@ public class BattleshipGame {
             if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
                 System.out.println("Ship here");
                 x.setShipMatrix(pIndex, -2);
-                Sounds.PlaySound(Sounds.hit);
-                Thread.sleep(1500);
+                Sounds.PlaySound(Sounds.explosion);
+                //Thread.sleep(1500);
                 x.setAnimations(A[0], A[1], Player.animationType.EXPLOSION);
                 x.setDrawableObjects(A[0], A[1], Player.symbolType.CIRCLE);
                 x.setShotHit();

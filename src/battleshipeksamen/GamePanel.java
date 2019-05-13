@@ -266,30 +266,22 @@ public class GamePanel extends javax.swing.JPanel {
             if (spil.p1.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
             } else {
-                try {
-                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
-                    allHits.setText("Hits: " + spil.p1.getShotHit());
-                    allShots.setText("Shots: " + spil.p1.getAllShots());
-                    allMiss.setText("Missed: " + spil.p1.getShotMissed());
-                    allAcc.setText("Acc: " + spil.p1.getAllAcc() + "%");
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
+                allHits.setText("Hits: " + spil.p1.getShotHit());
+                allShots.setText("Shots: " + spil.p1.getAllShots());
+                allMiss.setText("Missed: " + spil.p1.getShotMissed());
+                allAcc.setText("Acc: " + spil.p1.getAllAcc() + "%");
             }
         } else {
             spil.checkSquare(p, spil.p2.getShipMatrix());
             if (spil.p2.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
             } else {
-                try {
-                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
-                    allHits.setText("Hits: " + spil.p2.getShotHit());
-                    allShots.setText("Shots: " + spil.p2.getAllShots());
-                    allMiss.setText("Missed: " + spil.p2.getShotMissed());
-                    allAcc.setText("Acc: " + spil.p2.getAllAcc() + "%");
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
+                allHits.setText("Hits: " + spil.p2.getShotHit());
+                allShots.setText("Shots: " + spil.p2.getAllShots());
+                allMiss.setText("Missed: " + spil.p2.getShotMissed());
+                allAcc.setText("Acc: " + spil.p2.getAllAcc() + "%");
             }
         }
     }//GEN-LAST:event_boardPanel1MousePressed
