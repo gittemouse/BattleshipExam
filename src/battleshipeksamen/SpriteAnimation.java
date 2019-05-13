@@ -19,6 +19,7 @@ public class SpriteAnimation implements Drawable{
     private Point pixelPoint1;
     protected Point pixelPoint2;
     protected int durationMillis = 800;
+    protected Boolean isContinuous = false;
     protected int scalingConstant = 10;
     protected int rows = 5;
     protected int cols = 5;
@@ -27,6 +28,7 @@ public class SpriteAnimation implements Drawable{
     protected int fileSizeY;
     private int frameX;
     private int frameY;
+    private double deltaTime = 0;
 
    
     SpriteAnimation(Point pPixel1, Point pPixel2){
@@ -35,11 +37,20 @@ public class SpriteAnimation implements Drawable{
         pixelPoint2 = pPixel2;
     }
     
+    public Boolean isDone(){
+        if((isContinuous == false) && (deltaTime > durationMillis)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     @Override
     public void draw(Graphics g){
-        double deltaTime = System.currentTimeMillis() - initTime;
+        deltaTime = System.currentTimeMillis() - initTime;
         frameX = (int) (((deltaTime / durationMillis)*rows*cols) % cols);
-        frameY = (int) ((deltaTime / durationMillis)*cols);
+        frameY = (int) ((deltaTime / durationMillis)*cols) % rows;
         g.drawImage(spriteImage, pixelPoint1.x-scalingConstant, pixelPoint1.y-scalingConstant, pixelPoint2.x+scalingConstant, pixelPoint2.y+scalingConstant, (fileSizeX/cols)*frameX, (fileSizeY/rows)*frameY, (fileSizeX/cols)*(frameX+1), (fileSizeY/rows)*(frameY+1), null);
         System.out.println(pixelPoint1.x + " " + pixelPoint1.y);
         if(deltaTime > durationMillis){}
