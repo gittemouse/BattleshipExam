@@ -62,6 +62,7 @@ public class GamePanel extends javax.swing.JPanel {
             for(SpriteAnimation a: spil.p1.getAnimations()){
                 if(a.isDone()){
                     spil.p1.removeAnimation(a);
+                    this.repaint(10);
                 }
                 else{
                     a.draw(g);
