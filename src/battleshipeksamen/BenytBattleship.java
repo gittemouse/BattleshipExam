@@ -23,6 +23,8 @@ public class BenytBattleship {
         JPanel parentPanel = new JPanel();
         CardLayout card = new CardLayout();
 
+        Sounds.initSounds();
+        
         parentPanel.setLayout(card);
         GamePanel game = new GamePanel(parentPanel);
         NextPlayer next = new NextPlayer(parentPanel);
