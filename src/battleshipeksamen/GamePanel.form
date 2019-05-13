@@ -143,6 +143,7 @@
     </Component>
     <Container class="battleshipeksamen.BoardPanel" name="boardPanel2">
       <Events>
+        <EventHandler event="ancestorResized" listener="java.awt.event.HierarchyBoundsListener" parameters="java.awt.event.HierarchyEvent" handler="boardPanel2AncestorResized"/>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="boardPanel2MousePressed"/>
       </Events>
 

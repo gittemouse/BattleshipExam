@@ -16,16 +16,16 @@ import java.util.ArrayList;
  */
 public class SpriteAnimation implements Drawable{
     Image spriteImage = Toolkit.getDefaultToolkit().getImage("explosion.png");
-    private Point pixelPoint1;
-    protected Point pixelPoint2;
-    protected int durationMillis = 800;
-    protected Boolean isContinuous = false;
-    protected int scalingConstant = 10;
-    protected int rows = 5;
-    protected int cols = 5;
+    Point pixelPoint1;
+    Point pixelPoint2;
+    int durationMillis = 800;
+    Boolean isContinuous = false;
+    int scalingConstant = 10;
+    int rows = 5;
+    int cols = 5;
     private long initTime;
-    protected int fileSizeX;
-    protected int fileSizeY;
+    int fileSizeX;
+    int fileSizeY;
     private int frameX;
     private int frameY;
     private double deltaTime = 0;

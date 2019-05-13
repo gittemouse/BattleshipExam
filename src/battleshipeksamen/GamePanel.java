@@ -30,12 +30,15 @@ public class GamePanel extends javax.swing.JPanel {
     Image backgroundIMG = Toolkit.getDefaultToolkit().getImage("InstrumentPanel.png");
     CardLayout cardLayout;
     JPanel parentPanel;
+    WaterAnimation water;
 
     public GamePanel(JPanel p) {
         initComponents();
         boardPanel1.setOpaque(false);
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
+        water = new WaterAnimation(new Point(boardPanel1.getLocation().x,boardPanel1.getLocation().y), new Point(boardPanel1.getX()+boardPanel1.getWidth()+200, boardPanel1.getY()+boardPanel1.getHeight()+200));
+        
 
     }
 
@@ -44,9 +47,11 @@ public class GamePanel extends javax.swing.JPanel {
         super.paintComponent(g);
 
         g.drawImage(backgroundIMG, 0, 0, this.getParent().getWidth(), this.getParent().getHeight(), this);
+        
 
         g.setColor(Color.cyan);
         g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
+        water.draw(g);
 
         if (spil.getPlayer1Turn() == true) {
             for (Ship s : spil.p1.getShips()) {
@@ -122,6 +127,13 @@ public class GamePanel extends javax.swing.JPanel {
             }
         });
 
+        boardPanel2.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                boardPanel2AncestorResized(evt);
+            }
+        });
         boardPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 boardPanel2MousePressed(evt);
@@ -263,6 +275,10 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel2MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_boardPanel2MousePressed
+
+    private void boardPanel2AncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanel2AncestorResized
+        System.out.println("battleshipeksamen.GamePanel.boardPanel2AncestorResized()");// TODO add your handling code here:
+    }//GEN-LAST:event_boardPanel2AncestorResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel allAcc;

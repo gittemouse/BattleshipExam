@@ -18,7 +18,7 @@ public class Splash extends SpriteAnimation{
         spriteImage = Toolkit.getDefaultToolkit().getImage("Splash.png");
         rows = 6;
         cols = 5;
-        durationMillis = 400;
+        durationMillis = 700;
         fileSizeX = 736;
         fileSizeY = 883;
         scalingConstant = 3;

@@ -35,7 +35,7 @@ public class BenytBattleship {
 
         //mainWindow.add(game);
         mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //mainWindow.setSize(1080, 800);
+        mainWindow.setSize(1080, 800);
         mainWindow.setVisible(true);
         //card.show(parentPanel, "game");
 
