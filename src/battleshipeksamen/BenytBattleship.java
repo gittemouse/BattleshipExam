@@ -25,6 +25,7 @@ public class BenytBattleship {
         parentPanel.setLayout(card);
         GamePanel game = new GamePanel(parentPanel);
         NextPlayer next = new NextPlayer(parentPanel);
+        WinnerPanel winner=new WinnerPanel(parentPanel);
         //setFullScreen(mainWindow);
 
         parentPanel.add(game, "game");
@@ -48,6 +49,7 @@ public class BenytBattleship {
         spillet.lyd = lyd;
         game.spil = spillet;
         next.spil2 = spillet;
+        winner.spil=spillet;
 
     }
 
