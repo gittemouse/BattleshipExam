@@ -4,6 +4,7 @@ package battleshipeksamen;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.*;
 
 public class Circle implements Drawable {
   
@@ -32,12 +33,14 @@ public class Circle implements Drawable {
     
     @Override
     public void draw(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(3));
         System.out.print("GG: " + cx);
         System.out.print(" " + cy);
         System.out.print(" " + b);
         System.out.println(" " + h);
-        g.setColor(Color.RED);
-        g.drawOval(cx, cy, b, h);
+        g2.setColor(Color.RED);
+        g2.drawOval(cx, cy, b, h);
                 //g.drawOval(100, 100, 200,300);
 
     }
