@@ -18,7 +18,7 @@ public class BenytBattleship {
     }
 
     public static void main(String[] args) {
-        JFrame mainWindow = new JFrame("CardLayout Example");
+        JFrame mainWindow = new JFrame("BattleShip (alpha v. 1.2)");
         JPanel parentPanel = new JPanel();
         CardLayout card = new CardLayout();
 
@@ -36,7 +36,7 @@ public class BenytBattleship {
         mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //mainWindow.setSize(1080, 800);
         mainWindow.setVisible(true);
-        //card.show(parentPanel, "game");
+        // card.show(parentPanel, "next");
 
         Player p1 = new Player();
         Player p2 = new Player();
@@ -47,8 +47,7 @@ public class BenytBattleship {
         spillet.p2 = p2;
         spillet.lyd = lyd;
         game.spil = spillet;
-        next.spil2 = spillet;
-
+        next.spil = spillet;
     }
 
 }

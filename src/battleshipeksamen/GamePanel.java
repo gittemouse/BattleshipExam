@@ -9,12 +9,10 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -36,7 +34,6 @@ public class GamePanel extends javax.swing.JPanel {
         boardPanel1.setOpaque(false);
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
-
     }
 
     @Override
@@ -48,14 +45,15 @@ public class GamePanel extends javax.swing.JPanel {
         g.setColor(Color.cyan);
         g.fillRect(boardPanel1.getX(), boardPanel1.getY(), boardPanel1.getWidth(), boardPanel1.getHeight());
 
-        if (spil.getPlayer1Turn() == true) {
+        if (spil.p1.getPlayerTurn() == true) {
             for (Ship s : spil.p1.getShips()) {
                 s.draw(g);
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
                 d.draw(g);
             }
-        } else {
+        }
+        if (spil.p2.getPlayerTurn() == true) {
             for (Ship s : spil.p2.getShips()) {
                 s.draw(g);
             }
@@ -221,13 +219,13 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanel1MousePressed
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanel1.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
-        if (spil.getPlayer1Turn() == true) {
+        if (spil.p1.getPlayerTurn() == true) {
             spil.checkSquare(p, spil.p1.getShipMatrix());
-            if (spil.getPlayer1PlaceShips() == true) {
-                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            if (spil.p1.getPlaceShips() == true) {
+                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
             } else {
                 try {
-                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p1);
                     allHits.setText("Hits: " + spil.p1.getShotHit());
                     allShots.setText("Shots: " + spil.p1.getAllShots());
                     allMiss.setText("Missed: " + spil.p1.getShotMissed());
@@ -238,11 +236,15 @@ public class GamePanel extends javax.swing.JPanel {
             }
         } else {
             spil.checkSquare(p, spil.p2.getShipMatrix());
-            if (spil.getPlayer2PlaceShips() == true) {
-                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize());
+            if (spil.p2.getPlaceShips() == true) {
+                spil.placeShip(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
             } else {
                 try {
-                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize());
+                    spil.drawSymbol(p, boardPanel1.getLocation(), boardPanel1.getSize(), spil.p2);
+                    allHits.setText("Hits: " + spil.p2.getShotHit());
+                    allShots.setText("Shots: " + spil.p2.getAllShots());
+                    allMiss.setText("Missed: " + spil.p2.getShotMissed());
+                    allAcc.setText("Acc: " + spil.p2.getAllAcc() + "%");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }

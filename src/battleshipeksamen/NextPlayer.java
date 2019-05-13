@@ -1,22 +1,22 @@
-
 package battleshipeksamen;
 
 import java.awt.*;
 import javax.swing.JPanel;
 
-
 public class NextPlayer extends javax.swing.JPanel {
+
     Image NextPlayerPic = Toolkit.getDefaultToolkit().getImage("NextPlayerPic.jpg");
     CardLayout cardLayout;
     JPanel parentPanel;
-    BattleshipGame spil2;
-    
+    BattleshipGame spil;
+
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);
-        
+
     }
+
     public NextPlayer(JPanel p) {
         initComponents();
         this.parentPanel = p;
@@ -63,14 +63,16 @@ public class NextPlayer extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-         cardLayout.show(parentPanel,"game");
+
+        if (spil.p1.getPlayerTurn() == true) {
+            spil.p1.setPlayerTurn(false);
+            spil.p2.setPlayerTurn(true);
+        } else {
+            spil.p2.setPlayerTurn(false);
+            spil.p1.setPlayerTurn(true);
+        }
+        cardLayout.show(parentPanel, "game");
         System.out.println("You have clicked the button for next player");
-        if (spil2.getPlayer1Turn()== true) {
-            spil2.setPlayer1Turn(false);
-        }
-        else {
-            spil2.setPlayer1Turn(true);
-        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
 

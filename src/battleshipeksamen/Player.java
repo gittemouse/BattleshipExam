@@ -9,19 +9,37 @@ public class Player {
     private int[][] shipMatrix = new int[10][10];
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
+    private Boolean PlaceShips = true;
+    private Boolean playerTurn = true;
     private float shotHit = 0;
     private float shotMissed = 0;
-    private float allShots=0;
-    private float allAcc=0;
+    private float allShots = 0;
+    private float allAcc = 0;
 
-    public void setAllShots(){
-        allShots=shotHit+shotMissed;
+    public Boolean getPlayerTurn() {
+        return playerTurn;
     }
-    
-    public float getAllShots(){
+
+    public void setPlayerTurn(Boolean playerTurn) {
+        this.playerTurn = playerTurn;
+    }
+
+    public Boolean getPlaceShips() {
+        return PlaceShips;
+    }
+
+    public void setPlaceShips(Boolean PlaceShips) {
+        this.PlaceShips = PlaceShips;
+    }
+
+    public void setAllShots() {
+        allShots = shotHit + shotMissed;
+    }
+
+    public float getAllShots() {
         return allShots;
     }
-    
+
     public void setShotHit() {
         shotHit = shotHit + 1;
     }
@@ -37,13 +55,13 @@ public class Player {
     public void setShotMissed() {
         shotMissed = shotMissed + 1;
     }
-    
-    public void setAllAcc(){
-        allAcc=(shotHit/allShots)*100;
+
+    public void setAllAcc() {
+        allAcc = (shotHit / allShots) * 100;
     }
-    
-    public float getAllAcc(){
-        allAcc=(shotHit/allShots)*100;
+
+    public float getAllAcc() {
+        allAcc = (shotHit / allShots) * 100;
         return allAcc;
     }
 
@@ -95,7 +113,6 @@ public class Player {
     public enum shipType {
         DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
-    
 
     public void setShips(Point A, Point B, shipType K) {
         switch (K) {
