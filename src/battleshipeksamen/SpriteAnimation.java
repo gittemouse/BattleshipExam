@@ -20,7 +20,7 @@ public class SpriteAnimation implements Drawable{
     Point pixelPoint2;
     int durationMillis = 800;
     Boolean isContinuous = false;
-    int scalingConstant = 10;
+    int scalingConstant = 0;
     int rows = 5;
     int cols = 5;
     private long initTime;

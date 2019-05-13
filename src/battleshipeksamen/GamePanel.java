@@ -28,7 +28,8 @@ public class GamePanel extends javax.swing.JPanel {
     Image backgroundIMG = Toolkit.getDefaultToolkit().getImage("InstrumentPanel.png");
     CardLayout cardLayout;
     JPanel parentPanel;
-    WaterAnimation water;
+    WaterAnimation water1;
+    //WaterAnimation water2;
 
     public GamePanel(JPanel p) {
         initComponents();
@@ -36,8 +37,8 @@ public class GamePanel extends javax.swing.JPanel {
         boardPanelRight.setOpaque(false);
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
-        water = new WaterAnimation(new Point(boardPanelLeft.getLocation().x,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth()+200, boardPanelLeft.getY()+boardPanelLeft.getHeight()+200));
-        
+        water1 = new WaterAnimation(new Point(boardPanelLeft.getLocation().x ,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth(), boardPanelLeft.getY()+boardPanelLeft.getHeight()));
+        //water2 = new WaterAnimation(new Point(boardPanelRight.getLocation().x ,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
 
     }
 
@@ -50,8 +51,10 @@ public class GamePanel extends javax.swing.JPanel {
 
         g.setColor(Color.cyan);
         g.fillRect(boardPanelLeft.getX(), boardPanelLeft.getY(), boardPanelLeft.getWidth(), boardPanelLeft.getHeight());
-        water.setPosition(new Point(boardPanelLeft.getLocation().x,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth()-10, boardPanelLeft.getY()+boardPanelLeft.getHeight()-10));
-        water.draw(g);
+        g.fillRect(boardPanelRight.getX(), boardPanelRight.getY(), boardPanelRight.getWidth(), boardPanelRight.getHeight());
+        water1.setPosition(new Point(boardPanelLeft.getLocation().x ,boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX()+boardPanelLeft.getWidth(), boardPanelLeft.getY()+boardPanelLeft.getHeight()));
+        //water2.setPosition(new Point(boardPanelRight.getLocation().x,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
+        water1.draw(g);
 
         if (spil.p1.getPlayerTurn() == true) {
             for (Ship s : spil.p1.getShips()) {

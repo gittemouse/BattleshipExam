@@ -22,6 +22,7 @@ public class WaterAnimation extends SpriteAnimation{
         spriteImage = Toolkit.getDefaultToolkit().getImage("2x3WaterSprite.png");
         fileSizeX = 768;
         fileSizeY = 527;
+        scalingConstant = 0;
         
     }
 }
