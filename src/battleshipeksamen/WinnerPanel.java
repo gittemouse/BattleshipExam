@@ -4,36 +4,36 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 public class WinnerPanel extends javax.swing.JPanel {
-
+    
     Image win = Toolkit.getDefaultToolkit().getImage("win.jpg");
     BattleshipGame spil;
     CardLayout cardLayout;
     JPanel parentPanel;
-
+    
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(win, 0, 0, getWidth(), getHeight(), this);
     }
-
+    
     public WinnerPanel(JPanel p) {
         initComponents();
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
     }
-
+    
     public void showStats() {
-
+        
         p1Hit.setText("Hits: " + spil.p1.getShotHit());
         p1Shots.setText("Shots: " + spil.p1.getAllShots());
         p1Miss.setText("Missed: " + spil.p1.getShotMissed());
         p1Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
-
+        
         p2Hit.setText("Hits: " + spil.p1.getShotHit());
         p2Shots.setText("Shots: " + spil.p1.getAllShots());
         p2Miss.setText("Missed: " + spil.p1.getShotMissed());
         p2Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
     }
-
+    
     public void showWinner() {
         if (spil.p1.totalHPRemaining() == 0) {
             labelWinner.setText("Player 2 WON");
@@ -78,6 +78,11 @@ public class WinnerPanel extends javax.swing.JPanel {
         );
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         winnerIsLabel.setBackground(new java.awt.Color(255, 255, 255));
         winnerIsLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -141,9 +146,9 @@ public class WinnerPanel extends javax.swing.JPanel {
 
         buttonAfslut.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         buttonAfslut.setText("Done");
-        buttonAfslut.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                buttonAfslutFocusGained(evt);
+        buttonAfslut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAfslutActionPerformed(evt);
             }
         });
 
@@ -154,7 +159,7 @@ public class WinnerPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(493, 493, 493)
+                        .addGap(496, 496, 496)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
@@ -178,7 +183,7 @@ public class WinnerPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(580, 580, 580)
                         .addComponent(buttonAfslut)))
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(506, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,10 +218,14 @@ public class WinnerPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonAfslutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buttonAfslutFocusGained
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         showStats();
         showWinner();
-    }//GEN-LAST:event_buttonAfslutFocusGained
+    }//GEN-LAST:event_formFocusGained
+
+    private void buttonAfslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAfslutActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_buttonAfslutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
