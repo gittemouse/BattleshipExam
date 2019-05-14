@@ -53,6 +53,7 @@ public void Stats(){
         p2Miss = new javax.swing.JLabel();
         p2Acc = new javax.swing.JLabel();
         p2Shots = new javax.swing.JLabel();
+        buttonAfslut = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,6 +65,8 @@ public void Stats(){
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         winnerIsLabel.setBackground(new java.awt.Color(255, 255, 255));
         winnerIsLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -113,6 +116,9 @@ public void Stats(){
         p2Shots.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         p2Shots.setText("Shots: ");
 
+        buttonAfslut.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        buttonAfslut.setText("Done");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,11 +126,11 @@ public void Stats(){
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(theWinnerP, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(493, 493, 493)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(theWinnerP, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(winnerIsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -140,17 +146,20 @@ public void Stats(){
                                         .addComponent(p2Shots))))
                             .addComponent(p1Miss)
                             .addComponent(p1Acc)
-                            .addComponent(p1Shots))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                            .addComponent(p1Shots)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(580, 580, 580)
+                        .addComponent(buttonAfslut)))
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(112, 112, 112)
                 .addComponent(winnerIsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(theWinnerP, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(player1Label)
                     .addComponent(player2Label))
@@ -170,13 +179,16 @@ public void Stats(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p1Shots)
                     .addComponent(p2Shots))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(buttonAfslut)
+                .addGap(215, 215, 215))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAfslut;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel p1Acc;
     private javax.swing.JLabel p1Hit;

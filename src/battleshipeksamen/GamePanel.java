@@ -145,6 +145,7 @@ public class GamePanel extends javax.swing.JPanel {
         labelAllMiss = new javax.swing.JLabel();
         labelAllAccuracy = new javax.swing.JLabel();
         labelPlayerTurn = new javax.swing.JLabel();
+        buttonRotateShip = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 153, 0));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -227,6 +228,9 @@ public class GamePanel extends javax.swing.JPanel {
 
         labelPlayerTurn.setText("HEJ HEJ");
 
+        buttonRotateShip.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        buttonRotateShip.setText("Rotate");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,9 +239,11 @@ public class GamePanel extends javax.swing.JPanel {
                 .addGap(125, 125, 125)
                 .addComponent(boardPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonNextPlayer)
-                    .addComponent(buttonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(buttonNextPlayer)
+                        .addComponent(buttonHelp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonRotateShip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112))
@@ -272,7 +278,9 @@ public class GamePanel extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addComponent(buttonNextPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(buttonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonRotateShip, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(statsTitle)
@@ -345,6 +353,7 @@ public class GamePanel extends javax.swing.JPanel {
     private battleshipeksamen.BoardPanel boardPanelRight;
     private javax.swing.JButton buttonHelp;
     private javax.swing.JButton buttonNextPlayer;
+    private javax.swing.JButton buttonRotateShip;
     private javax.swing.JLabel labelAllAccuracy;
     private javax.swing.JLabel labelAllHits;
     private javax.swing.JLabel labelAllMiss;
