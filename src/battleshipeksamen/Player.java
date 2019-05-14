@@ -98,10 +98,10 @@ public class Player {
     public ArrayList<Drawable> getDrawableObjects() {
         return drawableObjects;
     }
-    
-    public int totalHPRemaining(){
+
+    public int totalHPRemaining() {
         int result = 0;
-        for(Ship s: ships){
+        for (Ship s : ships) {
             result += s.hp;
         }
         return result;
@@ -110,8 +110,8 @@ public class Player {
     public enum symbolType {
         CROSS, CIRCLE
     }
-    
-    public enum animationType{
+
+    public enum animationType {
         EXPLOSION, SPLASH
     }
 
@@ -123,7 +123,7 @@ public class Player {
             case CIRCLE:
                 this.drawableObjects.add(new Circle(A, B, C));
                 break;
-            
+
         }
     }
 
@@ -150,9 +150,9 @@ public class Player {
                 break;
         }
     }
-    
-    public void setAnimations(Point pPixel1, Point pPixel2, animationType a){
-        switch(a){
+
+    public void setAnimations(Point pPixel1, Point pPixel2, animationType a) {
+        switch (a) {
             case EXPLOSION:
                 animations.add(new Explosion(pPixel1, pPixel2));
                 break;
@@ -164,8 +164,8 @@ public class Player {
     public ArrayList<SpriteAnimation> getAnimations() {
         return animations;
     }
-    
-    public void removeAnimation(SpriteAnimation a){
+
+    public void removeAnimation(SpriteAnimation a) {
         animations.remove(a);
     }
 

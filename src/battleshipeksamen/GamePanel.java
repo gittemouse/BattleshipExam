@@ -329,6 +329,11 @@ public class GamePanel extends javax.swing.JPanel {
                 updateLabels(spil.p2);
             }
         }
+        
+        if (spil.p1.totalHPRemaining()== 0 || spil.p2.totalHPRemaining()== 0) {
+            cardLayout.show(parentPanel, "winner");
+        }
+        
     }//GEN-LAST:event_boardPanelRightMousePressed
 
     private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized

@@ -149,6 +149,7 @@ public class BattleshipGame {
         }
     }
 
+
     public void showHelp() {
         JOptionPane.showMessageDialog(null, "RULES" + "\n"
                 + "\n"
