@@ -61,4 +61,9 @@ public class SpriteAnimation implements Drawable{
         pixelPoint1 = pPixel1;
         pixelPoint2 = pPixel2;
     }
+    
+    @Override
+    public Point getMatrixPoint(){
+        return null;
+    }
 }
