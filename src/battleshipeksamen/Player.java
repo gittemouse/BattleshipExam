@@ -98,6 +98,14 @@ public class Player {
     public ArrayList<Drawable> getDrawableObjects() {
         return drawableObjects;
     }
+    
+    public int totalHPRemaining(){
+        int result = 0;
+        for(Ship s: ships){
+            result += s.hp;
+        }
+        return result;
+    }
 
     public enum symbolType {
         CROSS, CIRCLE

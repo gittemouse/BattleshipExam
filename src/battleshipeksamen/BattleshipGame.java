@@ -57,7 +57,7 @@ public class BattleshipGame {
             x.setShipMatrix(pIndex, -2);
             y.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CROSS); // MODSATTE PLAYER
             y.setAnimations(A[0], A[1], Player.animationType.SPLASH); // MODSATTE PLAYER
-            Sounds.PlaySound(Sounds.splash);;
+            Sounds.PlaySound(Sounds.splash);
             y.setShotMissed();
             y.setAllShots();
             y.setAllAcc();
