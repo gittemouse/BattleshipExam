@@ -16,6 +16,11 @@ public class Destroyer extends Ship {
         sprite = Toolkit.getDefaultToolkit().getImage("ArleighBurkeClassDestroyer.png");
         hp = size;
     }
+    public Destroyer(Point pPixel1, Point pPixel2) {
+        super(pPixel1, pPixel2);     
+        sprite = Toolkit.getDefaultToolkit().getImage("ArleighBurkeClassDestroyer.png");
+        hp = size;
+    }
     
     @Override
     public void draw(Graphics g){

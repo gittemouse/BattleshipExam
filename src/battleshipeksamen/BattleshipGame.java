@@ -110,6 +110,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.DESTROYER, x.getHorizontal());
+                            x.setNextShip(new Submarine(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                         else{
@@ -117,6 +118,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x, pIndex.y + i), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.DESTROYER, x.getHorizontal());
+                            x.setNextShip(new Submarine(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                     }
@@ -129,6 +131,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.SUBMARINE, x.getHorizontal());
+                            x.setNextShip(new Cruiser(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                         else{
@@ -136,6 +139,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x, pIndex.y + i), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.SUBMARINE, x.getHorizontal());
+                            x.setNextShip(new Cruiser(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                     }
@@ -147,6 +151,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.CRUISER, x.getHorizontal());
+                            x.setNextShip(new Battleship(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                         else{
@@ -154,6 +159,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x, pIndex.y + i), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.CRUISER, x.getHorizontal());
+                            x.setNextShip(new Battleship(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                     }
@@ -165,6 +171,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.BATTLESHIP, x.getHorizontal());
+                            x.setNextShip(new Carrier(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                         else{
@@ -172,6 +179,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x, pIndex.y + i), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.BATTLESHIP, x.getHorizontal());
+                            x.setNextShip(new Carrier(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                     }
@@ -183,6 +191,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x + i, pIndex.y), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.CARRIER, x.getHorizontal());
+                            x.setNextShip(new Ship(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                         else{
@@ -190,6 +199,7 @@ public class BattleshipGame {
                                 x.setShipMatrix(new Point(pIndex.x, pIndex.y + i), sizeOfCurrentShip - 2); //sets the value of of the tiles, which the ship occupies, equal to the ships index in p1.ships
                             }
                             x.setShips(A[0], A[1], pIndex, Player.shipType.CARRIER, x.getHorizontal());
+                            x.setNextShip(new Ship(new Point(0,0),new Point(0,0)));
                             System.out.println("Spawning Destroyer");
                         }
                     }

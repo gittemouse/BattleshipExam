@@ -34,6 +34,11 @@ public class Ship implements Drawable {
     public Ship() {
     }
 
+    Ship(Point pPixel1, Point pPixel2) {
+        pixelCoordinates1 = pPixel1;
+        pixelCoordinates2 = pPixel2;
+    }
+
     @Override
     public void draw(Graphics g) {
 
@@ -44,6 +49,11 @@ public class Ship implements Drawable {
         pixelCoordinates1 = pPixel1;
         pixelCoordinates2 = pPixel2;
 
+    }
+    public void setPosition(Point pPixel1, Point pPixel2, Boolean horiz){
+        pixelCoordinates1 = pPixel1;
+        pixelCoordinates2 = pPixel2;
+        horizontal = horiz;
     }
 
     public Point[] getPixelPoints() {

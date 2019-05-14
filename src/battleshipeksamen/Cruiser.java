@@ -16,6 +16,11 @@ public class Cruiser extends Ship {
         sprite = Toolkit.getDefaultToolkit().getImage("TicondarogaClassCruiser.png");
         hp = size;
     }
+    public Cruiser(Point pPixel1, Point pPixel2) {
+        super(pPixel1, pPixel2);     
+        sprite = Toolkit.getDefaultToolkit().getImage("TicondarogaClassCruiser.png");
+        hp = size;
+    }
 
     @Override
     public void draw(Graphics g) {

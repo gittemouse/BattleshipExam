@@ -49,6 +49,7 @@ public class GamePanel extends javax.swing.JPanel {
         g.fillRect(boardPanelLeft.getX(), boardPanelLeft.getY(), boardPanelLeft.getWidth(), boardPanelLeft.getHeight());
         g.fillRect(boardPanelRight.getX(), boardPanelRight.getY(), boardPanelRight.getWidth(), boardPanelRight.getHeight());
         water1.setPosition(new Point(boardPanelLeft.getLocation().x, boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX() + boardPanelLeft.getWidth(), boardPanelLeft.getY() + boardPanelLeft.getHeight()));
+        
         //water2.setPosition(new Point(boardPanelRight.getLocation().x,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
         water1.draw(g);
 
@@ -77,6 +78,11 @@ public class GamePanel extends javax.swing.JPanel {
                     a.draw(g);
                 }
             }
+            if(spil.p1.getPlaceShips()){
+                spil.p1.setNextShipPos(new Point(buttonRotateShip.getX(), buttonRotateShip.getY() + buttonRotateShip.getHeight()+10),
+                    new Point(buttonRotateShip.getX()+50, buttonRotateShip.getY() + buttonRotateShip.getHeight()+50), spil.p1.getHorizontal());
+                spil.p1.getNextShip().draw(g);
+            }
             updateLabels(spil.p1);
         }
         if (spil.p2.getPlayerTurn() == true) {
@@ -104,6 +110,11 @@ public class GamePanel extends javax.swing.JPanel {
                 } else {
                     a.draw(g);
                 }
+            }
+            if(!spil.p1.getPlayerTurn()){
+                spil.p2.setNextShipPos(new Point(buttonRotateShip.getX(), buttonRotateShip.getY() + buttonRotateShip.getHeight()+10),
+                    new Point(buttonRotateShip.getX()+50, buttonRotateShip.getY() + buttonRotateShip.getHeight()+50), spil.p2.getHorizontal());
+                spil.p2.getNextShip().draw(g);
             }
             updateLabels(spil.p2);
         }

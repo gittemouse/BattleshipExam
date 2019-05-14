@@ -15,6 +15,11 @@ public class Submarine extends Ship {
         sprite = Toolkit.getDefaultToolkit().getImage("AstuteClassSub.png");
 
     }
+    public Submarine(Point pPixel1, Point pPixel2) {
+        super(pPixel1, pPixel2);     
+        sprite = Toolkit.getDefaultToolkit().getImage("AstuteClassSub.png");
+        hp = size;
+    }
     
     @Override
     public void draw(Graphics g){

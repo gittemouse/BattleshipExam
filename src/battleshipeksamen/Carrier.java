@@ -16,6 +16,12 @@ public class Carrier extends Ship {
         horizontal = horiz;
         sprite = Toolkit.getDefaultToolkit().getImage("QueenElizabethClassCarrier.png");
     }
+    public Carrier(Point pPixel1, Point pPixel2) {
+        super(pPixel1, pPixel2);     
+        sprite = Toolkit.getDefaultToolkit().getImage("QueenElizabethClassCarrier.png");
+        hp = size;
+    }
+    
     @Override
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;

@@ -14,6 +14,7 @@ public class Player {
     private Boolean playerTurn = true;
     private Boolean playerTurnUsed = false;
     private Boolean horizontal = true;
+    private Ship nextShip = new Destroyer(new Point(0,0), new Point(0,0));
 
     public Boolean getPlayerTurnUsed() {
         return playerTurnUsed;
@@ -175,5 +176,21 @@ public class Player {
     public void toggleHorizontal() {
         horizontal = !horizontal;
     }
+
+    public Ship getNextShip() {
+        return nextShip;
+    }
+
+    public void setNextShipPos(Point pPixel1, Point pPixel2, Boolean horiz) {
+        this.nextShip.setPosition(pPixel1, pPixel2, horiz);
+    }
+
+    public void setNextShip(Ship nextShip) {
+        this.nextShip = nextShip;
+    }
+    
+    
+    
+    
 
 }
