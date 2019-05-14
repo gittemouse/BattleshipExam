@@ -42,5 +42,6 @@ public class BenytBattleship {
         game.spil = spillet;
         next.spil = spillet;
         winner.spil = spillet;
+        game.winner = winner;
     }
 }

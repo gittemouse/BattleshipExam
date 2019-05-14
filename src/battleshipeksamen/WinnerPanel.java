@@ -96,52 +96,52 @@ public class WinnerPanel extends javax.swing.JPanel {
         labelWinner.setText("Player");
 
         player1Label.setBackground(new java.awt.Color(255, 255, 255));
-        player1Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        player1Label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         player1Label.setForeground(new java.awt.Color(255, 0, 51));
         player1Label.setText("Player 1");
 
         player2Label.setBackground(new java.awt.Color(255, 255, 255));
-        player2Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        player2Label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         player2Label.setForeground(new java.awt.Color(255, 51, 51));
         player2Label.setText("Player 2");
 
         p1Hit.setBackground(new java.awt.Color(255, 255, 255));
-        p1Hit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Hit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p1Hit.setForeground(new java.awt.Color(255, 51, 51));
         p1Hit.setText("Hits: ");
 
         p1Miss.setBackground(new java.awt.Color(255, 255, 255));
-        p1Miss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Miss.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p1Miss.setForeground(new java.awt.Color(255, 51, 51));
         p1Miss.setText("Miss: ");
 
         p1Acc.setBackground(new java.awt.Color(255, 255, 255));
-        p1Acc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Acc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p1Acc.setForeground(new java.awt.Color(255, 51, 51));
         p1Acc.setText("Acc: ");
 
         p1Shots.setBackground(new java.awt.Color(255, 255, 255));
-        p1Shots.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Shots.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p1Shots.setForeground(new java.awt.Color(255, 51, 51));
         p1Shots.setText("Shots: ");
 
         p2Hit.setBackground(new java.awt.Color(255, 255, 255));
-        p2Hit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Hit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p2Hit.setForeground(new java.awt.Color(255, 51, 51));
         p2Hit.setText("Hits: ");
 
         p2Miss.setBackground(new java.awt.Color(255, 255, 255));
-        p2Miss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Miss.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p2Miss.setForeground(new java.awt.Color(255, 51, 51));
         p2Miss.setText("Miss: ");
 
         p2Acc.setBackground(new java.awt.Color(255, 255, 255));
-        p2Acc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Acc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p2Acc.setForeground(new java.awt.Color(255, 51, 51));
         p2Acc.setText("Acc: ");
 
         p2Shots.setBackground(new java.awt.Color(255, 255, 255));
-        p2Shots.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Shots.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         p2Shots.setForeground(new java.awt.Color(255, 51, 51));
         p2Shots.setText("Shots: ");
 
@@ -162,9 +162,6 @@ public class WinnerPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(496, 496, 496)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(labelWinner, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(winnerIsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -174,15 +171,18 @@ public class WinnerPanel extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(p2Hit)
-                                        .addComponent(player2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(p2Miss)
                                         .addComponent(p2Acc)
-                                        .addComponent(p2Shots))))
+                                        .addComponent(p2Shots)
+                                        .addComponent(player2Label))))
                             .addComponent(p1Miss)
                             .addComponent(p1Acc)
-                            .addComponent(p1Shots)))
+                            .addComponent(p1Shots)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(labelWinner, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(580, 580, 580)
+                        .addGap(588, 588, 588)
                         .addComponent(buttonAfslut)))
                 .addContainerGap(506, Short.MAX_VALUE))
         );
@@ -213,9 +213,9 @@ public class WinnerPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p1Shots)
                     .addComponent(p2Shots))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(buttonAfslut)
-                .addGap(215, 215, 215))
+                .addGap(201, 201, 201))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 public class GamePanel extends javax.swing.JPanel {
 
     BattleshipGame spil;
+    WinnerPanel winner;
     Image backgroundIMG = Toolkit.getDefaultToolkit().getImage("InstrumentPanel.png");
     CardLayout cardLayout;
     JPanel parentPanel;
@@ -340,6 +341,7 @@ public class GamePanel extends javax.swing.JPanel {
         }
 
         if ((spil.p1.totalHPRemaining() == 0 && spil.p1.getPlaceShips() == false) || (spil.p2.totalHPRemaining() == 0 && spil.p2.getPlaceShips() == false)) {
+            winner.showStats();
             cardLayout.show(parentPanel, "winner");
         }
 
