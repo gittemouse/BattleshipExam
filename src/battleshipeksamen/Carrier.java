@@ -23,6 +23,10 @@ public class Carrier extends Ship {
         hp = size;
     }
     
+    /**
+     * Tegner skibet
+     * @param g Grafik objekt
+     */
     @Override
     public void draw(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
