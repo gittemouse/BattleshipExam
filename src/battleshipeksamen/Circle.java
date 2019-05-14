@@ -35,8 +35,8 @@ public class Circle implements Drawable {
     
     /**
      * Hvor i matricen cirklen sættes
-     * @param pPixel1 er punktet oppe i højre hjørne
-     * @param pPixel2 er punktet nede i venstre hjørne
+     * @param pPixel1 er punktet oppe i venstre hjørne
+     * @param pPixel2 er punktet nede i højre hjørne
      * @param pIndex punkt i matricen
      */
     public Circle(Point pPixel1, Point pPixel2, Point pIndex) {
@@ -63,8 +63,8 @@ public class Circle implements Drawable {
     
     /**
      * Cirklens koordinater sættes
-     * @param pPixel1 punkt oppe i højre hjørne
-     * @param pPixel2 punkt nede i venstre hjørne
+     * @param pPixel1 punkt oppe i venstre hjørne
+     * @param pPixel2 punkt nede i højre hjørne
      */
     @Override
     public void setPosition(Point pPixel1, Point pPixel2) {
