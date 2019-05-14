@@ -60,8 +60,7 @@ public class BattleshipGame {
             Sounds.PlaySound(Sounds.splash);
             y.setPlayerTurnUsed(true);
             y.setShotMissed();
-            y.setAllShots();
-            y.setAllAcc();
+            y.setAllShots();            
         }
         if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
             System.out.println("Ship here");
@@ -73,7 +72,6 @@ public class BattleshipGame {
             y.setPlayerTurnUsed(true);
             y.setShotHit();
             y.setAllShots();
-            y.setAllAcc();
         }
     }
 

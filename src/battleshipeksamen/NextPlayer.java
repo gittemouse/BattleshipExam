@@ -33,6 +33,8 @@ public class NextPlayer extends javax.swing.JPanel {
 
         nextButton = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+
         nextButton.setBackground(new java.awt.Color(255, 255, 255));
         nextButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nextButton.setText("Next player");
@@ -48,16 +50,16 @@ public class NextPlayer extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(575, 575, 575)
                 .addComponent(nextButton)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addGap(331, 331, 331)
                 .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

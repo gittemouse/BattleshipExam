@@ -77,6 +77,7 @@ public class GamePanel extends javax.swing.JPanel {
                     a.draw(g);
                 }
             }
+            updateLabels(spil.p1);
         }
         if (spil.p2.getPlayerTurn() == true) {
             for (Ship s : spil.p2.getShips()) {
@@ -104,6 +105,7 @@ public class GamePanel extends javax.swing.JPanel {
                     a.draw(g);
                 }
             }
+            updateLabels(spil.p2);
         }
 
         this.repaint(10);
@@ -211,19 +213,24 @@ public class GamePanel extends javax.swing.JPanel {
 
         statsTitle.setBackground(new java.awt.Color(255, 255, 255));
         statsTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        statsTitle.setForeground(new java.awt.Color(255, 51, 51));
         statsTitle.setText("Stats");
         statsTitle.setName(""); // NOI18N
 
         labelAllShots.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllShots.setForeground(new java.awt.Color(255, 51, 51));
         labelAllShots.setText("Shots:");
 
         labelAllHits.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllHits.setForeground(new java.awt.Color(255, 51, 51));
         labelAllHits.setText("Hits:");
 
         labelAllMiss.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllMiss.setForeground(new java.awt.Color(255, 51, 51));
         labelAllMiss.setText("Miss:");
 
         labelAllAccuracy.setBackground(new java.awt.Color(255, 255, 255));
+        labelAllAccuracy.setForeground(new java.awt.Color(255, 51, 51));
         labelAllAccuracy.setText("Acc:");
 
         labelPlayerTurn.setText("HEJ HEJ");
@@ -255,9 +262,6 @@ public class GamePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(616, 616, 616)
-                        .addComponent(labelPlayerTurn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(200, 200, 200)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -268,15 +272,18 @@ public class GamePanel extends javax.swing.JPanel {
                                 .addComponent(labelAllMiss)
                                 .addGap(18, 18, 18)
                                 .addComponent(labelAllAccuracy))
-                            .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(statsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(600, 600, 600)
+                        .addComponent(labelPlayerTurn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addComponent(labelPlayerTurn)
-                .addGap(46, 46, 46)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(boardPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -284,7 +291,7 @@ public class GamePanel extends javax.swing.JPanel {
                         .addComponent(buttonNextPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(buttonHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(buttonRotateShip, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(boardPanelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
@@ -333,13 +340,11 @@ public class GamePanel extends javax.swing.JPanel {
             //spil.checkSquare(p, spil.p1.getShipMatrix());
             if (spil.p1.getPlaceShips() == false && spil.p2.getPlaceShips() == false) {
                 spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2, spil.p1);
-                updateLabels(spil.p1);
             }
         } else {
             //spil.checkSquare(p, spil.p2.getShipMatrix());
             if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false && spil.p2.getPlayerTurnUsed() == false) {
                 spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2);
-                updateLabels(spil.p2);
             }
         }
 

@@ -14,7 +14,6 @@ public class Player {
     private Boolean playerTurn = true;
     private Boolean playerTurnUsed = false;
     private Boolean horizontal = true;
-    
 
     public Boolean getPlayerTurnUsed() {
         return playerTurnUsed;
@@ -68,12 +67,10 @@ public class Player {
         shotMissed = shotMissed + 1;
     }
 
-    public void setAllAcc() {
-        allAcc = (shotHit / allShots) * 100;
-    }
-
     public float getAllAcc() {
-        allAcc = (shotHit / allShots) * 100;
+        if (allShots > 0) {
+            allAcc = (shotHit / allShots) * 100;
+        }
         return allAcc;
     }
 
@@ -178,7 +175,5 @@ public class Player {
     public void toggleHorizontal() {
         horizontal = !horizontal;
     }
-    
-    
 
 }
