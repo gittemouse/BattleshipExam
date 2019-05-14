@@ -13,9 +13,9 @@ public class NextPlayer extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);  
+        g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);
     }
-    
+
     public NextPlayer(JPanel p) {
         initComponents();
         this.parentPanel = p;
@@ -66,9 +66,16 @@ public class NextPlayer extends javax.swing.JPanel {
         if (spil.p1.getPlayerTurn() == true) {
             spil.p1.setPlayerTurn(false);
             spil.p2.setPlayerTurn(true);
+            if (spil.p2.getPlaceShips() == true) {
+                spil.p2.setPlayerTurnUsed(true);
+            } else {
+                spil.p2.setPlayerTurnUsed(false);
+            }
+
         } else {
             spil.p2.setPlayerTurn(false);
             spil.p1.setPlayerTurn(true);
+            spil.p1.setPlayerTurnUsed(false);
         }
         cardLayout.show(parentPanel, "game");
         System.out.println("You have clicked the button for next player");

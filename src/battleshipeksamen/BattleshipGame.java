@@ -58,6 +58,7 @@ public class BattleshipGame {
             y.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CROSS); // MODSATTE PLAYER
             y.setAnimations(A[0], A[1], Player.animationType.SPLASH); // MODSATTE PLAYER
             Sounds.PlaySound(Sounds.splash);
+            y.setPlayerTurnUsed(true);
             y.setShotMissed();
             y.setAllShots();
             y.setAllAcc();
@@ -69,6 +70,7 @@ public class BattleshipGame {
             Sounds.PlaySound(Sounds.explosion);
             y.setAnimations(A[0], A[1], Player.animationType.EXPLOSION); // MODSATTE PLAYER
             y.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CIRCLE); // MODSATTE PLAYER
+            y.setPlayerTurnUsed(true);
             y.setShotHit();
             y.setAllShots();
             y.setAllAcc();

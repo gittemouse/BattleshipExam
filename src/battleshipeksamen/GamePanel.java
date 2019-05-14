@@ -324,16 +324,16 @@ public class GamePanel extends javax.swing.JPanel {
             }
         } else {
             //spil.checkSquare(p, spil.p2.getShipMatrix());
-            if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false) {
+            if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false && spil.p2.getPlayerTurnUsed() == false) {
                 spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2);
                 updateLabels(spil.p2);
             }
         }
-        
-        if (spil.p1.totalHPRemaining()== 0 || spil.p2.totalHPRemaining()== 0) {
+
+        if ((spil.p1.totalHPRemaining() == 0 && spil.p1.getPlaceShips()== false) || (spil.p2.totalHPRemaining() == 0&& spil.p2.getPlaceShips()== false)) {
             cardLayout.show(parentPanel, "winner");
         }
-        
+
     }//GEN-LAST:event_boardPanelRightMousePressed
 
     private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized
