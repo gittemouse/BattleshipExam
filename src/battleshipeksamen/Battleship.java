@@ -11,7 +11,7 @@ public class Battleship extends Ship {
     
     public Battleship(Point pPixel1, Point pPixel2,Point pIndex) {
         super(pPixel1, pPixel2, pIndex);
-        
+        hp = size;
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("KirovClassBattleship.png");
         

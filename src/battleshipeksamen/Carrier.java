@@ -12,7 +12,7 @@ public class Carrier extends Ship {
 
     public Carrier(Point pPixel1, Point pPixel2, Point pIndex) {
         super(pPixel1, pPixel2, pIndex);
-        //hp = size; 
+        hp = size; 
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("QueenElizabethClassCarrier.png");
     }

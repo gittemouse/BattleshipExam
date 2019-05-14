@@ -14,6 +14,7 @@ public class Destroyer extends Ship {
         super(pPixel1, pPixel2, pIndex);     
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("ArleighBurkeClassDestroyer.png");
+        hp = size;
     }
     
     @Override

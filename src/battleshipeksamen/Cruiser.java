@@ -14,6 +14,7 @@ public class Cruiser extends Ship {
         super(pPixel1, pPixel2, pIndex);
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("TicondarogaClassCruiser.png");
+        hp = size;
     }
 
     @Override
