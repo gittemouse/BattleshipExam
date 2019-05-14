@@ -136,16 +136,16 @@ public class Player {
     }
 
     /**
-     * 
+     *
      * @param pIndex Punkt i matricen
-     * @param value  Værdi der skal sættes i matricen
+     * @param value Værdi der skal sættes i matricen
      */
     public void setBoardMatrix(Point pIndex, int value) {
         boardMatrix[pIndex.x][pIndex.y] = value;
     }
 
     /**
-     * 
+     *
      * @return hele liste over skibene
      */
     public ArrayList<Ship> getShips() {
@@ -153,7 +153,7 @@ public class Player {
     }
 
     /**
-     * 
+     *
      * @return liste over alle symboler
      */
     public ArrayList<Drawable> getDrawableObjects() {
@@ -162,6 +162,7 @@ public class Player {
 
     /**
      * Udregner hvornår alle skibene er sunket
+     *
      * @return antal liv spilleren har tilbage
      */
     public int totalHPRemaining() {
@@ -173,21 +174,21 @@ public class Player {
     }
 
     /**
-     * 
+     *
      */
     public enum symbolType {
         CROSS, CIRCLE
     }
 
     /**
-     * 
+     *
      */
     public enum animationType {
         EXPLOSION, SPLASH
     }
 
     /**
-     * 
+     *
      * @param pPixel1 Øverste vestste hjørne punkt i pixel koordinater
      * @param pPixel2 Nederste højre hjørne punkt i pixel koordianter
      * @param pIndex punktet i matricen i matrix koordianter
@@ -205,14 +206,14 @@ public class Player {
     }
 
     /**
-     * 
+     *
      */
     public enum shipType {
         DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
 
     /**
-     * 
+     *
      * @param pPixel1 Øverste vestste hjørne punkt i pixel koordinater
      * @param pPixel2 Nederste højre hjørne punkt i pixel koordianter
      * @param pIndex punktet i matricen i matrix koordianter
@@ -240,7 +241,7 @@ public class Player {
     }
 
     /**
-     * 
+     *
      * @param pPixel1 Øverste vestste hjørne punkt i pixel koordinater
      * @param pPixel2 Nederste højre hjørne punkt i pixel koordianter
      * @param animation Hvilken animation der skal tegnes
@@ -256,7 +257,7 @@ public class Player {
     }
 
     /**
-     * 
+     *
      * @return liste over animationer
      */
     public ArrayList<SpriteAnimation> getAnimations() {
@@ -264,15 +265,15 @@ public class Player {
     }
 
     /**
-     * 
-     * @param a fjerner animationen når den er færdig med at køre 
+     *
+     * @param a fjerner animationen når den er færdig med at køre
      */
     public void removeAnimation(SpriteAnimation a) {
         animations.remove(a);
     }
 
     /**
-     * 
+     *
      * @return Finder hvilken retning skibet skal placeres
      */
     public Boolean getHorizontal() {
@@ -287,15 +288,16 @@ public class Player {
     }
 
     /**
-     * 
-     * @return Viser hvilket skib der bliver placeret, næste gang et skib skal tegnes
+     *
+     * @return Viser hvilket skib der bliver placeret, næste gang et skib skal
+     * tegnes
      */
     public Ship getNextShip() {
         return nextShip;
     }
 
     /**
-     * 
+     *
      * @param pPixel1 Øverste vestste hjørne punkt i pixel koordinater
      * @param pPixel2 Nederste højre hjørne punkt i pixel koordianter
      * @param horiz sætter retningen på "nextShip" skibet.
@@ -305,7 +307,7 @@ public class Player {
     }
 
     /**
-     * 
+     *
      * @param nextShip det næste skib der skal tegnes
      */
     public void setNextShip(Ship nextShip) {

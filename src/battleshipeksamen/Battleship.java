@@ -10,6 +10,13 @@ public class Battleship extends Ship {
 
     int size = 5;
 
+    /**
+     * Konstruktør til placering af skibet
+     * @param pPixel1 Øverste vestste hjørne punkt i pixel koordinater
+     * @param pPixel2 Nederste højre hjørne punkt i pixel koordianter
+     * @param pIndex punktet i matricen i matrix koordianter
+     * @param horiz skibets regning når det placeres
+     */
     public Battleship(Point pPixel1, Point pPixel2, Point pIndex, Boolean horiz) {
         super(pPixel1, pPixel2, pIndex, horiz);
         hp = size;
@@ -17,6 +24,11 @@ public class Battleship extends Ship {
         sprite = Toolkit.getDefaultToolkit().getImage("KirovClassBattleship.png");
     }
 
+    /**
+     * Konstruktør til oprettelse af skib
+     * @param pPixel1 Øverste vestste hjørne punkt i pixel koordinater
+     * @param pPixel2 Nederste højre hjørne punkt i pixel koordianter
+     */
     public Battleship(Point pPixel1, Point pPixel2) {
         super(pPixel1, pPixel2);
         sprite = Toolkit.getDefaultToolkit().getImage("KirovClassBattleship.png");
