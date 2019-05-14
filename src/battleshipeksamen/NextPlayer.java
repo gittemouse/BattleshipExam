@@ -73,14 +73,12 @@ public class NextPlayer extends javax.swing.JPanel {
             } else {
                 spil.p2.setPlayerTurnUsed(false);
             }
-
         } else {
             spil.p2.setPlayerTurn(false);
             spil.p1.setPlayerTurn(true);
             spil.p1.setPlayerTurnUsed(false);
         }
         cardLayout.show(parentPanel, "game");
-        System.out.println("You have clicked the button for next player");
     }//GEN-LAST:event_nextButtonActionPerformed
 
 

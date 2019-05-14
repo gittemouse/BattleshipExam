@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleshipeksamen;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-/**
- *
- * @author bruger
- */
-public class SpriteAnimation implements Drawable{
+
+public class SpriteAnimation implements Drawable {
+
     Image spriteImage = Toolkit.getDefaultToolkit().getImage("explosion.png");
     Point pixelPoint1;
     Point pixelPoint2;
@@ -30,40 +22,39 @@ public class SpriteAnimation implements Drawable{
     private int frameY;
     private double deltaTime = 0;
 
-   
-    SpriteAnimation(Point pPixel1, Point pPixel2){
+    public SpriteAnimation(Point pPixel1, Point pPixel2) {
         initTime = System.currentTimeMillis();
         pixelPoint1 = pPixel1;
         pixelPoint2 = pPixel2;
     }
-    
-    public Boolean isDone(){
-        if((isContinuous == false) && (deltaTime > durationMillis)){
+
+    public Boolean isDone() {
+
+        if ((isContinuous == false) && (deltaTime > durationMillis)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    
+
     @Override
-    public void draw(Graphics g){
+    public void draw(Graphics g) {
         deltaTime = System.currentTimeMillis() - initTime;
-        frameX = (int) (((deltaTime / durationMillis)*rows*cols) % cols);
-        frameY = (int) ((deltaTime / durationMillis)*cols) % rows;
-        g.drawImage(spriteImage, pixelPoint1.x-scalingConstant, pixelPoint1.y-scalingConstant, pixelPoint2.x+scalingConstant, pixelPoint2.y+scalingConstant, (fileSizeX/cols)*frameX, (fileSizeY/rows)*frameY, (fileSizeX/cols)*(frameX+1), (fileSizeY/rows)*(frameY+1), null);
-        System.out.println(pixelPoint1.x + " " + pixelPoint1.y);
-        if(deltaTime > durationMillis){}
+        frameX = (int) (((deltaTime / durationMillis) * rows * cols) % cols);
+        frameY = (int) ((deltaTime / durationMillis) * cols) % rows;
+        g.drawImage(spriteImage, pixelPoint1.x - scalingConstant, pixelPoint1.y - scalingConstant,
+                pixelPoint2.x + scalingConstant, pixelPoint2.y + scalingConstant,
+                (fileSizeX / cols) * frameX, (fileSizeY / rows) * frameY, (fileSizeX / cols) * (frameX + 1), (fileSizeY / rows) * (frameY + 1), null);
     }
-    
+
     @Override
-    public void setPosition(Point pPixel1, Point pPixel2){
+    public void setPosition(Point pPixel1, Point pPixel2) {
         pixelPoint1 = pPixel1;
         pixelPoint2 = pPixel2;
     }
-    
+
     @Override
-    public Point getMatrixPoint(){
+    public Point getMatrixPoint() {
         return null;
     }
 }

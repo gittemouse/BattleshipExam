@@ -11,6 +11,7 @@ public class WinnerPanel extends javax.swing.JPanel {
     JPanel parentPanel;
     SpriteAnimation boom;
     
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(win, 0, 0, getWidth(), getHeight(), this);
@@ -29,14 +30,14 @@ public class WinnerPanel extends javax.swing.JPanel {
     public void showStats() {
         
         p1Hit.setText("Hits: " + spil.p1.getShotHit());
-        p1Shots.setText("Shots: " + spil.p1.getAllShots());
+        p1Shots.setText("Shots: " + spil.p1.getTotalShots());
         p1Miss.setText("Missed: " + spil.p1.getShotMissed());
-        p1Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
+        p1Acc.setText("Acc: " + spil.p1.getTotalAccuracy() + "%");
         
         p2Hit.setText("Hits: " + spil.p2.getShotHit());
-        p2Shots.setText("Shots: " + spil.p2.getAllShots());
+        p2Shots.setText("Shots: " + spil.p2.getTotalShots());
         p2Miss.setText("Missed: " + spil.p2.getShotMissed());
-        p2Acc.setText("Acc: " + spil.p2.getAllAcc() + "%");
+        p2Acc.setText("Acc: " + spil.p2.getTotalAccuracy() + "%");
     }
     
     public void showWinner() {

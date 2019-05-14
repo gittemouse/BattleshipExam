@@ -10,11 +10,16 @@ public class Player {
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private ArrayList<Drawable> drawableObjects = new ArrayList<Drawable>();
     private ArrayList<SpriteAnimation> animations = new ArrayList<SpriteAnimation>();
-    private Boolean PlaceShips = true;
+    private Boolean placeShips = true;
     private Boolean playerTurn = true;
     private Boolean playerTurnUsed = false;
     private Boolean horizontal = true;
-    private Ship nextShip = new Destroyer(new Point(0,0), new Point(0,0));
+    private Ship nextShip = new Destroyer(new Point(0, 0), new Point(0, 0));
+
+    private float shotHit = 0;
+    private float shotMissed = 0;
+    private float totalShots = 0;
+    private float totalAccuracy = 0;
 
     public Boolean getPlayerTurnUsed() {
         return playerTurnUsed;
@@ -23,10 +28,6 @@ public class Player {
     public void setPlayerTurnUsed(Boolean playerTurnUsed) {
         this.playerTurnUsed = playerTurnUsed;
     }
-    private float shotHit = 0;
-    private float shotMissed = 0;
-    private float allShots = 0;
-    private float allAcc = 0;
 
     public Boolean getPlayerTurn() {
         return playerTurn;
@@ -37,19 +38,19 @@ public class Player {
     }
 
     public Boolean getPlaceShips() {
-        return PlaceShips;
+        return placeShips;
     }
 
     public void setPlaceShips(Boolean PlaceShips) {
-        this.PlaceShips = PlaceShips;
+        placeShips = PlaceShips;
     }
 
-    public void setAllShots() {
-        allShots = shotHit + shotMissed;
+    public void setTotalShots() {
+        totalShots = shotHit + shotMissed;
     }
 
-    public float getAllShots() {
-        return allShots;
+    public float getTotalShots() {
+        return totalShots;
     }
 
     public void setShotHit() {
@@ -68,18 +69,17 @@ public class Player {
         shotMissed = shotMissed + 1;
     }
 
-    public float getAllAcc() {
-        if (allShots > 0) {
-            allAcc = (shotHit / allShots) * 100;
+    public float getTotalAccuracy() {
+        if (totalShots > 0) {
+            totalAccuracy = (shotHit / totalShots) * 100;
         }
-        return allAcc;
+        return totalAccuracy;
     }
 
     public Player() {
         for (int[] row : shipMatrix) {
             Arrays.fill(row, -1);
         }
-
     }
 
     public int[][] getShipMatrix() {
@@ -87,7 +87,6 @@ public class Player {
     }
 
     public void setShipMatrix(Point pIndex, int value) {
-
         shipMatrix[pIndex.x][pIndex.y] = value;
     }
 
@@ -115,15 +114,14 @@ public class Player {
         EXPLOSION, SPLASH
     }
 
-    public void setDrawableObjects(Point A, Point B, Point C, symbolType S) {
-        switch (S) {
+    public void setDrawableObjects(Point pPixel1, Point pPixel2, Point pIndex, symbolType symbol) {
+        switch (symbol) {
             case CROSS:
-                this.drawableObjects.add(new Cross(A, B, C));
+                this.drawableObjects.add(new Cross(pPixel1, pPixel2, pIndex));
                 break;
             case CIRCLE:
-                this.drawableObjects.add(new Circle(A, B, C));
+                this.drawableObjects.add(new Circle(pPixel1, pPixel2, pIndex));
                 break;
-
         }
     }
 
@@ -131,28 +129,28 @@ public class Player {
         DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
 
-    public void setShips(Point A, Point B, Point C, shipType K, Boolean horiz) {
-        switch (K) {
+    public void setShips(Point pPixel1, Point pPixel2, Point pIndex, shipType ship, Boolean horiz) {
+        switch (ship) {
             case DESTROYER:
-                this.ships.add(new Destroyer(A, B, C, horiz));
+                this.ships.add(new Destroyer(pPixel1, pPixel2, pIndex, horiz));
                 break;
             case SUBMARINE:
-                this.ships.add(new Submarine(A, B, C, horiz));
+                this.ships.add(new Submarine(pPixel1, pPixel2, pIndex, horiz));
                 break;
             case CRUISER:
-                this.ships.add(new Cruiser(A, B, C, horiz));
+                this.ships.add(new Cruiser(pPixel1, pPixel2, pIndex, horiz));
                 break;
             case BATTLESHIP:
-                this.ships.add(new Battleship(A, B, C, horiz));
+                this.ships.add(new Battleship(pPixel1, pPixel2, pIndex, horiz));
                 break;
             case CARRIER:
-                this.ships.add(new Carrier(A, B, C, horiz));
+                this.ships.add(new Carrier(pPixel1, pPixel2, pIndex, horiz));
                 break;
         }
     }
 
-    public void setAnimations(Point pPixel1, Point pPixel2, animationType a) {
-        switch (a) {
+    public void setAnimations(Point pPixel1, Point pPixel2, animationType animation) {
+        switch (animation) {
             case EXPLOSION:
                 animations.add(new Explosion(pPixel1, pPixel2));
                 break;
@@ -182,15 +180,10 @@ public class Player {
     }
 
     public void setNextShipPos(Point pPixel1, Point pPixel2, Boolean horiz) {
-        this.nextShip.setPosition(pPixel1, pPixel2, horiz);
+        nextShip.setPosition(pPixel1, pPixel2, horiz);
     }
 
     public void setNextShip(Ship nextShip) {
         this.nextShip = nextShip;
     }
-    
-    
-    
-    
-
 }

@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleshipeksamen;
 
 import java.awt.Point;
 import java.awt.Toolkit;
 
-/**
- *
- * @author bruger
- */
-public class WaterAnimation extends SpriteAnimation{
-    WaterAnimation(Point pPixel1, Point pPixel2){
+public class WaterAnimation extends SpriteAnimation {
+
+    public WaterAnimation(Point pPixel1, Point pPixel2) {
         super(pPixel1, pPixel2);
         rows = 2;
         cols = 3;
@@ -23,6 +15,5 @@ public class WaterAnimation extends SpriteAnimation{
         fileSizeX = 768;
         fileSizeY = 527;
         scalingConstant = 0;
-        
     }
 }

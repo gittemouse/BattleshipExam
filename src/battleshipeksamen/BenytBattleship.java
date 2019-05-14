@@ -2,52 +2,38 @@ package battleshipeksamen;
 
 import java.awt.CardLayout;
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class BenytBattleship {
 
-    public static void setFullScreen(JFrame frame) {
-        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice dev = env.getDefaultScreenDevice();
-        frame.setName("Batteship Game");
-        frame.setTitle("Battleship Game");
-        frame.setUndecorated(true);
-        dev.setFullScreenWindow(frame);
-    }
-
     public static void main(String[] args) {
-        JFrame mainWindow = new JFrame("BattleShip (alpha v. 1.2)");
+
+        JFrame mainWindow = new JFrame("BattleShip");
         JPanel parentPanel = new JPanel();
         CardLayout card = new CardLayout();
-
-        Sounds.initSounds();
 
         parentPanel.setLayout(card);
         GamePanel game = new GamePanel(parentPanel);
         NextPlayer next = new NextPlayer(parentPanel);
         WinnerPanel winner = new WinnerPanel(parentPanel);
-        //game.setSize(720, 576);
-        //setFullScreen(mainWindow);
+
         parentPanel.add(game, "game");
         parentPanel.add(next, "next");
         parentPanel.add(winner, "winner");
 
         mainWindow.add(parentPanel);
 
-        //mainWindow.add(game);
         mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainWindow.setPreferredSize(new Dimension(1280, 720));
         mainWindow.pack();
         mainWindow.setResizable(false);
         mainWindow.setVisible(true);
 
-        //card.show(parentPanel, "winner");
         Player p1 = new Player();
         Player p2 = new Player();
         Sounds lyd = new Sounds();
+        Sounds.initSounds();
 
         BattleshipGame spillet = new BattleshipGame();
         spillet.p1 = p1;
@@ -56,7 +42,5 @@ public class BenytBattleship {
         game.spil = spillet;
         next.spil = spillet;
         winner.spil = spillet;
-
     }
-
 }

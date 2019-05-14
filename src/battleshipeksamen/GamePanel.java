@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleshipeksamen;
 
 import java.awt.CardLayout;
@@ -13,21 +8,13 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-/**
- *
- * @author bruger
- */
 public class GamePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GamePanel
-     */
     BattleshipGame spil;
     Image backgroundIMG = Toolkit.getDefaultToolkit().getImage("InstrumentPanel.png");
     CardLayout cardLayout;
     JPanel parentPanel;
     WaterAnimation water1;
-    //WaterAnimation water2;
 
     public GamePanel(JPanel p) {
         initComponents();
@@ -36,37 +23,31 @@ public class GamePanel extends javax.swing.JPanel {
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
         water1 = new WaterAnimation(new Point(boardPanelLeft.getLocation().x, boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX() + boardPanelLeft.getWidth(), boardPanelLeft.getY() + boardPanelLeft.getHeight()));
-        //water2 = new WaterAnimation(new Point(boardPanelRight.getLocation().x ,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
-
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(backgroundIMG, 0, 0, this.getParent().getWidth(), this.getParent().getHeight(), this);
-
         g.setColor(Color.cyan);
-        g.fillRect(boardPanelLeft.getX(), boardPanelLeft.getY(), boardPanelLeft.getWidth(), boardPanelLeft.getHeight());
         g.fillRect(boardPanelRight.getX(), boardPanelRight.getY(), boardPanelRight.getWidth(), boardPanelRight.getHeight());
         water1.setPosition(new Point(boardPanelLeft.getLocation().x, boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX() + boardPanelLeft.getWidth(), boardPanelLeft.getY() + boardPanelLeft.getHeight()));
-
-        //water2.setPosition(new Point(boardPanelRight.getLocation().x,boardPanelRight.getLocation().y), new Point(boardPanelRight.getX()+boardPanelRight.getWidth(), boardPanelRight.getY()+boardPanelRight.getHeight()));
         water1.draw(g);
 
         if (spil.p1.getPlayerTurn() == true) {
             for (Ship s : spil.p1.getShips()) {
-                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                s.setPosition(spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 s.draw(g);
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
-                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
+                        spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
                 d.draw(g);
             }
             for (Drawable d : spil.p2.getDrawableObjects()) {
-                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 d.draw(g);
             }
 
@@ -87,19 +68,19 @@ public class GamePanel extends javax.swing.JPanel {
         }
         if (spil.p2.getPlayerTurn() == true) {
             for (Ship s : spil.p2.getShips()) {
-                s.setPosition(spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                s.setPosition(spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 s.draw(g);
             }
 
             for (Drawable d : spil.p2.getDrawableObjects()) {
-                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
+                        spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
                 d.draw(g);
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
-                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 d.draw(g);
             }
 
@@ -134,9 +115,9 @@ public class GamePanel extends javax.swing.JPanel {
 
     public void updateLabels(Player x) {
         labelAllHits.setText("Hits: " + x.getShotHit());
-        labelAllShots.setText("Shots: " + x.getAllShots());
+        labelAllShots.setText("Shots: " + x.getTotalShots());
         labelAllMiss.setText("Missed: " + x.getShotMissed());
-        labelAllAccuracy.setText("Acc: " + x.getAllAcc() + "%");
+        labelAllAccuracy.setText("Acc: " + x.getTotalAccuracy() + "%");
     }
 
     /**
@@ -321,14 +302,13 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void boardPanelLeftMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelLeftMousePressed
 
-        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanelLeft.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
+        Point p = spil.pixelPointToMatrixPoint(evt.getPoint(), boardPanelLeft.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
         if (spil.p1.getPlayerTurn() == true) {
-            // spil.checkSquare(p, spil.p1.getShipMatrix());
             if (spil.p1.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
             }
         } else {
-            spil.checkSquare(p, spil.p2.getShipMatrix());
+            spil.checkMatrixValue(p, spil.p2.getShipMatrix());
             if (spil.p2.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
             }
@@ -342,20 +322,20 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void buttonNextPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNextPlayerActionPerformed
         Sounds.PlaySound(Sounds.click);
-        if (spil.checkAllShipPlaced() == true) {
+        if (spil.checkAllShipsPlaced() == true) {
             cardLayout.show(parentPanel, "next");
         }
     }//GEN-LAST:event_buttonNextPlayerActionPerformed
 
     private void boardPanelRightMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelRightMousePressed
-        Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanelRight.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
+        Point p = spil.pixelPointToMatrixPoint(evt.getPoint(), boardPanelRight.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
         if (spil.p1.getPlayerTurn() == true && spil.p1.getPlayerTurnUsed() == false) {
             if (spil.p1.getPlaceShips() == false && spil.p2.getPlaceShips() == false) {
-                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2, spil.p1);
+                spil.Shoot(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2, spil.p1);
             }
         } else {
             if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false && spil.p2.getPlayerTurnUsed() == false) {
-                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2);
+                spil.Shoot(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2);
             }
         }
 
@@ -366,7 +346,7 @@ public class GamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_boardPanelRightMousePressed
 
     private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized
-        System.out.println("battleshipeksamen.GamePanel.boardPanel2AncestorResized()");// TODO add your handling code here:
+
     }//GEN-LAST:event_boardPanelRightAncestorResized
 
     private void buttonRotateShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotateShipActionPerformed

@@ -26,10 +26,7 @@ public class Cross implements Drawable {
         by = pPixel1.y;
         ex = pPixel2.x;
         ey = pPixel2.y;
-        matrixPoint = pIndex;
-                
-                
-                
+        matrixPoint = pIndex;            
     }
 
     @Override
