@@ -7,15 +7,14 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
 public class Carrier extends Ship {
+    
     int size = 6;
 
     public Carrier(Point pPixel1, Point pPixel2, Point pIndex) {
         super(pPixel1, pPixel2, pIndex);
-        hp = size; 
+        //hp = size; 
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("QueenElizabethClassCarrier.png");
-        
-
     }
     @Override
     public void draw(Graphics g){

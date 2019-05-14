@@ -7,10 +7,11 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
 public class Destroyer extends Ship {
+    
     int size = 2;
+    
     public Destroyer(Point pPixel1, Point pPixel2, Point pIndex) {
-        super(pPixel1, pPixel2, pIndex);
-        
+        super(pPixel1, pPixel2, pIndex);     
         horizontal = true;
         sprite = Toolkit.getDefaultToolkit().getImage("ArleighBurkeClassDestroyer.png");
     }

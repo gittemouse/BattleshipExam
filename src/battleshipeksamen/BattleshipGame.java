@@ -40,9 +40,7 @@ public class BattleshipGame {
         Point[] result = new Point[2];
 
         Point p1 = new Point((int) ((dwidth / 10) * px) + offset.x, (int) ((dheight / 10) * py) + offset.y);
-
-        Point p2 = new Point( (int) ((dwidth / 10) * (px + 1)) + offset.x, (int) ((dheight / 10) * (py + 1)) + offset.y);
-        
+        Point p2 = new Point((int) ((dwidth / 10) * (px + 1)) + offset.x, (int) ((dheight / 10) * (py + 1)) + offset.y);
 
         result[0] = p1;
         result[1] = p2;
@@ -50,45 +48,30 @@ public class BattleshipGame {
         return result;
     }
 
-    public void drawSymbol(Point pIndex, Point offset, Dimension d, Player x) /*throws InterruptedException*/ {
+    public void drawSymbol(Point pIndex, Point offset, Dimension d, Player x, Player y) {
 
         Point A[] = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
-        if (x.getPlayerTurn() == true) {
-            if (checkSquare(pIndex, x.getShipMatrix()) == -1) {
-                System.out.println("Space is empty");
-                x.setShipMatrix(pIndex, -2);
-                
-                x.setDrawableObjects( A[0], A[1], pIndex, Player.symbolType.CROSS);
-                x.setAnimations(A[0], A[1], Player.animationType.SPLASH);
-                Sounds.PlaySound(Sounds.splash);
-                x.setShotMissed();
-                x.setAllShots();
-                x.setAllAcc();
-                System.out.print(A[0] + " ");
-                System.out.print(A[1] + ": ");
-                System.out.print(A[2] + " ");
-                System.out.print(A[3] + " ");
-            }
-            if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
-                System.out.println("Ship here");
-                x.getShips().get(checkSquare(pIndex, x.getShipMatrix())).decrementHP(); //Find the ship that has been hin and decrement its HP
-                
-                x.setShipMatrix(pIndex, -2);
-                Sounds.PlaySound(Sounds.explosion);
-                //Thread.sleep(1500);
-                x.setAnimations(A[0], A[1], Player.animationType.EXPLOSION);
-                x.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CIRCLE);
-                x.setShotHit();
-                x.setAllShots();
-                x.setAllAcc();
-                System.out.print(A[0] + " ");
-                System.out.print(A[1] + ": ");
-                System.out.print(A[2] + " ");
-                System.out.print(A[3] + " ");
-            } else {
-                System.out.println("Space is taken");
-            }
+        if (checkSquare(pIndex, x.getShipMatrix()) == -1) {
+            System.out.println("Space is empty");
+            x.setShipMatrix(pIndex, -2);
+            y.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CROSS); // MODSATTE PLAYER
+            y.setAnimations(A[0], A[1], Player.animationType.SPLASH); // MODSATTE PLAYER
+            Sounds.PlaySound(Sounds.splash);;
+            y.setShotMissed();
+            y.setAllShots();
+            y.setAllAcc();
+        }
+        if (checkSquare(pIndex, x.getShipMatrix()) >= 0) {
+            System.out.println("Ship here");
+            //x.getShips().get(checkSquare(pIndex, x.getShipMatrix())).decrementHP(); //Find the ship that has been hin and decrement its HP
+            x.setShipMatrix(pIndex, -2);
+            Sounds.PlaySound(Sounds.explosion);
+            y.setAnimations(A[0], A[1], Player.animationType.EXPLOSION); // MODSATTE PLAYER
+            y.setDrawableObjects(A[0], A[1], pIndex, Player.symbolType.CIRCLE); // MODSATTE PLAYER
+            y.setShotHit();
+            y.setAllShots();
+            y.setAllAcc();
         }
     }
 
@@ -96,7 +79,6 @@ public class BattleshipGame {
         Point[] A = matrixIndexToPixelCoordinate(pIndex, offset, d);
 
         if ((x.getPlayerTurn() == true) && (x.getPlaceShips() == true)) {
-            //int random = (int) (Math.round(Math.random()) % 5);
             int sizeOfCurrentShip = x.getShips().size() + 2;
             Boolean spaceClear = true;
 

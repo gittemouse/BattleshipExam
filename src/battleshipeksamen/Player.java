@@ -12,6 +12,15 @@ public class Player {
     private ArrayList<SpriteAnimation> animations = new ArrayList<SpriteAnimation>();
     private Boolean PlaceShips = true;
     private Boolean playerTurn = true;
+    private Boolean playerTurnUsed = false;
+
+    public Boolean getPlayerTurnUsed() {
+        return playerTurnUsed;
+    }
+
+    public void setPlayerTurnUsed(Boolean playerTurnUsed) {
+        this.playerTurnUsed = playerTurnUsed;
+    }
     private float shotHit = 0;
     private float shotMissed = 0;
     private float allShots = 0;

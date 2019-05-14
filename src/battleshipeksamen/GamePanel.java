@@ -61,10 +61,15 @@ public class GamePanel extends javax.swing.JPanel {
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
                 d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
-                        spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
                 d.draw(g);
             }
-            
+            for (Drawable d : spil.p2.getDrawableObjects()) {
+                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                d.draw(g);
+            }
+
             for (SpriteAnimation a : spil.p1.getAnimations()) {
                 if (a.isDone()) {
                     spil.p1.removeAnimation(a);
@@ -80,9 +85,18 @@ public class GamePanel extends javax.swing.JPanel {
                         spil.matrixIndexToPixelCoordinate(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
                 s.draw(g);
             }
+
             for (Drawable d : spil.p2.getDrawableObjects()) {
+                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
+                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
                 d.draw(g);
             }
+            for (Drawable d : spil.p1.getDrawableObjects()) {
+                d.setPosition(spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                        spil.matrixIndexToPixelCoordinate(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
+                d.draw(g);
+            }
+
             for (SpriteAnimation a : spil.p2.getAnimations()) {
                 if (a.isDone()) {
                     spil.p2.removeAnimation(a);
@@ -278,7 +292,7 @@ public class GamePanel extends javax.swing.JPanel {
 
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanelLeft.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
         if (spil.p1.getPlayerTurn() == true) {
-            spil.checkSquare(p, spil.p1.getShipMatrix());
+            // spil.checkSquare(p, spil.p1.getShipMatrix());
             if (spil.p1.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
             }
@@ -302,16 +316,16 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void boardPanelRightMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelRightMousePressed
         Point p = spil.matrixCoordinateOfClick(evt.getPoint(), boardPanelRight.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
-        if (spil.p1.getPlayerTurn() == true) {
-            spil.checkSquare(p, spil.p1.getShipMatrix());
-            if (spil.p1.getPlaceShips() == false) {
-                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1);
+        if (spil.p1.getPlayerTurn() == true && spil.p1.getPlayerTurnUsed() == false) {
+            //spil.checkSquare(p, spil.p1.getShipMatrix());
+            if (spil.p1.getPlaceShips() == false && spil.p2.getPlaceShips() == false) {
+                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2, spil.p1);
                 updateLabels(spil.p1);
             }
         } else {
-            spil.checkSquare(p, spil.p2.getShipMatrix());
-            if (spil.p2.getPlaceShips() == false) {
-                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2);
+            //spil.checkSquare(p, spil.p2.getShipMatrix());
+            if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false) {
+                spil.drawSymbol(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2);
                 updateLabels(spil.p2);
             }
         }
