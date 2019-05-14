@@ -9,15 +9,12 @@ public class WinnerPanel extends javax.swing.JPanel {
     BattleshipGame spil;
     CardLayout cardLayout;
     JPanel parentPanel;
-    SpriteAnimation boom;
     
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(win, 0, 0, getWidth(), getHeight(), this);
         showWinner();
-        boom = new Explosion(new Point(100,100), new Point(300,300));
-        boom.draw(g);
         repaint(10);
     }
     
