@@ -1,36 +1,47 @@
-
 package battleshipeksamen;
 
 import java.awt.*;
 import javax.swing.JPanel;
 
 public class WinnerPanel extends javax.swing.JPanel {
+
     Image win = Toolkit.getDefaultToolkit().getImage("win.jpg");
     BattleshipGame spil;
     CardLayout cardLayout;
     JPanel parentPanel;
-                    
-     public void paintComponent(Graphics g){
+
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(win, 0, 0, getWidth(), getHeight(), this);  
+        g.drawImage(win, 0, 0, getWidth(), getHeight(), this);
     }
-    
+
     public WinnerPanel(JPanel p) {
         initComponents();
-        this.parentPanel=p;
-        cardLayout=(CardLayout) parentPanel.getLayout();
+        this.parentPanel = p;
+        cardLayout = (CardLayout) parentPanel.getLayout();
     }
-public void Stats(){
-    p1Hit.setText("Hits: " + spil.p1.getShotHit());
-    p1Shots.setText("Shots: " + spil.p1.getAllShots());
-    p1Miss.setText("Missed: " + spil.p1.getShotMissed());
-    p1Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
-    
-    p2Hit.setText("Hits: " + spil.p1.getShotHit());
-    p2Shots.setText("Shots: " + spil.p1.getAllShots());
-    p2Miss.setText("Missed: " + spil.p1.getShotMissed());
-    p2Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
-}
+
+    public void showStats() {
+
+        p1Hit.setText("Hits: " + spil.p1.getShotHit());
+        p1Shots.setText("Shots: " + spil.p1.getAllShots());
+        p1Miss.setText("Missed: " + spil.p1.getShotMissed());
+        p1Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
+
+        p2Hit.setText("Hits: " + spil.p1.getShotHit());
+        p2Shots.setText("Shots: " + spil.p1.getAllShots());
+        p2Miss.setText("Missed: " + spil.p1.getShotMissed());
+        p2Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
+    }
+
+    public void showWinner() {
+        if (spil.p1.totalHPRemaining() == 0) {
+            labelWinner.setText("Player 2 WON");
+        } else {
+            labelWinner.setText("Player 1 WON");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +53,7 @@ public void Stats(){
 
         jPanel1 = new javax.swing.JPanel();
         winnerIsLabel = new javax.swing.JLabel();
-        theWinnerP = new javax.swing.JLabel();
+        labelWinner = new javax.swing.JLabel();
         player1Label = new javax.swing.JLabel();
         player2Label = new javax.swing.JLabel();
         p1Hit = new javax.swing.JLabel();
@@ -70,54 +81,71 @@ public void Stats(){
 
         winnerIsLabel.setBackground(new java.awt.Color(255, 255, 255));
         winnerIsLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        winnerIsLabel.setForeground(new java.awt.Color(255, 51, 51));
         winnerIsLabel.setText("The winner is....");
 
-        theWinnerP.setBackground(new java.awt.Color(255, 255, 255));
-        theWinnerP.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        theWinnerP.setText("Player");
+        labelWinner.setBackground(new java.awt.Color(255, 255, 255));
+        labelWinner.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        labelWinner.setForeground(new java.awt.Color(102, 102, 255));
+        labelWinner.setText("Player");
 
         player1Label.setBackground(new java.awt.Color(255, 255, 255));
         player1Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        player1Label.setForeground(new java.awt.Color(255, 0, 51));
         player1Label.setText("Player 1");
 
         player2Label.setBackground(new java.awt.Color(255, 255, 255));
         player2Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        player2Label.setForeground(new java.awt.Color(255, 51, 51));
         player2Label.setText("Player 2");
 
         p1Hit.setBackground(new java.awt.Color(255, 255, 255));
         p1Hit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Hit.setForeground(new java.awt.Color(255, 51, 51));
         p1Hit.setText("Hits: ");
 
         p1Miss.setBackground(new java.awt.Color(255, 255, 255));
         p1Miss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Miss.setForeground(new java.awt.Color(255, 51, 51));
         p1Miss.setText("Miss: ");
 
         p1Acc.setBackground(new java.awt.Color(255, 255, 255));
         p1Acc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Acc.setForeground(new java.awt.Color(255, 51, 51));
         p1Acc.setText("Acc: ");
 
         p1Shots.setBackground(new java.awt.Color(255, 255, 255));
         p1Shots.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p1Shots.setForeground(new java.awt.Color(255, 51, 51));
         p1Shots.setText("Shots: ");
 
         p2Hit.setBackground(new java.awt.Color(255, 255, 255));
         p2Hit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Hit.setForeground(new java.awt.Color(255, 51, 51));
         p2Hit.setText("Hits: ");
 
         p2Miss.setBackground(new java.awt.Color(255, 255, 255));
         p2Miss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Miss.setForeground(new java.awt.Color(255, 51, 51));
         p2Miss.setText("Miss: ");
 
         p2Acc.setBackground(new java.awt.Color(255, 255, 255));
         p2Acc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Acc.setForeground(new java.awt.Color(255, 51, 51));
         p2Acc.setText("Acc: ");
 
         p2Shots.setBackground(new java.awt.Color(255, 255, 255));
         p2Shots.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        p2Shots.setForeground(new java.awt.Color(255, 51, 51));
         p2Shots.setText("Shots: ");
 
         buttonAfslut.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         buttonAfslut.setText("Done");
+        buttonAfslut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buttonAfslutFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,7 +158,7 @@ public void Stats(){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
-                                .addComponent(theWinnerP, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labelWinner, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(winnerIsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -158,7 +186,7 @@ public void Stats(){
                 .addGap(112, 112, 112)
                 .addComponent(winnerIsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(theWinnerP, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelWinner, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(player1Label)
@@ -185,11 +213,16 @@ public void Stats(){
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-  
+    private void buttonAfslutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buttonAfslutFocusGained
+        showStats();
+        showWinner();
+    }//GEN-LAST:event_buttonAfslutFocusGained
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAfslut;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelWinner;
     private javax.swing.JLabel p1Acc;
     private javax.swing.JLabel p1Hit;
     private javax.swing.JLabel p1Miss;
@@ -200,7 +233,6 @@ public void Stats(){
     private javax.swing.JLabel p2Shots;
     private javax.swing.JLabel player1Label;
     private javax.swing.JLabel player2Label;
-    private javax.swing.JLabel theWinnerP;
     private javax.swing.JLabel winnerIsLabel;
     // End of variables declaration//GEN-END:variables
 }
