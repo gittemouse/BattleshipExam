@@ -35,8 +35,8 @@ public class Cross implements Drawable {
     
     /**
      * Hvor i matricen krydset (to linjer) sættes
-     * @param pPixel1 er punktet oppe i højre hjørne
-     * @param pPixel2 er punktet nede i venstre hjørne
+     * @param pPixel1 er punktet oppe i venstre hjørne
+     * @param pPixel2 er punktet nede i højre hjørne
      * @param pIndex punkt i matricen
      */
     public Cross(Point pPixel1, Point pPixel2, Point pIndex){
@@ -71,8 +71,8 @@ public class Cross implements Drawable {
 
     /**
      * De to punkters koordinater sættes
-     * @param pPixel1 punkt oppe i højre hjørne
-     * @param pPixel2 punkt nede i venstre hjørne
+     * @param pPixel1 punkt oppe i venstre hjørne
+     * @param pPixel2 punkt nede i højre hjørne
      */
     @Override
     public void setPosition(Point pPixel1, Point pPixel2){
