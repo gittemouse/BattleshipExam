@@ -309,7 +309,7 @@ public class GamePanel extends javax.swing.JPanel {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
             }
         } else {
-            spil.checkMatrixValue(p, spil.p2.getShipMatrix());
+            spil.checkMatrixValue(p, spil.p2.getBoardMatrix());
             if (spil.p2.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
             }
