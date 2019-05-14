@@ -13,6 +13,7 @@ public class WinnerPanel extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(win, 0, 0, getWidth(), getHeight(), this);
+        showWinner();
     }
     
     public WinnerPanel(JPanel p) {
@@ -28,10 +29,10 @@ public class WinnerPanel extends javax.swing.JPanel {
         p1Miss.setText("Missed: " + spil.p1.getShotMissed());
         p1Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
         
-        p2Hit.setText("Hits: " + spil.p1.getShotHit());
-        p2Shots.setText("Shots: " + spil.p1.getAllShots());
-        p2Miss.setText("Missed: " + spil.p1.getShotMissed());
-        p2Acc.setText("Acc: " + spil.p1.getAllAcc() + "%");
+        p2Hit.setText("Hits: " + spil.p2.getShotHit());
+        p2Shots.setText("Shots: " + spil.p2.getAllShots());
+        p2Miss.setText("Missed: " + spil.p2.getShotMissed());
+        p2Acc.setText("Acc: " + spil.p2.getAllAcc() + "%");
     }
     
     public void showWinner() {
@@ -78,11 +79,6 @@ public class WinnerPanel extends javax.swing.JPanel {
         );
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
 
         winnerIsLabel.setBackground(new java.awt.Color(255, 255, 255));
         winnerIsLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -217,11 +213,6 @@ public class WinnerPanel extends javax.swing.JPanel {
                 .addGap(215, 215, 215))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        showStats();
-        showWinner();
-    }//GEN-LAST:event_formFocusGained
 
     private void buttonAfslutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAfslutActionPerformed
         System.exit(0);

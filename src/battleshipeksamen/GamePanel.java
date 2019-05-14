@@ -43,7 +43,6 @@ public class GamePanel extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         g.drawImage(backgroundIMG, 0, 0, this.getParent().getWidth(), this.getParent().getHeight(), this);
 
         g.setColor(Color.cyan);
@@ -108,6 +107,7 @@ public class GamePanel extends javax.swing.JPanel {
         }
 
         this.repaint(10);
+        showPlayerTurn();
     }
 
     public void showPlayerTurn() {
@@ -343,7 +343,7 @@ public class GamePanel extends javax.swing.JPanel {
             }
         }
 
-        if ((spil.p1.totalHPRemaining() == 0 && spil.p1.getPlaceShips()== false) || (spil.p2.totalHPRemaining() == 0&& spil.p2.getPlaceShips()== false)) {
+        if ((spil.p1.totalHPRemaining() == 0 && spil.p1.getPlaceShips() == false) || (spil.p2.totalHPRemaining() == 0 && spil.p2.getPlaceShips() == false)) {
             cardLayout.show(parentPanel, "winner");
         }
 
@@ -354,10 +354,9 @@ public class GamePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_boardPanelRightAncestorResized
 
     private void buttonRotateShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotateShipActionPerformed
-        if(spil.p1.getPlayerTurn()){
+        if (spil.p1.getPlayerTurn()) {
             spil.p1.toggleHorizontal();
-        }
-        else if(spil.p2.getPlayerTurn()){
+        } else if (spil.p2.getPlayerTurn()) {
             spil.p2.toggleHorizontal();
         }
     }//GEN-LAST:event_buttonRotateShipActionPerformed
