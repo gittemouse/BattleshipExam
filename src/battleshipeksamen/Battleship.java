@@ -41,17 +41,17 @@ public class Battleship extends Ship {
      */
     @Override
     public void draw(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-        AffineTransform transform = g2.getTransform();
-        transform.setToTranslation((double) pixelCoordinates1.x, (double) pixelCoordinates1.y);
+        Graphics2D g2 = (Graphics2D) g; //type casting af g til typpen Graphics2D
+        AffineTransform transform = g2.getTransform(); //opretter en ny AffineTransform (position ,retning og skala)
+        transform.setToTranslation((double) pixelCoordinates1.x, (double) pixelCoordinates1.y); //sætter transforms position
 
         if (horizontal) {
-            transform.scale(0.053 * size, 0.34);
-            g2.drawImage(sprite, transform, null);
+            transform.scale(0.053 * size, 0.34);    //sætte transformens skala
+            g2.drawImage(sprite, transform, null);  //tegner skibet grafisk ud fra den transform der er givet
         } else {
-            transform.rotate(Math.PI / 2, (pixelCoordinates2.x - pixelCoordinates1.x) / 2, (pixelCoordinates2.y - pixelCoordinates1.y) / 2);
-            transform.scale(0.053 * size, 0.34);
-            g2.drawImage(sprite, transform, null);
+            transform.rotate(Math.PI / 2, (pixelCoordinates2.x - pixelCoordinates1.x) / 2, (pixelCoordinates2.y - pixelCoordinates1.y) / 2); //roterer transformen 90 grader (pi/2 radianer)
+            transform.scale(0.053 * size, 0.34); //sætter skala på transformen
+            g2.drawImage(sprite, transform, null); //tegner skibet graftisk ud fra den roterede transform
         }
     }
 }
