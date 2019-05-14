@@ -230,6 +230,11 @@ public class GamePanel extends javax.swing.JPanel {
 
         buttonRotateShip.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         buttonRotateShip.setText("Rotate");
+        buttonRotateShip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRotateShipActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -347,6 +352,15 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized
         System.out.println("battleshipeksamen.GamePanel.boardPanel2AncestorResized()");// TODO add your handling code here:
     }//GEN-LAST:event_boardPanelRightAncestorResized
+
+    private void buttonRotateShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotateShipActionPerformed
+        if(spil.p1.getPlayerTurn()){
+            spil.p1.toggleHorizontal();
+        }
+        else if(spil.p2.getPlayerTurn()){
+            spil.p2.toggleHorizontal();
+        }
+    }//GEN-LAST:event_buttonRotateShipActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private battleshipeksamen.BoardPanel boardPanelLeft;

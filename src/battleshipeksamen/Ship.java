@@ -24,10 +24,11 @@ public class Ship implements Drawable {
     int height;
     int hp;
 
-    public Ship(Point pPixel, Point pPixel2, Point pIndex) {
+    public Ship(Point pPixel, Point pPixel2, Point pIndex, Boolean horiz) {
         pixelCoordinates1 = pPixel;
         pixelCoordinates2 = pPixel2;
         matrixCoordinates = pIndex;
+        horizontal = horiz;
     }
 
     public Ship() {

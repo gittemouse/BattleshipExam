@@ -9,10 +9,10 @@ import java.awt.geom.AffineTransform;
 public class Battleship extends Ship {
     int size = 5;
     
-    public Battleship(Point pPixel1, Point pPixel2,Point pIndex) {
-        super(pPixel1, pPixel2, pIndex);
+    public Battleship(Point pPixel1, Point pPixel2,Point pIndex, Boolean horiz) {
+        super(pPixel1, pPixel2, pIndex, horiz);
         hp = size;
-        horizontal = true;
+        horizontal = horiz;
         sprite = Toolkit.getDefaultToolkit().getImage("KirovClassBattleship.png");
         
     }
@@ -24,10 +24,19 @@ public class Battleship extends Ship {
         transform.setToTranslation((double) pixelCoordinates1.x, (double) pixelCoordinates1.y);
         
         //transform.rotate(-System.currentTimeMillis()/(140*Math.PI), (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
-        transform.scale(0.053*size,0.34);
+        
         //transform.rotate(System.currentTimeMillis()*Math.PI/2000);
-        g2.drawImage(sprite, transform, null);
+        //g2.drawImage(sprite, transform, null);
         //g2.drawImage(sprite, pixelCoordinates1.x, pixelCoordinates1.y, pixelCoordinates2.x-pixelCoordinates1.x, pixelCoordinates2.y-pixelCoordinates1.y, null);
         
-    }  
+        if(horizontal){
+            transform.scale(0.053*size,0.34);
+            g2.drawImage(sprite, transform, null);
+        }
+        else{
+            transform.rotate(Math.PI/2, (pixelCoordinates2.x-pixelCoordinates1.x)/2, (pixelCoordinates2.y-pixelCoordinates1.y)/2);
+            transform.scale(0.053*size,0.34);
+            g2.drawImage(sprite, transform, null);
+        }  
+    }
 }

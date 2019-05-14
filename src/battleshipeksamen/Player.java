@@ -13,6 +13,8 @@ public class Player {
     private Boolean PlaceShips = true;
     private Boolean playerTurn = true;
     private Boolean playerTurnUsed = false;
+    private Boolean horizontal = true;
+    
 
     public Boolean getPlayerTurnUsed() {
         return playerTurnUsed;
@@ -131,22 +133,22 @@ public class Player {
         DESTROYER, SUBMARINE, CRUISER, BATTLESHIP, CARRIER
     }
 
-    public void setShips(Point A, Point B, Point C, shipType K) {
+    public void setShips(Point A, Point B, Point C, shipType K, Boolean horiz) {
         switch (K) {
             case DESTROYER:
-                this.ships.add(new Destroyer(A, B, C));
+                this.ships.add(new Destroyer(A, B, C, horiz));
                 break;
             case SUBMARINE:
-                this.ships.add(new Submarine(A, B, C));
+                this.ships.add(new Submarine(A, B, C, horiz));
                 break;
             case CRUISER:
-                this.ships.add(new Cruiser(A, B, C));
+                this.ships.add(new Cruiser(A, B, C, horiz));
                 break;
             case BATTLESHIP:
-                this.ships.add(new Battleship(A, B, C));
+                this.ships.add(new Battleship(A, B, C, horiz));
                 break;
             case CARRIER:
-                this.ships.add(new Carrier(A, B, C));
+                this.ships.add(new Carrier(A, B, C, horiz));
                 break;
         }
     }
@@ -168,5 +170,15 @@ public class Player {
     public void removeAnimation(SpriteAnimation a) {
         animations.remove(a);
     }
+
+    public Boolean getHorizontal() {
+        return horizontal;
+    }
+
+    public void toggleHorizontal() {
+        horizontal = !horizontal;
+    }
+    
+    
 
 }
