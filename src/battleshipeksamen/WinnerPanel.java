@@ -14,8 +14,6 @@ public class WinnerPanel extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(win, 0, 0, getWidth(), getHeight(), this);
-        showWinner();
-        repaint(10);
     }
     
     public WinnerPanel(JPanel p) {
@@ -24,6 +22,9 @@ public class WinnerPanel extends javax.swing.JPanel {
         cardLayout = (CardLayout) parentPanel.getLayout();
     }
     
+    /**
+     * Opdaterer label som viser stats
+     */
     public void showStats() {
         
         p1Hit.setText("Hits: " + spil.p1.getShotHit());
@@ -37,6 +38,9 @@ public class WinnerPanel extends javax.swing.JPanel {
         p2Acc.setText("Acc: " + spil.p2.getTotalAccuracy() + "%");
     }
     
+    /**
+     * Opdaterer label som viser vinder af spillet
+     */
     public void showWinner() {
         if (spil.p1.totalHPRemaining() == 0) {
             labelWinner.setText("Player 2 WON");

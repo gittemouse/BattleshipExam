@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class BenytBattleship {
+public class StartBattleship {
 
     public static void main(String[] args) {
 
@@ -15,7 +15,7 @@ public class BenytBattleship {
 
         parentPanel.setLayout(card);
         GamePanel game = new GamePanel(parentPanel);
-        NextPlayer next = new NextPlayer(parentPanel);
+        NextPlayerPanel next = new NextPlayerPanel(parentPanel);
         WinnerPanel winner = new WinnerPanel(parentPanel);
 
         parentPanel.add(game, "game");

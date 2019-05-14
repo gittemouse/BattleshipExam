@@ -8,7 +8,7 @@ public class BoardPanel extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(gridImg, 0, 0, getWidth(), getHeight(), this);    
+        g.drawImage(gridImg, 0, 0, getWidth(), getHeight(), this);    // Tegner 10x10 graid
     }
       
     public BoardPanel() {

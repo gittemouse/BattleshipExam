@@ -35,65 +35,65 @@ public class GamePanel extends javax.swing.JPanel {
         water1.setPosition(new Point(boardPanelLeft.getLocation().x, boardPanelLeft.getLocation().y), new Point(boardPanelLeft.getX() + boardPanelLeft.getWidth(), boardPanelLeft.getY() + boardPanelLeft.getHeight()));
         water1.draw(g);
 
-        if (spil.p1.getPlayerTurn() == true) {
+        if (spil.p1.getPlayerTurn() == true) { // hvis det er p1's tur, tegn samtlige objekter der skal tegnes for p1
             for (Ship s : spil.p1.getShips()) {
-                s.setPosition(spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                s.setPosition(spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0], // sæt skibets position i tilfældet af at vinduet har ændret sig
                         spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
-                s.draw(g);
+                s.draw(g); // tegn skibet
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
-                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0], // sæt objektets position i tilfældet at vinduet har ændret sig
                         spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
-                d.draw(g);
+                d.draw(g); // tegn objektet
             }
             for (Drawable d : spil.p2.getDrawableObjects()) {
-                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0], // sæt objektets position i tilfældet at vinduet har ændret sig
                         spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
-                d.draw(g);
+                d.draw(g); // tegn objektet
             }
 
             for (SpriteAnimation a : spil.p1.getAnimations()) {
-                if (a.isDone()) {
+                if (a.isDone()) { // hvis animationen er færdig med at kører, så slet den.
                     spil.p1.removeAnimation(a);
                     this.repaint(10);
-                } else {
+                } else { // ...ellers tegn den
                     a.draw(g);
                 }
             }
-            if (spil.p1.getPlaceShips()) {
-                spil.p1.setNextShipPos(new Point(buttonRotateShip.getX(), buttonRotateShip.getY() + buttonRotateShip.getHeight() + 10),
+            if (spil.p1.getPlaceShips()) { // hvis det er spiller 1's tur til at placerer skibe, skal det næste skib der placeres, tegnes ved siden af brættet
+                spil.p1.setNextShipPos(new Point(buttonRotateShip.getX(), buttonRotateShip.getY() + buttonRotateShip.getHeight() + 10), // sæt positionen for (uden for brættet) tette skib tegnes
                         new Point(buttonRotateShip.getX() + 50, buttonRotateShip.getY() + buttonRotateShip.getHeight() + 50), spil.p1.getHorizontal());
-                spil.p1.getNextShip().draw(g);
+                spil.p1.getNextShip().draw(g); //tegn skibet
             }
             updateLabels(spil.p1);
         }
-        if (spil.p2.getPlayerTurn() == true) {
+        if (spil.p2.getPlayerTurn() == true) { //hvis det er spiller 2's tur, tegn alt der skal tegnes for spiller 2.
             for (Ship s : spil.p2.getShips()) {
-                s.setPosition(spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                s.setPosition(spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0], // sæt skibets position i tilfældet af at vinduet har ændret sig
                         spil.matrixPointToPixelPoint(s.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
-                s.draw(g);
+                s.draw(g); // tegn skibet
             }
 
             for (Drawable d : spil.p2.getDrawableObjects()) {
-                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0],
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[0], // sæt objektets position i tilfældet af at vinduet har ændret sig
                         spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelRight.getLocation(), boardPanelRight.getSize())[1]);
-                d.draw(g);
+                d.draw(g); // tegn objektet
             }
             for (Drawable d : spil.p1.getDrawableObjects()) {
-                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0],
+                d.setPosition(spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[0], // sæt objektets position i tilfældet af at vinduet har ændret sig
                         spil.matrixPointToPixelPoint(d.getMatrixPoint(), boardPanelLeft.getLocation(), boardPanelLeft.getSize())[1]);
-                d.draw(g);
+                d.draw(g); // tegn objektet
             }
 
             for (SpriteAnimation a : spil.p2.getAnimations()) {
-                if (a.isDone()) {
+                if (a.isDone()) { // hvis animationen er kørt færdig, så slet den...
                     spil.p2.removeAnimation(a);
                     this.repaint(10);
-                } else {
+                } else { // ... ellers tegn den
                     a.draw(g);
                 }
             }
-            if (!spil.p1.getPlayerTurn()) {
+            if (!spil.p1.getPlayerTurn()) { // hvis det ikke er spiller 1's tur, tegn det næste skib der skal placerers (uden for brættet)
                 spil.p2.setNextShipPos(new Point(buttonRotateShip.getX(), buttonRotateShip.getY() + buttonRotateShip.getHeight() + 10),
                         new Point(buttonRotateShip.getX() + 50, buttonRotateShip.getY() + buttonRotateShip.getHeight() + 50), spil.p2.getHorizontal());
                 spil.p2.getNextShip().draw(g);
@@ -105,6 +105,9 @@ public class GamePanel extends javax.swing.JPanel {
         showPlayerTurn();
     }
 
+    /**
+     * opdaterer label med hvis tur det er.
+     */
     public void showPlayerTurn() {
         labelPlayerTurn.setForeground(Color.RED);
         if (spil.p1.getPlayerTurn() == true) {
@@ -114,6 +117,11 @@ public class GamePanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * opdaterer labels med spillerens stats
+     *
+     * @param x spiller som får opdateret stats
+     */
     public void updateLabels(Player x) {
         labelAllHits.setText("Hits: " + x.getShotHit());
         labelAllShots.setText("Shots: " + x.getTotalShots());
@@ -309,7 +317,6 @@ public class GamePanel extends javax.swing.JPanel {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p1);
             }
         } else {
-            spil.checkMatrixValue(p, spil.p2.getBoardMatrix());
             if (spil.p2.getPlaceShips() == true) {
                 spil.placeShip(p, boardPanelLeft.getLocation(), boardPanelLeft.getSize(), spil.p2);
             }
@@ -330,18 +337,20 @@ public class GamePanel extends javax.swing.JPanel {
 
     private void boardPanelRightMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardPanelRightMousePressed
         Point p = spil.pixelPointToMatrixPoint(evt.getPoint(), boardPanelRight.getSize()); //Finder ud af hvilken plads i matrixen der klikkes
-        if (spil.p1.getPlayerTurn() == true && spil.p1.getPlayerTurnUsed() == false) {
-            if (spil.p1.getPlaceShips() == false && spil.p2.getPlaceShips() == false) {
-                spil.Shoot(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2, spil.p1);
+
+        if (spil.p1.getPlayerTurn() == true && spil.p1.getPlayerTurnUsed() == false) { // Tjekker om det er spiller 1 tur, og turen ikke er brugt
+            if (spil.p1.getPlaceShips() == false && spil.p2.getPlaceShips() == false) { // tjekker om spiller 1 og 2 har placeret alle skibe
+                spil.Shoot(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p2, spil.p1); // Spiller 1 skyder på spilers 2 skibe
             }
         } else {
-            if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false && spil.p2.getPlayerTurnUsed() == false) {
-                spil.Shoot(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2);
+            if (spil.p2.getPlaceShips() == false && spil.p1.getPlaceShips() == false && spil.p2.getPlayerTurnUsed() == false) { // Tjekker om spiller 2 skibe er placeret, samt om turen ikke er brugt
+                spil.Shoot(p, boardPanelRight.getLocation(), boardPanelRight.getSize(), spil.p1, spil.p2); // Spiller 2 skyder på spilers 1 skibe
             }
         }
-
+        // Tjekker om alle skibe er sunket
         if ((spil.p1.totalHPRemaining() == 0 && spil.p1.getPlaceShips() == false) || (spil.p2.totalHPRemaining() == 0 && spil.p2.getPlaceShips() == false)) {
             winner.showStats();
+            winner.showWinner();
             cardLayout.show(parentPanel, "winner");
         }
 
@@ -350,7 +359,11 @@ public class GamePanel extends javax.swing.JPanel {
     private void boardPanelRightAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_boardPanelRightAncestorResized
 
     }//GEN-LAST:event_boardPanelRightAncestorResized
-
+    /**
+     * Roterer skibets retning
+     *
+     * @param evt
+     */
     private void buttonRotateShipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRotateShipActionPerformed
         if (spil.p1.getPlayerTurn()) {
             spil.p1.toggleHorizontal();

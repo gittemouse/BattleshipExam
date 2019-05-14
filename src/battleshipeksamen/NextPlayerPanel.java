@@ -3,7 +3,7 @@ package battleshipeksamen;
 import java.awt.*;
 import javax.swing.JPanel;
 
-public class NextPlayer extends javax.swing.JPanel {
+public class NextPlayerPanel extends javax.swing.JPanel {
 
     Image NextPlayerPic = Toolkit.getDefaultToolkit().getImage("NextPlayerPic.jpg");
     CardLayout cardLayout;
@@ -13,10 +13,10 @@ public class NextPlayer extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(NextPlayerPic, 0, 0, getWidth(), getHeight(), this);    // Tegner baggrundsbillede
     }
 
-    public NextPlayer(JPanel p) {
+    public NextPlayerPanel(JPanel p) {
         initComponents();
         this.parentPanel = p;
         cardLayout = (CardLayout) parentPanel.getLayout();
@@ -62,9 +62,11 @@ public class NextPlayer extends javax.swing.JPanel {
                 .addContainerGap(344, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Skifter tur imellem spillere
+ * @param evt 
+ */
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-
         if (spil.p1.getPlayerTurn() == true) {
             spil.p1.setPlayerTurn(false);
             spil.p2.setPlayerTurn(true);
